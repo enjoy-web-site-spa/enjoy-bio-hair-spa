@@ -8,14 +8,14 @@
     <title>Enjoy Parrucchieri Bio Hair Spa | Cascata Giapponese e Centro Cheratina Catania</title>
     <meta name="description" content="Salone bio hair spa e centro cheratina a Catania in Via Padova 50. Specializzati in Cascata Giapponese Head Spa, trattamenti botanici Oway ed ecocosmesi avanzata.">
     <meta name="keywords" content="Parrucchieri Catania, Bio Hair Spa Catania, Cascata Giapponese Catania, Centro Cheratina Catania, Oway Catania, Trattamenti Capelli Catania">
-    <link rel="canonical" href="https://tuo-username.github.io/enjoy-bio-hair-spa/">
+    <link rel="canonical" href="https://enjoy-web-site-spa.github.io/enjoy-bio-hair-spa/">
 
     <!-- Open Graph per Social e WhatsApp -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Enjoy Parrucchieri Bio Hair Spa | Catania">
     <meta property="og:description" content="Rigenerazione di cute e capelli con idroterapia giapponese, centro cheratina ed ecocosmesi naturale nel cuore di Catania.">
     <meta property="og:image" content="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1200&q=80">
-    <meta property="og:url" content="https://tuo-username.github.io/enjoy-bio-hair-spa/">
+    <meta property="og:url" content="https://enjoy-web-site-spa.github.io/enjoy-bio-hair-spa/">
 
     <!-- Tipografia Luxury Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,8 +32,8 @@
       "@type": ["BeautySalon", "HairSalon"],
       "name": "Enjoy Parrucchieri Bio Hair Spa",
       "image": "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1200&q=80",
-      "@id": "https://tuo-username.github.io/enjoy-bio-hair-spa/#organization",
-      "url": "https://tuo-username.github.io/enjoy-bio-hair-spa/",
+      "@id": "https://enjoy-web-site-spa.github.io/enjoy-bio-hair-spa/#organization",
+      "url": "https://enjoy-web-site-spa.github.io/enjoy-bio-hair-spa/",
       "telephone": "+390950000000",
       "priceRange": "€€",
       "address": {
@@ -291,6 +291,71 @@
 
         footer p { margin-bottom: 0.5rem; }
 
+        /* Stile Pop-up Promozionale Luxury */
+        #luxury-popup-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(5px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+        }
+
+        #luxury-popup-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .popup-box {
+            background-color: var(--bg-card);
+            border: 1px solid var(--gold-primary);
+            width: 90%;
+            max-width: 500px;
+            border-radius: 6px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.7);
+            text-align: center;
+            padding: 2.5rem 2rem 2rem 2rem;
+        }
+
+        .popup-close {
+            position: absolute;
+            top: 15px; right: 15px;
+            background: transparent;
+            border: none;
+            color: var(--gold-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .popup-img {
+            width: 100%;
+            max-height: 200px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 1.2rem;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .popup-title {
+            font-family: var(--font-title);
+            color: var(--gold-light);
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .popup-text {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            margin-bottom: 1.8rem;
+        }
+
         @media (max-width: 768px) {
             .hero h1 { font-size: 1.8rem; }
             .nav-links { display: none; }
@@ -298,6 +363,16 @@
     </style>
 </head>
 <body>
+
+    <!-- POP-UP PROMOZIONALE DINAMICO -->
+    <div id="luxury-popup-overlay">
+        <div class="popup-box">
+            <button class="popup-close" onclick="chiudiPopup()">&times;</button>
+            <div id="popup-content-dynamic">
+                <!-- Contenuto iniettato via JS da Supabase -->
+            </div>
+        </div>
+    </div>
 
     <header>
         <div class="nav-container">
@@ -328,16 +403,17 @@
     <footer>
         <p><strong>Enjoy Parrucchieri Bio Hair Spa</strong> &bull; Via Padova, 50, 95127 Catania CT</p>
         <p>Orari: Martedì - Sabato 09:00 - 18:30</p>
-        <p style="margin-top: 1.5rem; font-size: 0.75rem; color: #555;">&copy; 2026 Tutti i diritti riservati. Ecocosmesi & Head Spa Specialist.</p>
+        <p style="margin-top: 1.5rem; font-size: 0.75rem; color: #555;">&copy; 2026 Tutti i diritti riservati. Ecocosmesi & Hair Spa Specialist.</p>
     </footer>
 
     <script>
-        // CONFIGURAZIONE SUPABASE (Inserisci qui le tue chiavi reali)
-        const SUPABASE_URL = 'INSERISCI_QUI_IL_TUO_PROJECT_URL';
-        const SUPABASE_ANON_KEY = 'INSERISCI_QUI_LA_TUA_KEY_ANON_PUBLIC';
+        // CONFIGURAZIONE SUPABASE
+        const SUPABASE_URL = 'https://rpbbbqekqkwzyhpjeusp.supabase.co';
+        const SUPABASE_ANON_KEY = 'sb_publishable_mO9NkHSLtTZ-1sFWi__s-w_A5sj_TvX';
         
         const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
+        // 1. CARICAMENTO TRATTAMENTI DINAMICI
         async function caricaServiziDinamici() {
             const grid = document.getElementById('grid-servizi');
             
@@ -345,12 +421,12 @@
                 const { data: servizi, error } = await supabaseClient
                     .from('servizi')
                     .select('*')
-                    .order('ordine', { ascending: true });
+                    .order('created_at', { ascending: false });
 
                 if (error) throw error;
 
                 if (!servizi || servizi.length === 0) {
-                    grid.innerHTML = '<p style="text-align: center; grid-column: 1/-1; color: var(--text-gray);">Nessun trattamento inserito al momento. Accedi al pannello admin per aggiungerli!</p>';
+                    grid.innerHTML = '<p style="text-align: center; grid-column: 1/-1; color: var(--text-gray);">Nessun trattamento inserito al momento!</p>';
                     return;
                 }
 
@@ -362,7 +438,7 @@
                             <h3 class="service-title">${s.titolo}</h3>
                             <p class="service-desc">${s.descrizione_breve || ''}</p>
                             <div class="service-footer">
-                                <span class="service-price">€ ${parseFloat(s.prezzo).toFixed(2)}</span>
+                                <span class="service-price">€ ${parseFloat(s.prezzo || 0).toFixed(2)}</span>
                                 <a href="${s.link_azione || 'https://wa.me/390950000000'}" target="_blank" class="btn-gold" style="padding: 0.5rem 1rem; font-size: 0.75rem;">Scopri</a>
                             </div>
                         </div>
@@ -375,7 +451,49 @@
             }
         }
 
-        document.addEventListener('DOMContentLoaded', caricaServiziDinamici);
+        // 2. GESTIONE POP-UP PROMOZIONALE DA SUPABASE
+        async function verificaEmostraPopup() {
+            if (sessionStorage.getItem('enjoy_popup_chiuso')) return;
+
+            try {
+                const { data, error } = await supabaseClient
+                    .from('promozioni')
+                    .select('*')
+                    .limit(1);
+
+                if (error) throw error;
+
+                if (data && data.length > 0) {
+                    const promo = data[0];
+                    
+                    if (promo.attivo) {
+                        const contentDiv = document.getElementById('popup-content-dynamic');
+                        contentDiv.innerHTML = `
+                            ${promo.immagine_url ? `<img src="${promo.immagine_url}" alt="${promo.titolo}" class="popup-img">` : ''}
+                            <h3 class="popup-title">${promo.titolo || 'Speciale Promozione'}</h3>
+                            <p class="popup-text">${promo.messaggio || ''}</p>
+                            ${promo.link_bottone ? `<a href="${promo.link_bottone}" target="_blank" class="btn-gold" style="padding: 0.8rem 2rem; display:inline-block;">Scopri di più</a>` : ''}
+                        `;
+
+                        setTimeout(() => {
+                            document.getElementById('luxury-popup-overlay').classList.add('active');
+                        }, 1500);
+                    }
+                }
+            } catch (err) {
+                console.error('Errore nel caricamento del popup:', err);
+            }
+        }
+
+        function chiudiPopup() {
+            document.getElementById('luxury-popup-overlay').classList.remove('active');
+            sessionStorage.setItem('enjoy_popup_chiuso', 'true');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            caricaServiziDinamici();
+            verificaEmostraPopup();
+        });
     </script>
 </body>
 </html>

@@ -91,6 +91,9 @@
             margin-bottom: 1.5rem;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             padding-bottom: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .form-group {
@@ -165,6 +168,12 @@
             cursor: pointer;
             font-size: 0.8rem;
             border-radius: 2px;
+            transition: all 0.2s;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--gold-primary);
+            color: #000;
         }
 
         .services-list {
@@ -185,11 +194,28 @@
         .service-item-info strong {
             color: var(--gold-light);
             display: block;
+            font-size: 1rem;
         }
 
         .service-item-info span {
             font-size: 0.8rem;
             color: var(--text-gray);
+        }
+
+        .action-btns {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn-edit {
+            background-color: var(--gold-primary);
+            color: #000;
+            border: none;
+            padding: 0.4rem 0.8rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border-radius: 2px;
+            cursor: pointer;
         }
 
         .btn-delete {
@@ -263,7 +289,10 @@
             
             <!-- GESTIONE POP-UP PROMOZIONALE -->
             <section class="card">
-                <h2 class="card-title">Gestione Pop-up Promozionale (Ingresso Sito)</h2>
+                <h2 class="card-title">
+                    <span>Gestione Pop-up Promozionale</span>
+                    <button type="button" class="btn-outline" style="border-color:#c93b3b; color:#c93b3b;" onclick="disattivaPopup()">Disattiva Pop-up</button>
+                </h2>
                 <form id="form-popup">
                     <div class="checkbox-group">
                         <input type="checkbox" id="popup-attivo">
@@ -298,8 +327,13 @@
 
             <!-- GESTIONE TRATTAMENTI -->
             <section class="card">
-                <h2 class="card-title">Aggiungi / Modifica Trattamento</h2>
+                <h2 class="card-title">
+                    <span id="form-servizio-titolo">Aggiungi / Modifica Trattamento</span>
+                    <button type="button" id="btn-annulla-modifica" class="btn-outline" style="display:none;" onclick="annullaModifica()">+ Nuovo Trattamento</button>
+                </h2>
                 <form id="form-servizio">
+                    <input type="hidden" id="servizio-id">
+
                     <div class="form-group">
                         <label for="titolo">Titolo Trattamento</label>
                         <input type="text" id="titolo" placeholder="es. Cascata Giapponese Head Spa" required>
@@ -337,6 +371,7 @@
                     <div class="form-group">
                         <label for="immagine">Foto Trattamento (Carica su Supabase Storage)</label>
                         <input type="file" id="immagine" accept="image/*">
+                        <div id="preview-servizio-img" style="margin-top:0.5rem;"></div>
                     </div>
 
                     <div class="form-group">
@@ -349,6 +384,7 @@
                 </form>
             </section>
 
+            <!-- LISTA SERVIZI ONLINE CON AZIONI EDIT/DELETE -->
             <section class="card">
                 <h2 class="card-title">Trattamenti Attualmente On-line</h2>
                 <div id="lista-servizi" class="services-list">
@@ -374,9 +410,12 @@
         const popupStatusMsg = document.getElementById('popup-status-msg');
         const loginStatusMsg = document.getElementById('login-status-msg');
         const listaServizi = document.getElementById('lista-servizi');
+        
         let inserimentoCustomCategoria = false;
         let popupEsistenteId = null;
         let popupImmagineUrlAttuale = '';
+        let servizioImmagineUrlAttuale = '';
+        let listaServiziCaricati = [];
 
         function mostraMessaggio(el, testo, tipo) {
             el.textContent = testo;
@@ -438,7 +477,7 @@
             mostraLogin();
         }
 
-        // CARICA IMPOSTAZIONI POPUP
+        // CARICA POPUP
         async function caricaImpostazioniPopup() {
             try {
                 const { data, error } = await supabaseClient
@@ -469,7 +508,7 @@
             }
         }
 
-        // SALVA IMPOSTAZIONI POPUP
+        // SALVA POPUP
         formPopup.addEventListener('submit', async (e) => {
             e.preventDefault();
             const btnSalvaPopup = document.getElementById('btn-salva-popup');
@@ -505,13 +544,7 @@
                     immagine_url = urlData.publicUrl;
                 }
 
-                const payload = {
-                    attivo,
-                    titolo,
-                    messaggio,
-                    immagine_url,
-                    link_bottone
-                };
+                const payload = { attivo, titolo, messaggio, immagine_url, link_bottone };
 
                 let response;
                 if (popupEsistenteId) {
@@ -539,6 +572,24 @@
             }
         });
 
+        // DISATTIVA POPUP RAPIDO
+        async function disattivaPopup() {
+            if (!popupEsistenteId) return;
+            try {
+                const { error } = await supabaseClient
+                    .from('promozioni')
+                    .update({ attivo: false })
+                    .eq('id', popupEsistenteId);
+
+                if (error) throw error;
+                document.getElementById('popup-attivo').checked = false;
+                mostraMessaggio(popupStatusMsg, 'Pop-up disattivato.', 'success');
+            } catch (err) {
+                console.error(err);
+                mostraMessaggio(popupStatusMsg, 'Errore disattivazione.', 'error');
+            }
+        }
+
         function toggleNuovaCategoria() {
             const boxNuova = document.getElementById('box-nuova-categoria');
             const selectCat = document.getElementById('categoria-select');
@@ -553,6 +604,7 @@
             }
         }
 
+        // CARICA LISTA SERVIZI
         async function caricaServiziAdmin() {
             try {
                 const { data, error } = await supabaseClient
@@ -561,6 +613,7 @@
                     .order('created_at', { ascending: false });
 
                 if (error) throw error;
+                listaServiziCaricati = data || [];
 
                 if (!data || data.length === 0) {
                     listaServizi.innerHTML = '<p style="color: var(--text-gray);">Nessun trattamento presente nel database.</p>';
@@ -573,7 +626,10 @@
                             <strong>${s.titolo}</strong>
                             <span>${s.categoria || 'Generale'} &bull; € ${parseFloat(s.prezzo || 0).toFixed(2)}</span>
                         </div>
-                        <button class="btn-delete" onclick="eliminaServizio('${s.id}')">Elimina</button>
+                        <div class="action-btns">
+                            <button class="btn-edit" onclick="preparaModifica('${s.id}')">Modifica</button>
+                            <button class="btn-delete" onclick="eliminaServizio('${s.id}')">Elimina</button>
+                        </div>
                     </div>
                 `).join('');
 
@@ -589,12 +645,52 @@
             }
         }
 
+        // PREPARA MODIFICA SERVIZIO
+        function preparaModifica(id) {
+            const servizio = listaServiziCaricati.find(s => s.id === id);
+            if (!servizio) return;
+
+            document.getElementById('servizio-id').value = servizio.id;
+            document.getElementById('titolo').value = servizio.titolo || '';
+            document.getElementById('categoria-select').value = servizio.categoria || 'Hair Spa & Benessere';
+            document.getElementById('descrizione').value = servizio.descrizione_breve || '';
+            document.getElementById('prezzo').value = servizio.prezzo || '';
+            document.getElementById('link_azione').value = servizio.link_azione || '';
+            servizioImmagineUrlAttuale = servizio.immagine_url || '';
+
+            if (servizio.immagine_url) {
+                document.getElementById('preview-servizio-img').innerHTML = `
+                    <img src="${servizio.immagine_url}" style="max-width: 120px; border:1px solid var(--gold-primary); border-radius:4px;">
+                `;
+            } else {
+                document.getElementById('preview-servizio-img').innerHTML = '';
+            }
+
+            document.getElementById('form-servizio-titolo').textContent = 'Modifica Trattamento: ' + servizio.titolo;
+            document.getElementById('btn-salva').textContent = 'Aggiorna Trattamento';
+            document.getElementById('btn-annulla-modifica').style.display = 'inline-block';
+
+            window.scrollTo({ top: document.getElementById('form-servizio').offsetTop - 20, behavior: 'smooth' });
+        }
+
+        function annullaModifica() {
+            formServizio.reset();
+            document.getElementById('servizio-id').value = '';
+            servizioImmagineUrlAttuale = '';
+            document.getElementById('preview-servizio-img').innerHTML = '';
+            document.getElementById('form-servizio-titolo').textContent = 'Aggiungi / Modifica Trattamento';
+            document.getElementById('btn-salva').textContent = 'Salva Trattamento';
+            document.getElementById('btn-annulla-modifica').style.display = 'none';
+        }
+
+        // SALVA / AGGIORNA SERVIZIO
         formServizio.addEventListener('submit', async (e) => {
             e.preventDefault();
             const btnSalva = document.getElementById('btn-salva');
             btnSalva.disabled = true;
             btnSalva.textContent = 'Salvataggio in corso...';
 
+            const servizioId = document.getElementById('servizio-id').value;
             const titolo = document.getElementById('titolo').value;
             let categoria = inserimentoCustomCategoria 
                 ? document.getElementById('nuova-categoria-input').value.trim() 
@@ -607,7 +703,7 @@
             const link_azione = document.getElementById('link_azione').value;
             const fileInput = document.getElementById('immagine');
 
-            let immagine_url = '';
+            let immagine_url = servizioImmagineUrlAttuale;
 
             try {
                 if (fileInput.files.length > 0) {
@@ -630,22 +726,33 @@
                     immagine_url = urlData.publicUrl;
                 }
 
-                const { error: insertError } = await supabaseClient
-                    .from('servizi')
-                    .insert([{
-                        titolo,
-                        categoria,
-                        descrizione_breve: descrizione,
-                        prezzo,
-                        immagine_url: immagine_url || null,
-                        link_azione: link_azione || null
-                    }]);
+                const payload = {
+                    titolo,
+                    categoria,
+                    descrizione_breve: descrizione,
+                    prezzo,
+                    immagine_url: immagine_url || null,
+                    link_azione: link_azione || null
+                };
 
-                if (insertError) throw insertError;
+                let response;
+                if (servizioId) {
+                    // MODIFICA
+                    response = await supabaseClient
+                        .from('servizi')
+                        .update(payload)
+                        .eq('id', servizioId);
+                } else {
+                    // INSERIMENTO
+                    response = await supabaseClient
+                        .from('servizi')
+                        .insert([payload]);
+                }
 
-                mostraMessaggio(statusMsg, 'Trattamento salvato con successo!', 'success');
-                formServizio.reset();
-                if (inserimentoCustomCategoria) toggleNuovaCategoria();
+                if (response.error) throw response.error;
+
+                mostraMessaggio(statusMsg, servizioId ? 'Trattamento aggiornato con successo!' : 'Trattamento salvato con successo!', 'success');
+                annullaModifica();
                 caricaServiziAdmin();
 
             } catch (err) {
@@ -653,12 +760,12 @@
                 mostraMessaggio(statusMsg, 'Errore durante il salvataggio: ' + err.message, 'error');
             } finally {
                 btnSalva.disabled = false;
-                btnSalva.textContent = 'Salva Trattamento';
             }
         });
 
+        // ELIMINA SERVIZIO
         async function eliminaServizio(id) {
-            if (!confirm('Sei sicuro di voler eliminare questo trattamento?')) return;
+            if (!confirm('Sei sicuro di voler eliminare definitivamente questo trattamento?')) return;
 
             try {
                 const { error } = await supabaseClient
