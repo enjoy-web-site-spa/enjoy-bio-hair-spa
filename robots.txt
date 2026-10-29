@@ -1,0 +1,25 @@
+# Permetti a tutti i motori di ricerca e Bot IA di scansionare il sito
+User-agent: *
+Allow: /
+
+# Crawler IA Specifici (Generative Engine Optimization)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+# Blocca l'indicizzazione dell'Area Riservata Segreta sui motori di ricerca
+Disallow: /area-riservata-enjoy.html
+
+# Percorso della Sitemap Ufficiale
+Sitemap: https://enjoy-web-site-spa.github.io/enjoy-bio-hair-spa/sitemap.xml

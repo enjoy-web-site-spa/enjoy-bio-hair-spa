@@ -127,6 +127,19 @@
             border-color: var(--gold-primary);
         }
 
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .checkbox-group input {
+            width: 20px;
+            height: 20px;
+            accent-color: var(--gold-primary);
+        }
+
         .btn-gold {
             background: linear-gradient(135deg, var(--gold-primary), var(--gold-hover));
             color: #000;
@@ -215,7 +228,6 @@
             margin-top: 0.5rem;
         }
 
-        /* Gestione Visibilità Sezioni */
         #sec-login { display: block; max-width: 450px; margin: 4rem auto 0 auto; }
         #sec-dashboard { display: none; }
     </style>
@@ -229,7 +241,7 @@
             <button id="btn-logout" class="btn-logout" style="display: none;" onclick="logout()">Disconnetti</button>
         </header>
 
-        <!-- 1. FORM LOGIN SICURO -->
+        <!-- 1. FORM LOGIN -->
         <section id="sec-login" class="card">
             <h2 class="card-title" style="text-align: center;">Accesso Gestionale</h2>
             <form id="form-login">
@@ -246,8 +258,45 @@
             </form>
         </section>
 
-        <!-- 2. PANNELLO DI CONTROLLO (Visibile solo dopo il Login) -->
+        <!-- 2. PANNELLO DI CONTROLLO -->
         <main id="sec-dashboard">
+            
+            <!-- GESTIONE POP-UP PROMOZIONALE -->
+            <section class="card">
+                <h2 class="card-title">Gestione Pop-up Promozionale (Ingresso Sito)</h2>
+                <form id="form-popup">
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="popup-attivo">
+                        <label for="popup-attivo" style="margin-bottom:0; font-size:0.95rem;">Attiva Pop-up all'Ingresso del Sito</label>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="popup-titolo">Titolo Promozione</label>
+                        <input type="text" id="popup-titolo" placeholder="es. Edizione Limitata: Cascata Giapponese Head Spa">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="popup-messaggio">Descrizione / Offerta</label>
+                        <textarea id="popup-messaggio" rows="3" placeholder="Scrivi il messaggio della promozione..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="popup-immagine">Locandina / Foto Promo (Supabase Storage)</label>
+                        <input type="file" id="popup-immagine" accept="image/*">
+                        <div id="preview-popup-img" style="margin-top:0.5rem;"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="popup-link">Link Pulsante Promozione</label>
+                        <input type="text" id="popup-link" placeholder="Link WhatsApp o della Web App">
+                    </div>
+
+                    <button type="submit" class="btn-gold" id="btn-salva-popup">Salva Impostazioni Pop-up</button>
+                    <div id="popup-status-msg" class="status-msg"></div>
+                </form>
+            </section>
+
+            <!-- GESTIONE TRATTAMENTI -->
             <section class="card">
                 <h2 class="card-title">Aggiungi / Modifica Trattamento</h2>
                 <form id="form-servizio">
@@ -310,7 +359,6 @@
     </div>
 
     <script>
-        // CONFIGURAZIONE CREDENZIALI SUPABASE
         const SUPABASE_URL = 'https://rpbbbqekqkwzyhpjeusp.supabase.co';
         const SUPABASE_ANON_KEY = 'sb_publishable_mO9NkHSLtTZ-1sFWi__s-w_A5sj_TvX';
 
@@ -318,13 +366,17 @@
 
         const formLogin = document.getElementById('form-login');
         const formServizio = document.getElementById('form-servizio');
+        const formPopup = document.getElementById('form-popup');
         const secLogin = document.getElementById('sec-login');
         const secDashboard = document.getElementById('sec-dashboard');
         const btnLogout = document.getElementById('btn-logout');
         const statusMsg = document.getElementById('status-msg');
+        const popupStatusMsg = document.getElementById('popup-status-msg');
         const loginStatusMsg = document.getElementById('login-status-msg');
         const listaServizi = document.getElementById('lista-servizi');
         let inserimentoCustomCategoria = false;
+        let popupEsistenteId = null;
+        let popupImmagineUrlAttuale = '';
 
         function mostraMessaggio(el, testo, tipo) {
             el.textContent = testo;
@@ -333,7 +385,6 @@
             setTimeout(() => { el.style.display = 'none'; }, 4000);
         }
 
-        // Verifica Stato Autenticazione all'avvio
         async function controllaSessione() {
             const { data: { session } } = await supabaseClient.auth.getSession();
             if (session) {
@@ -348,6 +399,7 @@
             secDashboard.style.display = 'block';
             btnLogout.style.display = 'block';
             caricaServiziAdmin();
+            caricaImpostazioniPopup();
         }
 
         function mostraLogin() {
@@ -356,7 +408,6 @@
             btnLogout.style.display = 'none';
         }
 
-        // Esecuzione Login
         formLogin.addEventListener('submit', async (e) => {
             e.preventDefault();
             const email = document.getElementById('login-email').value;
@@ -382,11 +433,111 @@
             }
         });
 
-        // Logout
         async function logout() {
             await supabaseClient.auth.signOut();
             mostraLogin();
         }
+
+        // CARICA IMPOSTAZIONI POPUP
+        async function caricaImpostazioniPopup() {
+            try {
+                const { data, error } = await supabaseClient
+                    .from('promozioni')
+                    .select('*')
+                    .limit(1);
+
+                if (error) throw error;
+
+                if (data && data.length > 0) {
+                    const promo = data[0];
+                    popupEsistenteId = promo.id;
+                    popupImmagineUrlAttuale = promo.immagine_url || '';
+
+                    document.getElementById('popup-attivo').checked = promo.attivo;
+                    document.getElementById('popup-titolo').value = promo.titolo || '';
+                    document.getElementById('popup-messaggio').value = promo.messaggio || '';
+                    document.getElementById('popup-link').value = promo.link_bottone || '';
+
+                    if (promo.immagine_url) {
+                        document.getElementById('preview-popup-img').innerHTML = `
+                            <img src="${promo.immagine_url}" style="max-width: 150px; border:1px solid var(--gold-primary); border-radius:4px;">
+                        `;
+                    }
+                }
+            } catch (err) {
+                console.error('Errore nel caricamento del popup:', err);
+            }
+        }
+
+        // SALVA IMPOSTAZIONI POPUP
+        formPopup.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btnSalvaPopup = document.getElementById('btn-salva-popup');
+            btnSalvaPopup.disabled = true;
+            btnSalvaPopup.textContent = 'Salvataggio in corso...';
+
+            const attivo = document.getElementById('popup-attivo').checked;
+            const titolo = document.getElementById('popup-titolo').value;
+            const messaggio = document.getElementById('popup-messaggio').value;
+            const link_bottone = document.getElementById('popup-link').value;
+            const fileInput = document.getElementById('popup-immagine');
+
+            let immagine_url = popupImmagineUrlAttuale;
+
+            try {
+                if (fileInput.files.length > 0) {
+                    const file = fileInput.files[0];
+                    const fileExt = file.name.split('.').pop();
+                    const fileName = `promo_${Date.now()}.${fileExt}`;
+
+                    const { error: uploadError } = await supabaseClient
+                        .storage
+                        .from('immagini-salone')
+                        .upload(fileName, file);
+
+                    if (uploadError) throw uploadError;
+
+                    const { data: urlData } = supabaseClient
+                        .storage
+                        .from('immagini-salone')
+                        .getPublicUrl(fileName);
+
+                    immagine_url = urlData.publicUrl;
+                }
+
+                const payload = {
+                    attivo,
+                    titolo,
+                    messaggio,
+                    immagine_url,
+                    link_bottone
+                };
+
+                let response;
+                if (popupEsistenteId) {
+                    response = await supabaseClient
+                        .from('promozioni')
+                        .update(payload)
+                        .eq('id', popupEsistenteId);
+                } else {
+                    response = await supabaseClient
+                        .from('promozioni')
+                        .insert([payload]);
+                }
+
+                if (response.error) throw response.error;
+
+                mostraMessaggio(popupStatusMsg, 'Pop-up aggiornato con successo!', 'success');
+                caricaImpostazioniPopup();
+
+            } catch (err) {
+                console.error(err);
+                mostraMessaggio(popupStatusMsg, 'Errore salvataggio pop-up: ' + err.message, 'error');
+            } finally {
+                btnSalvaPopup.disabled = false;
+                btnSalvaPopup.textContent = 'Salva Impostazioni Pop-up';
+            }
+        });
 
         function toggleNuovaCategoria() {
             const boxNuova = document.getElementById('box-nuova-categoria');
