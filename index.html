@@ -5,17 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- SEO Standard & GEO (Generative Engine Optimization) -->
-    <title>Enjoy Parrucchieri Bio Hair Spa | Cascata Giapponese e Trattamenti Bio Catania</title>
-    <meta name="description" content="Salone di bellezza bio ed ecocosmesi hair spa a Catania. Specializzati in Head Spa con Cascata Giapponese, Laminazione Bio e Rituali Botanici Oway. Prenota ora.">
-    <meta name="keywords" content="Parrucchieri Catania, Bio Hair Spa Catania, Cascata Giapponese Catania, Head Spa, Trattamenti Botanici Oway, Laminazione Capelli Bio">
-    <link rel="canonical" href="https://enjoyparrucchieri.it/">
+    <title>Enjoy Parrucchieri Bio Hair Spa | Cascata Giapponese e Centro Cheratina Catania</title>
+    <meta name="description" content="Salone bio hair spa e centro cheratina a Catania in Via Padova 50. Specializzati in Cascata Giapponese Head Spa, trattamenti botanici Oway ed ecocosmesi avanzata.">
+    <meta name="keywords" content="Parrucchieri Catania, Bio Hair Spa Catania, Cascata Giapponese Catania, Centro Cheratina Catania, Oway Catania, Trattamenti Capelli Catania">
+    <link rel="canonical" href="https://tuo-username.github.io/enjoy-bio-hair-spa/">
 
     <!-- Open Graph per Social e WhatsApp -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Enjoy Parrucchieri Bio Hair Spa Catania">
-    <meta property="og:description" content="Rituali di benessere per cute e capelli con idroterapia giapponese ed ecocosmesi naturale a Catania.">
+    <meta property="og:title" content="Enjoy Parrucchieri Bio Hair Spa | Catania">
+    <meta property="og:description" content="Rigenerazione di cute e capelli con idroterapia giapponese, centro cheratina ed ecocosmesi naturale nel cuore di Catania.">
     <meta property="og:image" content="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1200&q=80">
-    <meta property="og:url" content="https://enjoyparrucchieri.it/">
+    <meta property="og:url" content="https://tuo-username.github.io/enjoy-bio-hair-spa/">
 
     <!-- Tipografia Luxury Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,36 +32,36 @@
       "@type": ["BeautySalon", "HairSalon"],
       "name": "Enjoy Parrucchieri Bio Hair Spa",
       "image": "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1200&q=80",
-      "@id": "https://enjoyparrucchieri.it/#organization",
-      "url": "https://enjoyparrucchieri.it/",
+      "@id": "https://tuo-username.github.io/enjoy-bio-hair-spa/#organization",
+      "url": "https://tuo-username.github.io/enjoy-bio-hair-spa/",
       "telephone": "+390950000000",
       "priceRange": "€€",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Via Etnea",
+        "streetAddress": "Via Padova, 50",
         "addressLocality": "Catania",
-        "postalCode": "95100",
+        "postalCode": "95127",
         "addressCountry": "IT"
       },
       "geo": {
         "@type": "GeoCoordinates",
-        "latitude": 37.5079,
-        "longitude": 15.0830
+        "latitude": 37.5140,
+        "longitude": 15.0900
       },
       "openingHoursSpecification": [
         {
           "@type": "OpeningHoursSpecification",
           "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
           "opens": "09:00",
-          "closes": "19:00"
+          "closes": "18:30"
         }
       ],
       "knowsAbout": [
         "Cascata Giapponese Head Spa",
-        "Ecocosmesi Hair Spa",
-        "Laminazione Capelli Biologica",
-        "Trattamenti Botanici Oway",
-        "Cura del cuoio capelluto"
+        "Centro Cheratina Catania",
+        "Ecoscosmesi Oway Salon",
+        "Trattamenti Botanici per Capelli",
+        "Benessere Cute e Capelli"
       ]
     }
     </script>
@@ -79,11 +79,7 @@
             --font-body: 'Montserrat', sans-serif;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
             background-color: var(--bg-primary);
@@ -114,7 +110,7 @@
 
         .logo {
             font-family: var(--font-title);
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             color: var(--gold-primary);
             text-decoration: none;
             letter-spacing: 2px;
@@ -125,6 +121,7 @@
             display: flex;
             gap: 2rem;
             list-style: none;
+            align-items: center;
         }
 
         .nav-links a {
@@ -135,14 +132,19 @@
             transition: color 0.3s;
         }
 
-        .nav-links a:hover {
-            color: var(--gold-primary);
+        .nav-links a:hover { color: var(--gold-primary); }
+
+        .btn-nav-webapp {
+            border: 1px solid var(--gold-primary);
+            padding: 0.5rem 1rem;
+            border-radius: 2px;
+            color: var(--gold-primary) !important;
         }
 
         /* Hero Section */
         .hero {
             min-height: 90vh;
-            background: linear-gradient(rgba(18, 18, 18, 0.75), rgba(18, 18, 18, 0.95)), 
+            background: linear-gradient(rgba(18, 18, 18, 0.7), rgba(18, 18, 18, 0.95)), 
                         url('https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
             display: flex;
             align-items: center;
@@ -151,13 +153,11 @@
             padding: 8rem 1rem 4rem 1rem;
         }
 
-        .hero-content {
-            max-width: 800px;
-        }
+        .hero-content { max-width: 800px; }
 
         .hero h1 {
             font-family: var(--font-title);
-            font-size: 2.6rem;
+            font-size: 2.5rem;
             color: var(--gold-light);
             margin-bottom: 1.2rem;
             letter-spacing: 2px;
@@ -191,25 +191,26 @@
             box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
         }
 
-        /* Grid Servizi */
-        .services-section {
+        /* Sezione Specialità */
+        .features-section {
             max-width: 1200px;
-            margin: 4rem auto;
+            margin: 5rem auto;
             padding: 0 2rem;
         }
 
         .section-title {
             text-align: center;
             font-family: var(--font-title);
-            font-size: 2.2rem;
+            font-size: 2rem;
             color: var(--gold-primary);
             margin-bottom: 3rem;
             letter-spacing: 2px;
         }
 
+        /* Grid Servizi Dinamica */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2.5rem;
         }
 
@@ -281,15 +282,17 @@
         footer {
             background-color: #0A0A0A;
             border-top: 1px solid rgba(212, 175, 55, 0.2);
-            padding: 3rem 2rem;
+            padding: 4rem 2rem 2rem 2rem;
             text-align: center;
             color: var(--text-gray);
             font-size: 0.85rem;
             margin-top: 5rem;
         }
 
+        footer p { margin-bottom: 0.5rem; }
+
         @media (max-width: 768px) {
-            .hero h1 { font-size: 1.9rem; }
+            .hero h1 { font-size: 1.8rem; }
             .nav-links { display: none; }
         }
     </style>
@@ -301,8 +304,8 @@
             <a href="#" class="logo">Enjoy Bio Hair Spa</a>
             <ul class="nav-links">
                 <li><a href="#servizi">Trattamenti</a></li>
-                <li><a href="#filosofia">Filosofia Bio</a></li>
-                <li><a href="#contatti">Contatti</a></li>
+                <li><a href="https://wa.me/390950000000" target="_blank">WhatsApp</a></li>
+                <li><a href="#" class="btn-nav-webapp">Web App</a></li>
             </ul>
         </div>
     </header>
@@ -310,31 +313,32 @@
     <section class="hero">
         <div class="hero-content">
             <h1>L'Oasi Botanica dei Tuoi Capelli a Catania</h1>
-            <p>Sperimenta la vera idroterapia con la Cascata Giapponese, la rigenerazione biologica e i trattamenti Oway in un'esperienza Hair Spa esclusiva.</p>
-            <a href="#servizi" class="btn-gold">Scopri i Rituali</a>
+            <p>Idroterapia esclusiva con Cascata Giapponese, Centro Cheratina e trattamenti organici firmati Oway in Via Padova 50.</p>
+            <a href="#servizi" class="btn-gold">Esplora i Trattamenti</a>
         </div>
     </section>
 
-    <main class="services-section" id="servizi">
-        <h2 class="section-title">I Nostri Rituali di Benessere</h2>
+    <main class="features-section" id="servizi">
+        <h2 class="section-title">I Nostri Rituali Esclusivi</h2>
         <div class="services-grid" id="grid-servizi">
-            <p style="text-align: center; grid-column: 1/-1;">Caricamento trattamenti in corso...</p>
+            <p style="text-align: center; grid-column: 1/-1; color: var(--text-gray);">Caricamento trattamenti dal database...</p>
         </div>
     </main>
 
     <footer>
-        <p>&copy; 2026 Enjoy Parrucchieri Bio Hair Spa - Catania. Tutti i diritti riservati.</p>
-        <p style="margin-top: 0.5rem; font-size: 0.75rem; color: #666;">Ecocosmesi Hair Spa & Head Spa Specialist</p>
+        <p><strong>Enjoy Parrucchieri Bio Hair Spa</strong> &bull; Via Padova, 50, 95127 Catania CT</p>
+        <p>Orari: Martedì - Sabato 09:00 - 18:30</p>
+        <p style="margin-top: 1.5rem; font-size: 0.75rem; color: #555;">&copy; 2026 Tutti i diritti riservati. Ecocosmesi & Head Spa Specialist.</p>
     </footer>
 
     <script>
-        // CONFIGURAZIONE CREDENZIALI SUPABASE
+        // CONFIGURAZIONE SUPABASE (Inserisci qui le tue chiavi reali)
         const SUPABASE_URL = 'INSERISCI_QUI_IL_TUO_PROJECT_URL';
         const SUPABASE_ANON_KEY = 'INSERISCI_QUI_LA_TUA_KEY_ANON_PUBLIC';
         
         const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-        async function caricaServizi() {
+        async function caricaServiziDinamici() {
             const grid = document.getElementById('grid-servizi');
             
             try {
@@ -346,32 +350,32 @@
                 if (error) throw error;
 
                 if (!servizi || servizi.length === 0) {
-                    grid.innerHTML = '<p style="text-align: center; grid-column: 1/-1;">Nessun trattamento disponibile al momento.</p>';
+                    grid.innerHTML = '<p style="text-align: center; grid-column: 1/-1; color: var(--text-gray);">Nessun trattamento inserito al momento. Accedi al pannello admin per aggiungerli!</p>';
                     return;
                 }
 
                 grid.innerHTML = servizi.map(s => `
                     <article class="service-card">
-                        <img src="${s.immagine_url || 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=600&q=80'}" alt="${s.titolo} - Parrucchieri Bio Catania" class="service-img" loading="lazy">
+                        <img src="${s.immagine_url || 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=600&q=80'}" alt="${s.titolo} - Enjoy Parrucchieri Catania" class="service-img" loading="lazy">
                         <div class="service-info">
-                            <div class="service-category">${s.categoria || 'Trattamento Bio'}</div>
+                            <div class="service-category">${s.categoria || 'Hair Spa'}</div>
                             <h3 class="service-title">${s.titolo}</h3>
-                            <p class="service-desc">${s.descrizione_breve}</p>
+                            <p class="service-desc">${s.descrizione_breve || ''}</p>
                             <div class="service-footer">
                                 <span class="service-price">€ ${parseFloat(s.prezzo).toFixed(2)}</span>
-                                <a href="${s.link_prenotazione || '#'}" class="btn-gold" style="padding: 0.5rem 1rem; font-size: 0.75rem;">Prenota</a>
+                                <a href="${s.link_azione || 'https://wa.me/390950000000'}" target="_blank" class="btn-gold" style="padding: 0.5rem 1rem; font-size: 0.75rem;">Scopri</a>
                             </div>
                         </div>
                     </article>
                 `).join('');
 
             } catch (err) {
-                console.error("Errore nel caricamento dei servizi:", err);
-                grid.innerHTML = '<p style="text-align: center; grid-column: 1/-1; color: #ff6b6b;">Si è verificato un errore nel caricamento dei trattamenti.</p>';
+                console.error("Errore caricamento:", err);
+                grid.innerHTML = '<p style="text-align: center; grid-column: 1/-1; color: #ff6b6b;">Errore di connessione al database.</p>';
             }
         }
 
-        document.addEventListener('DOMContentLoaded', caricaServizi);
+        document.addEventListener('DOMContentLoaded', caricaServiziDinamici);
     </script>
 </body>
 </html>
