@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Area Riservata | Enjoy Parrucchieri Bio Hair Spa</title>
+    <meta name="robots" content="noindex, nofollow">
+    
+    <!-- Tipografia Luxury Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Supabase JS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <style>
+        :root {
+            --bg-primary: #121212;
+            --bg-card: #1A1A1A;
+            --gold-primary: #D4AF37;
+            --gold-hover: #AA7C11;
+            --gold-light: #F3E5AB;
+            --text-white: #F5F5F5;
+            --text-gray: #A0A0A0;
+            --font-title: 'Cinzel', serif;
+            --font-body: 'Montserrat', sans-serif;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-white);
+            font-family: var(--font-body);
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .admin-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            padding-bottom: 1.5rem;
+            position: relative;
+        }
+
+        header h1 {
+            font-family: var(--font-title);
+            color: var(--gold-primary);
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+        }
+
+        header p {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        .btn-logout {
+            position: absolute;
+            right: 0;
+            top: 0;
+            background: transparent;
+            border: 1px solid #c93b3b;
+            color: #c93b3b;
+            padding: 0.4rem 0.8rem;
+            font-size: 0.75rem;
+            cursor: pointer;
+            border-radius: 2px;
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 4px;
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .card-title {
+            font-family: var(--font-title);
+            color: var(--gold-light);
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 0.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        label {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--gold-primary);
+            margin-bottom: 0.4rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="email"],
+        input[type="password"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 0.8rem;
+            background-color: #121212;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 2px;
+            color: var(--text-white);
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--gold-primary);
+        }
+
+        .btn-gold {
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-hover));
+            color: #000;
+            padding: 0.9rem 2rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: none;
+            cursor: pointer;
+            border-radius: 2px;
+            transition: transform 0.2s;
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .btn-gold:hover { transform: translateY(-2px); }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--gold-primary);
+            color: var(--gold-primary);
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            font-size: 0.8rem;
+            border-radius: 2px;
+        }
+
+        .services-list {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .service-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #121212;
+            padding: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 4px;
+        }
+
+        .service-item-info strong {
+            color: var(--gold-light);
+            display: block;
+        }
+
+        .service-item-info span {
+            font-size: 0.8rem;
+            color: var(--text-gray);
+        }
+
+        .btn-delete {
+            background-color: #c93b3b;
+            color: #fff;
+            border: none;
+            padding: 0.4rem 0.8rem;
+            font-size: 0.75rem;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+
+        .status-msg {
+            margin-top: 1rem;
+            padding: 0.8rem;
+            border-radius: 2px;
+            font-size: 0.85rem;
+            display: none;
+        }
+
+        .status-success {
+            background-color: rgba(40, 167, 69, 0.2);
+            border: 1px solid #28a745;
+            color: #28a745;
+        }
+
+        .status-error {
+            background-color: rgba(220, 53, 69, 0.2);
+            border: 1px solid #dc3545;
+            color: #dc3545;
+        }
+
+        .categoria-switch {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Gestione Visibilità Sezioni */
+        #sec-login { display: block; max-width: 450px; margin: 4rem auto 0 auto; }
+        #sec-dashboard { display: none; }
+    </style>
+</head>
+<body>
+
+    <div class="admin-container">
+        <header>
+            <h1>Gestione Contenuti</h1>
+            <p>Enjoy Parrucchieri Bio Hair Spa &bull; Area Riservata</p>
+            <button id="btn-logout" class="btn-logout" style="display: none;" onclick="logout()">Disconnetti</button>
+        </header>
+
+        <!-- 1. FORM LOGIN SICURO -->
+        <section id="sec-login" class="card">
+            <h2 class="card-title" style="text-align: center;">Accesso Gestionale</h2>
+            <form id="form-login">
+                <div class="form-group">
+                    <label for="login-email">Email Admin</label>
+                    <input type="email" id="login-email" placeholder="Inserisci la tua email..." required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" placeholder="Inserisci la password..." required>
+                </div>
+                <button type="submit" class="btn-gold" id="btn-login-submit">Accedi al Salone</button>
+                <div id="login-status-msg" class="status-msg"></div>
+            </form>
+        </section>
+
+        <!-- 2. PANNELLO DI CONTROLLO (Visibile solo dopo il Login) -->
+        <main id="sec-dashboard">
+            <section class="card">
+                <h2 class="card-title">Aggiungi / Modifica Trattamento</h2>
+                <form id="form-servizio">
+                    <div class="form-group">
+                        <label for="titolo">Titolo Trattamento</label>
+                        <input type="text" id="titolo" placeholder="es. Cascata Giapponese Head Spa" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="categoria-select">Categoria</label>
+                        <select id="categoria-select">
+                            <option value="Hair Spa & Benessere">Hair Spa & Benessere</option>
+                            <option value="Centro Cheratina">Centro Cheratina</option>
+                            <option value="Trattamenti Botanici Oway">Trattamenti Botanici Oway</option>
+                            <option value="Colorazioni Agricosmetiche">Colorazioni Agricosmetiche</option>
+                            <option value="Abbonamenti & Pacchetti">Abbonamenti & Pacchetti</option>
+                        </select>
+                        
+                        <div class="categoria-switch">
+                            <button type="button" class="btn-outline" onclick="toggleNuovaCategoria()">+ Nuova Categoria Personalizzata</button>
+                        </div>
+
+                        <div id="box-nuova-categoria" style="display: none; margin-top: 0.8rem;">
+                            <input type="text" id="nuova-categoria-input" placeholder="Scrivi qui il nome della nuova categoria...">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="descrizione">Descrizione Breve</label>
+                        <textarea id="descrizione" rows="3" placeholder="Descrizione dettagliata per clienti e motori di ricerca IA..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="prezzo">Prezzo (€)</label>
+                        <input type="number" id="prezzo" step="0.01" placeholder="45.00">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="immagine">Foto Trattamento (Carica su Supabase Storage)</label>
+                        <input type="file" id="immagine" accept="image/*">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="link_azione">Link Azione / Prenotazione (Opzionale)</label>
+                        <input type="text" id="link_azione" placeholder="Link WhatsApp o della tua Web App">
+                    </div>
+
+                    <button type="submit" class="btn-gold" id="btn-salva">Salva Trattamento</button>
+                    <div id="status-msg" class="status-msg"></div>
+                </form>
+            </section>
+
+            <section class="card">
+                <h2 class="card-title">Trattamenti Attualmente On-line</h2>
+                <div id="lista-servizi" class="services-list">
+                    <p style="color: var(--text-gray);">Caricamento in corso...</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        // CONFIGURAZIONE CREDENZIALI SUPABASE
+        const SUPABASE_URL = 'https://rpbbbqekqkwzyhpjeusp.supabase.co';
+        const SUPABASE_ANON_KEY = 'sb_publishable_mO9NkHSLtTZ-1sFWi__s-w_A5sj_TvX';
+
+        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        const formLogin = document.getElementById('form-login');
+        const formServizio = document.getElementById('form-servizio');
+        const secLogin = document.getElementById('sec-login');
+        const secDashboard = document.getElementById('sec-dashboard');
+        const btnLogout = document.getElementById('btn-logout');
+        const statusMsg = document.getElementById('status-msg');
+        const loginStatusMsg = document.getElementById('login-status-msg');
+        const listaServizi = document.getElementById('lista-servizi');
+        let inserimentoCustomCategoria = false;
+
+        function mostraMessaggio(el, testo, tipo) {
+            el.textContent = testo;
+            el.className = `status-msg status-${tipo}`;
+            el.style.display = 'block';
+            setTimeout(() => { el.style.display = 'none'; }, 4000);
+        }
+
+        // Verifica Stato Autenticazione all'avvio
+        async function controllaSessione() {
+            const { data: { session } } = await supabaseClient.auth.getSession();
+            if (session) {
+                mostraDashboard();
+            } else {
+                mostraLogin();
+            }
+        }
+
+        function mostraDashboard() {
+            secLogin.style.display = 'none';
+            secDashboard.style.display = 'block';
+            btnLogout.style.display = 'block';
+            caricaServiziAdmin();
+        }
+
+        function mostraLogin() {
+            secLogin.style.display = 'block';
+            secDashboard.style.display = 'none';
+            btnLogout.style.display = 'none';
+        }
+
+        // Esecuzione Login
+        formLogin.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            const btnSubmit = document.getElementById('btn-login-submit');
+
+            btnSubmit.disabled = true;
+            btnSubmit.textContent = 'Verifica in corso...';
+
+            const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password });
+
+            if (error) {
+                mostraMessaggio(loginStatusMsg, 'Credenziali errate: ' + error.message, 'error');
+                btnSubmit.disabled = false;
+                btnSubmit.textContent = 'Accedi al Salone';
+            } else {
+                mostraMessaggio(loginStatusMsg, 'Accesso autorizzato!', 'success');
+                setTimeout(() => {
+                    btnSubmit.disabled = false;
+                    btnSubmit.textContent = 'Accedi al Salone';
+                    mostraDashboard();
+                }, 1000);
+            }
+        });
+
+        // Logout
+        async function logout() {
+            await supabaseClient.auth.signOut();
+            mostraLogin();
+        }
+
+        function toggleNuovaCategoria() {
+            const boxNuova = document.getElementById('box-nuova-categoria');
+            const selectCat = document.getElementById('categoria-select');
+            inserimentoCustomCategoria = !inserimentoCustomCategoria;
+
+            if (inserimentoCustomCategoria) {
+                boxNuova.style.display = 'block';
+                selectCat.style.display = 'none';
+            } else {
+                boxNuova.style.display = 'none';
+                selectCat.style.display = 'block';
+            }
+        }
+
+        async function caricaServiziAdmin() {
+            try {
+                const { data, error } = await supabaseClient
+                    .from('servizi')
+                    .select('*')
+                    .order('created_at', { ascending: false });
+
+                if (error) throw error;
+
+                if (!data || data.length === 0) {
+                    listaServizi.innerHTML = '<p style="color: var(--text-gray);">Nessun trattamento presente nel database.</p>';
+                    return;
+                }
+
+                listaServizi.innerHTML = data.map(s => `
+                    <div class="service-item">
+                        <div class="service-item-info">
+                            <strong>${s.titolo}</strong>
+                            <span>${s.categoria || 'Generale'} &bull; € ${parseFloat(s.prezzo || 0).toFixed(2)}</span>
+                        </div>
+                        <button class="btn-delete" onclick="eliminaServizio('${s.id}')">Elimina</button>
+                    </div>
+                `).join('');
+
+                const categorieUniche = [...new Set(data.map(item => item.categoria).filter(Boolean))];
+                const selectCat = document.getElementById('categoria-select');
+                if (categorieUniche.length > 0) {
+                    selectCat.innerHTML = categorieUniche.map(c => `<option value="${c}">${c}</option>`).join('');
+                }
+
+            } catch (err) {
+                console.error(err);
+                listaServizi.innerHTML = '<p style="color: #c93b3b;">Errore durante il caricamento.</p>';
+            }
+        }
+
+        formServizio.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btnSalva = document.getElementById('btn-salva');
+            btnSalva.disabled = true;
+            btnSalva.textContent = 'Salvataggio in corso...';
+
+            const titolo = document.getElementById('titolo').value;
+            let categoria = inserimentoCustomCategoria 
+                ? document.getElementById('nuova-categoria-input').value.trim() 
+                : document.getElementById('categoria-select').value;
+
+            if (!categoria) categoria = 'Hair Spa & Benessere';
+
+            const descrizione = document.getElementById('descrizione').value;
+            const prezzo = parseFloat(document.getElementById('prezzo').value) || 0.00;
+            const link_azione = document.getElementById('link_azione').value;
+            const fileInput = document.getElementById('immagine');
+
+            let immagine_url = '';
+
+            try {
+                if (fileInput.files.length > 0) {
+                    const file = fileInput.files[0];
+                    const fileExt = file.name.split('.').pop();
+                    const fileName = `${Date.now()}.${fileExt}`;
+
+                    const { error: uploadError } = await supabaseClient
+                        .storage
+                        .from('immagini-salone')
+                        .upload(fileName, file);
+
+                    if (uploadError) throw uploadError;
+
+                    const { data: urlData } = supabaseClient
+                        .storage
+                        .from('immagini-salone')
+                        .getPublicUrl(fileName);
+
+                    immagine_url = urlData.publicUrl;
+                }
+
+                const { error: insertError } = await supabaseClient
+                    .from('servizi')
+                    .insert([{
+                        titolo,
+                        categoria,
+                        descrizione_breve: descrizione,
+                        prezzo,
+                        immagine_url: immagine_url || null,
+                        link_azione: link_azione || null
+                    }]);
+
+                if (insertError) throw insertError;
+
+                mostraMessaggio(statusMsg, 'Trattamento salvato con successo!', 'success');
+                formServizio.reset();
+                if (inserimentoCustomCategoria) toggleNuovaCategoria();
+                caricaServiziAdmin();
+
+            } catch (err) {
+                console.error(err);
+                mostraMessaggio(statusMsg, 'Errore durante il salvataggio: ' + err.message, 'error');
+            } finally {
+                btnSalva.disabled = false;
+                btnSalva.textContent = 'Salva Trattamento';
+            }
+        });
+
+        async function eliminaServizio(id) {
+            if (!confirm('Sei sicuro di voler eliminare questo trattamento?')) return;
+
+            try {
+                const { error } = await supabaseClient
+                    .from('servizi')
+                    .delete()
+                    .eq('id', id);
+
+                if (error) throw error;
+
+                mostraMessaggio(statusMsg, 'Trattamento eliminato.', 'success');
+                caricaServiziAdmin();
+            } catch (err) {
+                console.error(err);
+                mostraMessaggio(statusMsg, 'Errore durante l\'eliminazione.', 'error');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', controllaSessione);
+    </script>
+</body>
+</html>
