@@ -113,6 +113,8 @@
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
+        html { scroll-behavior: smooth; }
+
         body {
             background-color: var(--bg-primary);
             color: var(--text-white);
@@ -122,13 +124,13 @@
 
         /* Header Navigation */
         header {
-            background: rgba(18, 18, 18, 0.95);
+            background: rgba(18, 18, 18, 0.98);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
             border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(10px);
         }
 
         .nav-container {
@@ -138,6 +140,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 1.2rem 2rem;
+            position: relative;
         }
 
         .logo {
@@ -171,6 +174,19 @@
             padding: 0.5rem 1rem;
             border-radius: 2px;
             color: var(--gold-primary) !important;
+        }
+
+        /* Tasto Menu Hamburger Mobile */
+        .mobile-menu-toggle {
+            display: none;
+            background: transparent;
+            border: 1px solid var(--gold-primary);
+            color: var(--gold-primary);
+            font-size: 1.5rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 3px;
+            cursor: pointer;
+            line-height: 1;
         }
 
         /* Hero Section */
@@ -553,10 +569,32 @@
             margin-bottom: 1.8rem;
         }
 
+        /* REGOLE RESPONSIVE MOBILE */
         @media (max-width: 850px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: rgba(18, 18, 18, 0.98);
+                border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+                flex-direction: column;
+                padding: 1.5rem 0;
+                gap: 1.2rem;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.8);
+            }
+
+            .nav-links.mobile-open {
+                display: flex;
+            }
+
             .head-spa-feature, .location-box { grid-template-columns: 1fr; }
             .hero h1 { font-size: 1.9rem; }
-            .nav-links { display: none; }
         }
     </style>
 </head>
@@ -576,12 +614,17 @@
     <header>
         <div class="nav-container">
             <a href="#" class="logo">Enjoy Bio Hair Spa</a>
-            <ul class="nav-links">
-                <li><a href="#filosofia">Filosofia</a></li>
-                <li><a href="#head-spa">Cascata Giapponese</a></li>
-                <li><a href="#servizi">Trattamenti</a></li>
-                <li><a href="#faq">FAQ</a></li>
-                <li><a href="#contatti">Dove Siamo</a></li>
+            
+            <button class="mobile-menu-toggle" id="btn-toggle-menu" onclick="toggleMenuMobile()" aria-label="Apri Menu">
+                &#9776;
+            </button>
+
+            <ul class="nav-links" id="main-nav-links">
+                <li><a href="#filosofia" onclick="chiudiMenuMobile()">Filosofia</a></li>
+                <li><a href="#head-spa" onclick="chiudiMenuMobile()">Cascata Giapponese</a></li>
+                <li><a href="#servizi" onclick="chiudiMenuMobile()">Trattamenti</a></li>
+                <li><a href="#faq" onclick="chiudiMenuMobile()">FAQ</a></li>
+                <li><a href="#contatti" onclick="chiudiMenuMobile()">Dove Siamo</a></li>
                 <li><a href="https://wa.me/390950000000" target="_blank" class="btn-nav-webapp">Prenota WhatsApp</a></li>
             </ul>
         </div>
@@ -722,6 +765,17 @@
         const SUPABASE_ANON_KEY = 'sb_publishable_mO9NkHSLtTZ-1sFWi__s-w_A5sj_TvX';
         
         const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        // GESTIONE MENU MOBILE HAMBURGER
+        function toggleMenuMobile() {
+            const navLinks = document.getElementById('main-nav-links');
+            navLinks.classList.toggle('mobile-open');
+        }
+
+        function chiudiMenuMobile() {
+            const navLinks = document.getElementById('main-nav-links');
+            navLinks.classList.remove('mobile-open');
+        }
 
         // 1. CARICAMENTO TRATTAMENTI DINAMICI
         async function caricaServiziDinamici() {
