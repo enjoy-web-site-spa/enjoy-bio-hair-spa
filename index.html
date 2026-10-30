@@ -25,45 +25,77 @@
     <!-- Supabase JS SDK -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-    <!-- Schema.org JSON-LD (Dati Strutturati per Google & Motori IA) -->
+    <!-- Schema.org JSON-LD (Dati Strutturati BeautySalon + FAQPage per Motori IA) -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": ["BeautySalon", "HairSalon"],
-      "name": "Enjoy Parrucchieri Bio Hair Spa",
-      "image": "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1200&q=80",
-      "@id": "https://enjoy-web-site-spa.github.io/enjoy-bio-hair-spa/#organization",
-      "url": "https://enjoy-web-site-spa.github.io/enjoy-bio-hair-spa/",
-      "telephone": "+390950000000",
-      "priceRange": "€€",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Via Padova, 50",
-        "addressLocality": "Catania",
-        "postalCode": "95127",
-        "addressCountry": "IT"
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": ["BeautySalon", "HairSalon"],
+        "name": "Enjoy Parrucchieri Bio Hair Spa",
+        "image": "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1200&q=80",
+        "@id": "https://enjoy-web-site-spa.github.io/enjoy-bio-hair-spa/#organization",
+        "url": "https://enjoy-web-site-spa.github.io/enjoy-bio-hair-spa/",
+        "telephone": "+390950000000",
+        "priceRange": "€€",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Via Padova, 50",
+          "addressLocality": "Catania",
+          "postalCode": "95127",
+          "addressCountry": "IT"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 37.5140,
+          "longitude": 15.0900
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+            "opens": "09:00",
+            "closes": "18:30"
+          }
+        ],
+        "knowsAbout": [
+          "Cascata Giapponese Head Spa",
+          "Centro Cheratina Catania",
+          "Ecoscosmesi Oway Salon",
+          "Trattamenti Botanici per Capelli",
+          "Benessere Cute e Capelli"
+        ]
       },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 37.5140,
-        "longitude": 15.0900
-      },
-      "openingHoursSpecification": [
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-          "opens": "09:00",
-          "closes": "18:30"
-        }
-      ],
-      "knowsAbout": [
-        "Cascata Giapponese Head Spa",
-        "Centro Cheratina Catania",
-        "Ecoscosmesi Oway Salon",
-        "Trattamenti Botanici per Capelli",
-        "Benessere Cute e Capelli"
-      ]
-    }
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Cos'è il rituale Cascata Giapponese Head Spa da Enjoy a Catania?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "È un trattamento di idroterapia per il cuoio capelluto che combina un flusso d'acqua continuo e caldo con oli essenziali botanici Oway. Favorisce la microcircolazione, elimina lo stress e rigenera la fibra capillare."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Quali prodotti utilizzate per i trattamenti colore e cura del capello?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Utilizziamo esclusivamente formulazioni fito-organiche e agricosmetiche della linea professionale Oway, prive di sostanze chimiche aggressive e ricche di ingredienti naturali e biodinamici."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Siete specializzati anche nei trattamenti alla Cheratina a Catania?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Sì, Enjoy opera come Centro Cheratina specializzato a Catania, offrendo trattamenti liscianti e ristrutturanti proteici ad altissima definizione per eliminare il crespo e ricostruire lo stelo capillare."
+            }
+          }
+        ]
+      }
+    ]
     </script>
 
     <style>
@@ -144,7 +176,7 @@
         /* Hero Section */
         .hero {
             min-height: 90vh;
-            background: linear-gradient(rgba(18, 18, 18, 0.7), rgba(18, 18, 18, 0.95)), 
+            background: linear-gradient(rgba(18, 18, 18, 0.75), rgba(18, 18, 18, 0.95)), 
                         url('https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
             display: flex;
             align-items: center;
@@ -153,11 +185,11 @@
             padding: 8rem 1rem 4rem 1rem;
         }
 
-        .hero-content { max-width: 800px; }
+        .hero-content { max-width: 850px; }
 
         .hero h1 {
             font-family: var(--font-title);
-            font-size: 2.5rem;
+            font-size: 2.6rem;
             color: var(--gold-light);
             margin-bottom: 1.2rem;
             letter-spacing: 2px;
@@ -165,7 +197,7 @@
         }
 
         .hero p {
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             color: var(--text-gray);
             margin-bottom: 2rem;
             font-weight: 300;
@@ -191,8 +223,8 @@
             box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
         }
 
-        /* Sezione Specialità */
-        .features-section {
+        /* Sezioni Generiche */
+        .section-container {
             max-width: 1200px;
             margin: 5rem auto;
             padding: 0 2rem;
@@ -201,10 +233,20 @@
         .section-title {
             text-align: center;
             font-family: var(--font-title);
-            font-size: 2rem;
+            font-size: 2.2rem;
             color: var(--gold-primary);
-            margin-bottom: 3rem;
+            margin-bottom: 1rem;
             letter-spacing: 2px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            margin-bottom: 3.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         /* Grid Servizi Dinamica */
@@ -276,6 +318,161 @@
             font-size: 1.2rem;
             font-weight: 600;
             color: var(--gold-light);
+        }
+
+        /* SEZIONE RITUALE HEAD SPA IN EVIDENZA */
+        .head-spa-feature {
+            background-color: var(--bg-card);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            border-radius: 6px;
+            padding: 3.5rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .head-spa-text h2 {
+            font-family: var(--font-title);
+            color: var(--gold-light);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .head-spa-text p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            margin-bottom: 1.2rem;
+            line-height: 1.8;
+        }
+
+        .head-spa-bullets {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .head-spa-bullets li {
+            position: relative;
+            padding-left: 1.8rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-white);
+            font-size: 0.9rem;
+        }
+
+        .head-spa-bullets li::before {
+            content: "✦";
+            position: absolute;
+            left: 0;
+            color: var(--gold-primary);
+        }
+
+        .head-spa-img-wrapper img {
+            width: 100%;
+            border-radius: 4px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        /* SEZIONE FILOSOFIA AGRICOSMETICA */
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .philosophy-card {
+            background: #161616;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .philosophy-icon {
+            font-size: 2.2rem;
+            color: var(--gold-primary);
+            margin-bottom: 1rem;
+        }
+
+        .philosophy-card h3 {
+            font-family: var(--font-title);
+            color: var(--gold-light);
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .philosophy-card p {
+            color: var(--text-gray);
+            font-size: 0.88rem;
+            line-height: 1.6;
+        }
+
+        /* SEZIONE FAQ ACCORDION */
+        .faq-accordion {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background-color: var(--bg-card);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            width: 100%;
+            background: transparent;
+            border: none;
+            padding: 1.2rem 1.5rem;
+            text-align: left;
+            color: var(--gold-light);
+            font-family: var(--font-title);
+            font-size: 1.05rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem 1.2rem 1.5rem;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            display: none;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 1rem;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        /* SEZIONE DOVE SIAMO */
+        .location-box {
+            background-color: var(--bg-card);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 6px;
+            padding: 3rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .location-info h3 {
+            font-family: var(--font-title);
+            color: var(--gold-primary);
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+        }
+
+        .location-info p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            margin-bottom: 0.8rem;
         }
 
         /* Footer */
@@ -356,8 +553,9 @@
             margin-bottom: 1.8rem;
         }
 
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 1.8rem; }
+        @media (max-width: 850px) {
+            .head-spa-feature, .location-box { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 1.9rem; }
             .nav-links { display: none; }
         }
     </style>
@@ -374,36 +572,148 @@
         </div>
     </div>
 
+    <!-- HEADER / NAVIGATION -->
     <header>
         <div class="nav-container">
             <a href="#" class="logo">Enjoy Bio Hair Spa</a>
             <ul class="nav-links">
+                <li><a href="#filosofia">Filosofia</a></li>
+                <li><a href="#head-spa">Cascata Giapponese</a></li>
                 <li><a href="#servizi">Trattamenti</a></li>
-                <li><a href="https://wa.me/390950000000" target="_blank">WhatsApp</a></li>
-                <li><a href="#" class="btn-nav-webapp">Web App</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contatti">Dove Siamo</a></li>
+                <li><a href="https://wa.me/390950000000" target="_blank" class="btn-nav-webapp">Prenota WhatsApp</a></li>
             </ul>
         </div>
     </header>
 
+    <!-- HERO SECTION -->
     <section class="hero">
         <div class="hero-content">
-            <h1>L'Oasi Botanica dei Tuoi Capelli a Catania</h1>
-            <p>Idroterapia esclusiva con Cascata Giapponese, Centro Cheratina e trattamenti organici firmati Oway in Via Padova 50.</p>
-            <a href="#servizi" class="btn-gold">Esplora i Trattamenti</a>
+            <h1>L'Oasi Botanica dei Tuoi Capelli nel Cuore di Catania</h1>
+            <p>Rigenerazione profonda di cute e capelli tramite idroterapia giapponese, centro cheratina specializzato e la purezza dell'agricosmetica Oway in Via Padova 50.</p>
+            <a href="#servizi" class="btn-gold">Scopri i Rituali</a>
         </div>
     </section>
 
-    <main class="features-section" id="servizi">
-        <h2 class="section-title">I Nostri Rituali Esclusivi</h2>
+    <!-- 1. SEZIONE FILOSOFIA OWAY -->
+    <section class="section-container" id="filosofia">
+        <h2 class="section-title">Ecocosmesi Agricosmetica Avanzata</h2>
+        <p class="section-subtitle">Amiamo la natura e la salute dei tuoi capelli. Utilizziamo formulazioni prive di sostanze sintetiche aggressive, confezionate unicamente in vetro ambrato e alluminio riciclabile all'infinito.</p>
+        
+        <div class="philosophy-grid">
+            <article class="philosophy-card">
+                <div class="philosophy-icon">🌿</div>
+                <h3>Ingredienti Biodinamici</h3>
+                <p>Estratti botanici puri a km 0, oli essenziali e principi attivi naturali che nutrono il bulbo pilifero rispettando il pH della cute.</p>
+            </article>
+            <article class="philosophy-card">
+                <div class="philosophy-icon">💧</div>
+                <h3>Oli Essenziali Puri</h3>
+                <p>Aromaterapia integrata nei lavaggi per riequilibrare mente e corpo durante ogni trattamento in salone.</p>
+            </article>
+            <article class="philosophy-card">
+                <div class="philosophy-icon">✨</div>
+                <h3>Centro Cheratina</h3>
+                <p>Trattamenti proteici ristrutturanti ad alta tecnologia per donare seta, brillantezza ed eliminare definitivamente il crespo.</p>
+            </article>
+        </div>
+    </section>
+
+    <!-- 2. SEZIONE RITUALE CASCATA GIAPPONESE -->
+    <section class="section-container" id="head-spa">
+        <div class="head-spa-feature">
+            <div class="head-spa-text">
+                <h2>L'Esclusiva Cascata Giapponese Head Spa</h2>
+                <p>Un'esperienza di benessere sensoriale unica a Catania. Il flusso costante d'acqua calda a cascata avvolge il cuoio capelluto, stimolando la circolazione sanguigna e permettendo ai trattamenti botanici di penetrare in profondità.</p>
+                <ul class="head-spa-bullets">
+                    <li>Ossigenazione e detossinazione profonda della cute</li>
+                    <li>Rilassamento muscolare e riduzione dello stress quotidiano</li>
+                    <li>Stimolazione della crescita naturale di capelli forti e lucenti</li>
+                    <li>Massaggio stimolante personalizzato con oli essenziali Oway</li>
+                </ul>
+                <a href="https://wa.me/390950000000?text=Buongiorno,%20vorrei%20informazioni%20sul%20rituale%20Cascata%20Giapponese" target="_blank" class="btn-gold">Prenota il Rituale</a>
+            </div>
+            <div class="head-spa-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80" alt="Cascata Giapponese Head Spa Enjoy Catania" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. GRID SERVIZI DINAMICA (DA SUPABASE) -->
+    <main class="section-container" id="servizi">
+        <h2 class="section-title">Menu Trattamenti & Menu Bio</h2>
+        <p class="section-subtitle">Tutti i prezzi e i servizi sono sincronizzati in tempo reale con il nostro listino ufficiale.</p>
+        
         <div class="services-grid" id="grid-servizi">
             <p style="text-align: center; grid-column: 1/-1; color: var(--text-gray);">Caricamento trattamenti dal database...</p>
         </div>
     </main>
 
+    <!-- 4. SEZIONE DOMANDE FREQUENTI (FAQ) PER CLIENTI E IA -->
+    <section class="section-container" id="faq">
+        <h2 class="section-title">Domande Frequenti</h2>
+        <p class="section-subtitle">Tutto quello che c'è da sapere sui nostri trattamenti e sulla nostra filosofia botanica.</p>
+
+        <div class="faq-accordion">
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span>Cos'è il rituale Cascata Giapponese Head Spa?</span>
+                    <span>+</span>
+                </button>
+                <div class="faq-answer">
+                    Si tratta di un trattamento idroterapico per la cute. Attraverso un archetto ad acqua continua e massaggi cutanei mirati con prodotti botanici Oway, purifichiamo il cuoio capelluto favorendo la salute del capello e un completo relax sensoriale.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span>Quali vantaggi offre l'agricosmetica Oway rispetto ai prodotti tradizionali?</span>
+                    <span>+</span>
+                </button>
+                <div class="faq-answer">
+                    I prodotti Oway non contengono parabeni, solfati aggressivi, profumi di sintesi o derivati del petrolio. Sfruttano la forza delle piante biodinamiche per curare la fibra capillare rispettando la cute e l'ambiente.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span>Siete specializzati in trattamenti alla Cheratina a Catania?</span>
+                    <span>+</span>
+                </button>
+                <div class="faq-answer">
+                    Assolutamente sì. Il nostro Centro Cheratina offre percorsi personalizzati di ricostruzione proteica e trattamenti liscianti e anticrespo a lunga durata, studiati per ogni tipo di capello.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. SEZIONE DOVE SIAMO / CONTATTI -->
+    <section class="section-container" id="contatti">
+        <div class="location-box">
+            <div class="location-info">
+                <h3>Vieni a Trovarci in Salone</h3>
+                <p><strong>Indirizzo:</strong> Via Padova, 50, 95127 Catania CT</p>
+                <p><strong>Orari di Apertura:</strong> Martedì – Sabato: 09:00 – 18:30</p>
+                <p><strong>Chiusura:</strong> Domenica e Lunedì</p>
+                <p style="margin-top: 1.5rem;">
+                    <a href="https://wa.me/390950000000" target="_blank" class="btn-gold" style="padding: 0.6rem 1.2rem; font-size: 0.8rem;">Contatta via WhatsApp</a>
+                </p>
+            </div>
+            <div class="location-map" style="border-radius:4px; overflow:hidden; border:1px solid rgba(212,175,55,0.3);">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3165.123456789!2d15.0900!3d37.5140!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzc1MSc1MC40Ik4gMTXCsDA1JzI0LjAiRQ!5e0!3m2!1sit!2sit!4v1600000000000!5m2!1sit!2sit" 
+                    width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
     <footer>
         <p><strong>Enjoy Parrucchieri Bio Hair Spa</strong> &bull; Via Padova, 50, 95127 Catania CT</p>
-        <p>Orari: Martedì - Sabato 09:00 - 18:30</p>
-        <p style="margin-top: 1.5rem; font-size: 0.75rem; color: #555;">&copy; 2026 Tutti i diritti riservati. Ecocosmesi & Hair Spa Specialist.</p>
+        <p>Ecocosmesi Oway &bull; Cascata Giapponese Head Spa &bull; Centro Cheratina Specializzato</p>
+        <p style="margin-top: 1.5rem; font-size: 0.75rem; color: #555;">&copy; 2026 Tutti i diritti riservati. Design & Tech by Enjoy Studio.</p>
     </footer>
 
     <script>
@@ -426,7 +736,7 @@
                 if (error) throw error;
 
                 if (!servizi || servizi.length === 0) {
-                    grid.innerHTML = '<p style="text-align: center; grid-column: 1/-1; color: var(--text-gray);">Nessun trattamento inserito al momento!</p>';
+                    grid.innerHTML = '<p style="text-align: center; grid-column: 1/-1; color: var(--text-gray);">Nessun trattamento inserito al momento. Accedi al pannello admin per aggiungerli!</p>';
                     return;
                 }
 
@@ -488,6 +798,12 @@
         function chiudiPopup() {
             document.getElementById('luxury-popup-overlay').classList.remove('active');
             sessionStorage.setItem('enjoy_popup_chiuso', 'true');
+        }
+
+        // 3. TOGGLE FAQ
+        function toggleFaq(btn) {
+            const item = btn.parentElement;
+            item.classList.toggle('active');
         }
 
         document.addEventListener('DOMContentLoaded', () => {
