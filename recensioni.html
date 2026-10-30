@@ -4,25 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- SEO Standard & GEO (Generative Engine Optimization) -->
+    <!-- SEO Standard & GEO -->
     <title>Il Libro delle Recensioni | Enjoy Parrucchieri Bio Hair Spa Catania</title>
     <meta name="description" content="Sfoglia il libro delle recensioni verificate di Enjoy Parrucchieri Bio Hair Spa a Catania. Opinioni autentiche su Cascata Giapponese, Centro Cheratina e trattamenti Oway.">
-    <meta name="keywords" content="Libro recensioni parrucchieri Catania, Opinioni Enjoy Hair Spa, Cascata Giapponese Catania, Centro Cheratina Catania">
     <link rel="canonical" href="https://enjoy-web-site-spa.github.io/enjoy-bio-hair-spa/recensioni.html">
-
-    <!-- Open Graph per Social e WhatsApp -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Il Libro delle Recensioni | Enjoy Parrucchieri Bio Hair Spa Catania">
-    <meta property="og:description" content="Oltre 170 recensioni a 5 stelle. Sfoglia le esperienze autentiche di benessere biologico e idroterapia giapponese a Catania.">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1200&q=80">
-    <meta property="og:url" content="https://enjoy-web-site-spa.github.io/enjoy-bio-hair-spa/recensioni.html">
 
     <!-- Tipografia Luxury Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-    <!-- Schema.org JSON-LD Dati Strutturati -->
+    <!-- FOGLIO DI STILE ESTERNO CENTRALIZZATO -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Schema.org JSON-LD -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -43,340 +38,6 @@
       }
     }
     </script>
-
-    <style>
-        :root {
-            --bg-primary: #121212;
-            --bg-card: #1A1A1A;
-            --bg-page: #161616;
-            --gold-primary: #D4AF37;
-            --gold-hover: #AA7C11;
-            --gold-light: #F3E5AB;
-            --text-white: #F5F5F5;
-            --text-gray: #A0A0A0;
-            --font-title: 'Cinzel', serif;
-            --font-body: 'Montserrat', sans-serif;
-        }
-
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; }
-
-        body {
-            background-color: var(--bg-primary);
-            color: var(--text-white);
-            font-family: var(--font-body);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Header Navigation */
-        header {
-            background: rgba(18, 18, 18, 0.98);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-            backdrop-filter: blur(10px);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.2rem 2rem;
-        }
-
-        .logo {
-            font-family: var(--font-title);
-            font-size: 1.2rem;
-            color: var(--gold-primary);
-            text-decoration: none;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        .btn-back {
-            color: var(--gold-primary);
-            text-decoration: none;
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-            border: 1px solid var(--gold-primary);
-            padding: 0.5rem 1.2rem;
-            border-radius: 2px;
-            transition: all 0.3s ease;
-        }
-
-        .btn-back:hover {
-            background-color: var(--gold-primary);
-            color: #000;
-        }
-
-        /* Hero Page Section */
-        .page-header {
-            padding: 9rem 1rem 2rem 1rem;
-            text-align: center;
-            background: linear-gradient(180deg, rgba(212, 175, 55, 0.05) 0%, rgba(18, 18, 18, 1) 100%);
-        }
-
-        .page-header h1 {
-            font-family: var(--font-title);
-            font-size: 2.6rem;
-            color: var(--gold-light);
-            margin-bottom: 0.8rem;
-            letter-spacing: 2px;
-        }
-
-        .page-header p {
-            color: var(--text-gray);
-            max-width: 650px;
-            margin: 0 auto;
-            font-size: 0.95rem;
-        }
-
-        .rating-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: var(--bg-card);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            padding: 0.6rem 1.5rem;
-            border-radius: 30px;
-            margin-top: 1.5rem;
-            color: var(--gold-light);
-            font-size: 0.9rem;
-        }
-
-        /* Filter Controls */
-        .filter-container {
-            max-width: 1200px;
-            margin: 2rem auto 2rem auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-        }
-
-        .filter-btn {
-            background: var(--bg-card);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            color: var(--text-gray);
-            padding: 0.5rem 1.2rem;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 0.85rem;
-            transition: all 0.3s ease;
-        }
-
-        .filter-btn:hover, .filter-btn.active {
-            border-color: var(--gold-primary);
-            color: var(--gold-primary);
-            background: rgba(212, 175, 55, 0.08);
-        }
-
-        /* STRUTTURA FLIP-BOOK STILE LIBRO ANTICO / PATINATO */
-        .book-container {
-            max-width: 900px;
-            margin: 2rem auto 4rem auto;
-            padding: 0 2rem;
-            perspective: 2000px;
-        }
-
-        .book-page {
-            background: linear-gradient(135deg, #1c1c1c, #161616);
-            border: 1px solid rgba(212, 175, 55, 0.35);
-            border-radius: 4px 10px 10px 4px;
-            padding: 4rem 4.5rem;
-            position: relative;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.7), inset 20px 0 40px rgba(0,0,0,0.6);
-            transform-style: preserve-3d;
-            transition: transform 0.5s cubic-bezier(0.15, 0.85, 0.35, 1), opacity 0.3s ease;
-            min-height: 350px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        /* Rilegatura dorata del libro a sinistra */
-        .book-page::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0;
-            width: 14px; height: 100%;
-            background: linear-gradient(90deg, #080808, var(--gold-primary), #080808);
-            border-top-left-radius: 4px;
-            border-bottom-left-radius: 4px;
-        }
-
-        .book-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-        }
-
-        .book-stars {
-            color: var(--gold-primary);
-            font-size: 1.4rem;
-            letter-spacing: 4px;
-        }
-
-        .book-tag {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--gold-light);
-            background: rgba(212, 175, 55, 0.1);
-            padding: 0.35rem 0.9rem;
-            border-radius: 3px;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-        }
-
-        .book-body {
-            color: var(--text-white);
-            font-size: 1.2rem;
-            line-height: 1.85;
-            font-style: italic;
-            margin-bottom: 2.5rem;
-            font-family: var(--font-body);
-        }
-
-        .book-footer {
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-            padding-top: 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .book-author {
-            font-family: var(--font-title);
-            color: var(--gold-light);
-            font-size: 1.15rem;
-            letter-spacing: 1px;
-        }
-
-        .book-date {
-            font-size: 0.82rem;
-            color: var(--text-gray);
-        }
-
-        /* CONTROLLI SFOGLIA LIBRO */
-        .book-navigation {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 2rem;
-            padding: 0 0.5rem;
-        }
-
-        .btn-page {
-            background: var(--bg-card);
-            border: 1px solid var(--gold-primary);
-            color: var(--gold-light);
-            padding: 0.9rem 1.8rem;
-            border-radius: 3px;
-            cursor: pointer;
-            font-family: var(--font-title);
-            font-size: 0.88rem;
-            letter-spacing: 1.5px;
-            transition: all 0.3s ease;
-        }
-
-        .btn-page:hover:not(:disabled) {
-            background-color: var(--gold-primary);
-            color: #000;
-            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
-        }
-
-        .btn-page:disabled {
-            opacity: 0.25;
-            cursor: not-allowed;
-            border-color: rgba(255,255,255,0.1);
-            color: var(--text-gray);
-        }
-
-        .page-counter {
-            font-family: var(--font-title);
-            color: var(--gold-light);
-            font-size: 1rem;
-            letter-spacing: 2px;
-        }
-
-        /* Call To Action Google */
-        .google-cta-box {
-            max-width: 900px;
-            margin: 4rem auto 6rem auto;
-            padding: 0 2rem;
-            text-align: center;
-        }
-
-        .cta-inner {
-            background: linear-gradient(135deg, #181818, #111111);
-            border: 1px solid rgba(212, 175, 55, 0.35);
-            border-radius: 8px;
-            padding: 3.5rem 2rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-        }
-
-        .cta-inner h2 {
-            font-family: var(--font-title);
-            color: var(--gold-light);
-            font-size: 1.8rem;
-            margin-bottom: 0.8rem;
-        }
-
-        .cta-inner p {
-            color: var(--text-gray);
-            margin-bottom: 2rem;
-            font-size: 0.95rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .btn-gold-large {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--gold-primary), var(--gold-hover));
-            color: #000;
-            padding: 1rem 2.2rem;
-            font-weight: 600;
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            border-radius: 3px;
-            transition: transform 0.3s, box-shadow 0.3s;
-            font-size: 0.9rem;
-        }
-
-        .btn-gold-large:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 25px rgba(212, 175, 55, 0.4);
-        }
-
-        /* Footer */
-        footer {
-            background-color: #0A0A0A;
-            border-top: 1px solid rgba(212, 175, 55, 0.2);
-            padding: 3rem 2rem 2rem 2rem;
-            text-align: center;
-            color: var(--text-gray);
-            font-size: 0.85rem;
-        }
-
-        /* OTTIMIZZAZIONE RESPONSIVE PER SMARTPHONE */
-        @media (max-width: 768px) {
-            .page-header h1 { font-size: 1.9rem; }
-            .book-page { padding: 2.5rem 1.5rem 2.5rem 2rem; min-height: 380px; }
-            .book-body { font-size: 1.05rem; line-height: 1.6; }
-            .book-navigation { flex-direction: column; gap: 1.2rem; }
-            .btn-page { width: 100%; text-align: center; padding: 0.9rem 1rem; }
-            .page-counter { order: -1; margin-bottom: 0.5rem; }
-        }
-    </style>
 </head>
 <body>
 
@@ -384,7 +45,7 @@
     <header>
         <div class="nav-container">
             <a href="index.html" class="logo">Enjoy Bio Hair Spa</a>
-            <a href="index.html" class="btn-back">&larr; Torna alla Home</a>
+            <a href="index.html" class="btn-gold-small">&larr; Home</a>
         </div>
     </header>
 
@@ -407,26 +68,26 @@
         <button class="filter-btn" onclick="cambiaFiltro('Ecocosmesi Oway', this)">Ecocosmesi Oway</button>
     </div>
 
-    <!-- LIBRO SFOGLIABILE (FLIP-BOOK) -->
+    <!-- LIBRO SFOGLIABILE MULTI-CARD -->
     <div class="book-container">
-        <div id="libro-recensione-slot">
-            <!-- La pagina corrente del libro viene iniettata qui via JS -->
+        <div id="libro-recensione-slot" class="reviews-grid-page">
+            <!-- Le card della pagina corrente vengono iniettate qui via JS -->
         </div>
 
         <div class="book-navigation">
-            <button class="btn-page" id="btn-prec" onclick="paginaPrecedente()">&larr; Pagina Precedente</button>
+            <button class="btn-gold-small" id="btn-prec" onclick="paginaPrecedente()">&larr; Precedente</button>
             <span class="page-counter" id="indicatore-pagina">Pagina 1 di 1</span>
-            <button class="btn-page" id="btn-succ" onclick="paginaSuccessiva()">Pagina Successiva &rarr;</button>
+            <button class="btn-gold-small" id="btn-succ" onclick="paginaSuccessiva()">Successiva &rarr;</button>
         </div>
     </div>
 
-    <!-- CTA LINK PER LEGGERE TUTTE LE RECENSIONI SU GOOGLE -->
+    <!-- CTA LINK GOOGLE MAPS -->
     <section class="google-cta-box">
         <div class="cta-inner">
             <h2>Vuoi esplorare l'intero archivio?</h2>
             <p>Consulta tutte le oltre 170 recensioni verificate direttamente sulla nostra scheda ufficiale di Google Business Profile a Catania.</p>
-            <a href="https://maps.google.com/?q=Via+Padova,+50,+95127+Catania+CT" target="_blank" class="btn-gold-large">
-                Continua a leggere su Google Maps &rarr;
+            <a href="https://maps.google.com/?q=Via+Padova,+50,+95127+Catania+CT" target="_blank" class="btn-gold">
+                Leggi su Google Maps &rarr;
             </a>
         </div>
     </section>
@@ -434,44 +95,59 @@
     <!-- FOOTER -->
     <footer>
         <p><strong>Enjoy Parrucchieri Bio Hair Spa</strong> &bull; Via Padova, 50, 95127 Catania CT</p>
-        <p style="margin-top: 1rem; font-size: 0.75rem; color: #555;">&copy; 2026 Tutti i diritti riservati. Design & Tech by Enjoy Studio.</p>
+        <p style="margin-top: 0.8rem; font-size: 0.75rem; color: #555;">&copy; 2026 Tutti i diritti riservati. Design & Tech by Enjoy Studio.</p>
     </footer>
 
-    <!-- INCLUSIONE FILE DATI RECENSIONI -->
+    <!-- INCLUSIONE FILE DATI E LOGICA SFOGLIAMENTO -->
     <script src="recensioni-data.js"></script>
-
     <script>
         let recensioniCorrenti = [];
         let indicePaginaCorrente = 0;
+        
+        // 4 recensioni su PC, 2 su smartphone
+        function getElementiPerPagina() {
+            return window.innerWidth < 768 ? 2 : 4;
+        }
 
         document.addEventListener('DOMContentLoaded', () => {
             if (typeof recensioniGoogle !== 'undefined') {
                 recensioniCorrenti = recensioniGoogle;
                 mostraPaginaLibro(indicePaginaCorrente);
             } else {
-                document.getElementById('libro-recensione-slot').innerHTML = '<p style="text-align: center; color: #ff6b6b;">Errore nel caricamento del file recensioni-data.js</p>';
+                document.getElementById('libro-recensione-slot').innerHTML = '<p style="text-align: center; color: #ff6b6b; grid-column: 1/-1;">Errore nel caricamento del file recensioni-data.js</p>';
             }
         });
 
-        function mostraPaginaLibro(indice) {
+        window.addEventListener('resize', () => {
+            mostraPaginaLibro(indicePaginaCorrente);
+        });
+
+        function mostraPaginaLibro(indicePagina) {
             const slot = document.getElementById('libro-recensione-slot');
+            const perPagina = getElementiPerPagina();
             
             if (!recensioniCorrenti || recensioniCorrenti.length === 0) {
-                slot.innerHTML = '<div class="book-page"><p style="text-align: center; color: var(--text-gray);">Nessuna recensione trovata per questa categoria.</p></div>';
+                slot.innerHTML = '<div class="book-page" style="grid-column: 1/-1;"><p style="text-align: center; color: var(--text-gray);">Nessuna recensione trovata per questa categoria.</p></div>';
                 document.getElementById('indicatore-pagina').innerText = "Pagina 0 di 0";
                 document.getElementById('btn-prec').disabled = true;
                 document.getElementById('btn-succ').disabled = true;
                 return;
             }
 
-            const r = recensioniCorrenti[indice];
+            const totalePagine = Math.ceil(recensioniCorrenti.length / perPagina);
+            if (indicePagina >= totalePagine) indicePagina = totalePagine - 1;
+            if (indicePagina < 0) indicePagina = 0;
+            indicePaginaCorrente = indicePagina;
 
-            // Animazione di sfogliamento pagina (effetto carta 3D)
+            const inizio = indicePagina * perPagina;
+            const fine = inizio + perPagina;
+            const recensioniPagina = recensioniCorrenti.slice(inizio, fine);
+
             slot.style.opacity = '0';
-            slot.style.transform = 'rotateY(15deg) translateY(10px)';
+            slot.style.transform = 'translateY(10px)';
 
             setTimeout(() => {
-                slot.innerHTML = `
+                slot.innerHTML = recensioniPagina.map(r => `
                     <article class="book-page">
                         <div>
                             <div class="book-header">
@@ -485,20 +161,21 @@
                             <span class="book-date">${r.data}</span>
                         </div>
                     </article>
-                `;
+                `).join('');
 
                 slot.style.opacity = '1';
-                slot.style.transform = 'rotateY(0deg) translateY(0px)';
+                slot.style.transform = 'translateY(0px)';
 
-                // Aggiorna contatore e stato pulsanti
-                document.getElementById('indicatore-pagina').innerText = `Pagina ${indice + 1} di ${recensioniCorrenti.length}`;
-                document.getElementById('btn-prec').disabled = (indice === 0);
-                document.getElementById('btn-succ').disabled = (indice === recensioniCorrenti.length - 1);
-            }, 250);
+                document.getElementById('indicatore-pagina').innerText = `Pagina ${indicePagina + 1} di ${totalePagine}`;
+                document.getElementById('btn-prec').disabled = (indicePagina === 0);
+                document.getElementById('btn-succ').disabled = (indicePagina >= totalePagine - 1);
+            }, 180);
         }
 
         function paginaSuccessiva() {
-            if (indicePaginaCorrente < recensioniCorrenti.length - 1) {
+            const perPagina = getElementiPerPagina();
+            const totalePagine = Math.ceil(recensioniCorrenti.length / perPagina);
+            if (indicePaginaCorrente < totalePagine - 1) {
                 indicePaginaCorrente++;
                 mostraPaginaLibro(indicePaginaCorrente);
             }

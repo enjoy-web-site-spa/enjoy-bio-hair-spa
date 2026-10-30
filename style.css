@@ -1,0 +1,778 @@
+/* ==========================================================================
+   ENJOY PARRUCCHIERI BIO HAIR SPA - STILE PRINCIPALE LUXURY
+   Palette: Charcoal Scuro (#121212) & Oro Caldo / Bronzo (#D4AF37)
+   ========================================================================== */
+
+:root {
+    --bg-primary: #121212;
+    --bg-card: #1A1A1A;
+    --bg-page: #161616;
+    --gold-primary: #D4AF37;
+    --gold-hover: #AA7C11;
+    --gold-light: #F3E5AB;
+    --text-white: #F5F5F5;
+    --text-gray: #A0A0A0;
+    --font-title: 'Cinzel', serif;
+    --font-body: 'Montserrat', sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-white);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* --- EFFETTO REVEAL ON SCROLL (ANIMAZIONE FLUIDA) --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Header Navigation */
+header {
+    background: rgba(18, 18, 18, 0.98);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 2rem;
+    position: relative;
+}
+
+.logo {
+    font-family: var(--font-title);
+    font-size: 1.2rem;
+    color: var(--gold-primary);
+    text-decoration: none;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    align-items: center;
+}
+
+.nav-links a {
+    color: var(--text-white);
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover { color: var(--gold-primary); }
+
+.btn-nav-webapp {
+    border: 1px solid var(--gold-primary);
+    padding: 0.5rem 1rem;
+    border-radius: 2px;
+    color: var(--gold-primary) !important;
+    transition: background 0.3s, color 0.3s !important;
+}
+
+.btn-nav-webapp:hover {
+    background-color: var(--gold-primary);
+    color: #000 !important;
+}
+
+.mobile-menu-toggle {
+    display: none;
+    background: transparent;
+    border: 1px solid var(--gold-primary);
+    color: var(--gold-primary);
+    font-size: 1.5rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 3px;
+    cursor: pointer;
+    line-height: 1;
+}
+
+/* BOTTONI LUXURY 3D RAFFINATI */
+.btn-gold, .btn-gold-small {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #D4AF37 0%, #AA7C11 100%);
+    color: #121212 !important;
+    font-family: var(--font-body);
+    font-weight: 600;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    border-radius: 4px;
+    border: 1px solid rgba(243, 229, 171, 0.4);
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    cursor: pointer;
+}
+
+.btn-gold {
+    padding: 0.8rem 2rem;
+    font-size: 0.85rem;
+}
+
+.btn-gold-small {
+    padding: 0.5rem 1.2rem;
+    font-size: 0.75rem;
+}
+
+.btn-gold:hover, .btn-gold-small:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    background: linear-gradient(135deg, #E5C158 0%, #C49216 100%);
+}
+
+.btn-gold:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 10px rgba(212, 175, 55, 0.2);
+}
+
+/* Hero Section */
+.hero {
+    min-height: 90vh;
+    background: linear-gradient(rgba(18, 18, 18, 0.75), rgba(18, 18, 18, 0.95)), 
+                url('https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 8rem 1rem 4rem 1rem;
+}
+
+.hero-content { max-width: 850px; }
+
+.hero h1 {
+    font-family: var(--font-title);
+    font-size: 2.6rem;
+    color: var(--gold-light);
+    margin-bottom: 1.2rem;
+    letter-spacing: 2px;
+    line-height: 1.2;
+}
+
+.hero p {
+    font-size: 1.1rem;
+    color: var(--text-gray);
+    margin-bottom: 2rem;
+    font-weight: 300;
+}
+
+/* Sezioni Generiche */
+.section-container {
+    max-width: 1200px;
+    margin: 6rem auto;
+    padding: 0 2rem;
+}
+
+.section-title {
+    text-align: center;
+    font-family: var(--font-title);
+    font-size: 2.2rem;
+    color: var(--gold-primary);
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--text-gray);
+    font-size: 0.95rem;
+    margin-bottom: 3.5rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* --- PAGE HEADER RECENSIONI --- */
+.page-header {
+    padding: 8rem 1rem 2rem 1rem;
+    text-align: center;
+    background: linear-gradient(180deg, rgba(212, 175, 55, 0.05) 0%, rgba(18, 18, 18, 1) 100%);
+}
+
+.page-header h1 {
+    font-family: var(--font-title);
+    font-size: 2.4rem;
+    color: var(--gold-light);
+    margin-bottom: 0.8rem;
+    letter-spacing: 2px;
+}
+
+.page-header p {
+    color: var(--text-gray);
+    max-width: 650px;
+    margin: 0 auto;
+    font-size: 0.95rem;
+}
+
+.rating-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--bg-card);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    padding: 0.5rem 1.4rem;
+    border-radius: 30px;
+    margin-top: 1.2rem;
+    color: var(--gold-light);
+    font-size: 0.88rem;
+}
+
+/* --- FILTRI CATEGORIA RECENSIONI --- */
+.filter-container {
+    max-width: 1050px;
+    margin: 1.5rem auto 2.5rem auto;
+    padding: 0 1.5rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+}
+
+.filter-btn {
+    background: var(--bg-card);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    color: var(--text-gray);
+    padding: 0.5rem 1.2rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.82rem;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover, .filter-btn.active {
+    border-color: var(--gold-primary);
+    color: var(--gold-primary);
+    background: rgba(212, 175, 55, 0.08);
+}
+
+/* --- GRIGLIA E CARD DEL LIBRO RECENSIONI --- */
+.book-container {
+    max-width: 1100px;
+    margin: 1.5rem auto 4rem auto;
+    padding: 0 1.5rem;
+}
+
+.reviews-grid-page {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.book-page {
+    background: linear-gradient(135deg, #181818, #131313);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 6px;
+    padding: 2.2rem 2.5rem;
+    position: relative;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.book-page::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 6px; height: 100%;
+    background: linear-gradient(180deg, var(--gold-primary), var(--gold-hover));
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+}
+
+.book-page:hover {
+    transform: translateY(-4px);
+    border-color: var(--gold-primary);
+}
+
+.book-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.2rem;
+}
+
+.book-stars {
+    color: var(--gold-primary);
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+}
+
+.book-tag {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--gold-light);
+    background: rgba(212, 175, 55, 0.08);
+    padding: 0.25rem 0.7rem;
+    border-radius: 3px;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.book-body {
+    color: var(--text-white);
+    font-size: 0.98rem;
+    line-height: 1.7;
+    font-style: italic;
+    margin-bottom: 1.8rem;
+}
+
+.book-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.book-author {
+    font-family: var(--font-title);
+    color: var(--gold-light);
+    font-size: 0.95rem;
+}
+
+.book-date {
+    font-size: 0.75rem;
+    color: var(--text-gray);
+}
+
+.book-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2.5rem;
+    padding: 0 0.5rem;
+}
+
+.page-counter {
+    font-family: var(--font-title);
+    color: var(--gold-light);
+    font-size: 0.95rem;
+    letter-spacing: 2px;
+}
+
+/* --- GOOGLE CTA BOX --- */
+.google-cta-box {
+    max-width: 900px;
+    margin: 3rem auto 5rem auto;
+    padding: 0 1.5rem;
+    text-align: center;
+}
+
+.cta-inner {
+    background: linear-gradient(135deg, #181818, #111111);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 6px;
+    padding: 3rem 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.cta-inner h2 {
+    font-family: var(--font-title);
+    color: var(--gold-light);
+    font-size: 1.6rem;
+    margin-bottom: 0.8rem;
+}
+
+.cta-inner p {
+    color: var(--text-gray);
+    margin-bottom: 2rem;
+    font-size: 0.92rem;
+    max-width: 550px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* SEZIONE RITUALE HEAD SPA IN EVIDENZA */
+.head-spa-feature {
+    background-color: var(--bg-card);
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    border-radius: 6px;
+    padding: 3.5rem 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.head-spa-text h2 {
+    font-family: var(--font-title);
+    color: var(--gold-light);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.head-spa-text p {
+    color: var(--text-gray);
+    font-size: 0.95rem;
+    margin-bottom: 1.2rem;
+    line-height: 1.8;
+}
+
+.head-spa-bullets {
+    list-style: none;
+    margin-bottom: 2rem;
+}
+
+.head-spa-bullets li {
+    position: relative;
+    padding-left: 1.8rem;
+    margin-bottom: 0.8rem;
+    color: var(--text-white);
+    font-size: 0.9rem;
+}
+
+.head-spa-bullets li::before {
+    content: "✦";
+    position: absolute;
+    left: 0;
+    color: var(--gold-primary);
+}
+
+.head-spa-img-wrapper img {
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* SEZIONE PARTNER OWAY & ETICA */
+.oway-banner {
+    background: linear-gradient(135deg, #181818, #111111);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 6px;
+    padding: 4rem 2rem;
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.oway-banner h2 {
+    font-family: var(--font-title);
+    color: var(--gold-light);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.oway-banner p {
+    color: var(--text-gray);
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+/* GRID FILOSOFIA OWAY */
+.philosophy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.philosophy-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    padding: 2.5rem 2rem;
+    border-radius: 4px;
+    text-align: center;
+    transition: border-color 0.3s, transform 0.3s;
+}
+
+.philosophy-card:hover {
+    border-color: var(--gold-primary);
+    transform: translateY(-5px);
+}
+
+.philosophy-icon {
+    font-size: 2.2rem;
+    color: var(--gold-primary);
+    margin-bottom: 1rem;
+}
+
+.philosophy-card h3 {
+    font-family: var(--font-title);
+    color: var(--gold-light);
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+}
+
+.philosophy-card p {
+    color: var(--text-gray);
+    font-size: 0.88rem;
+    line-height: 1.6;
+}
+
+/* GRID SERVIZI DINAMICA (DA SUPABASE) */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+}
+
+.service-card {
+    background-color: var(--bg-card);
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.service-card:hover {
+    border-color: var(--gold-primary);
+    transform: translateY(-5px);
+}
+
+.service-img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.service-info {
+    padding: 1.8rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.service-category {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--gold-primary);
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+}
+
+.service-title {
+    font-family: var(--font-title);
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+    color: var(--text-white);
+}
+
+.service-desc {
+    color: var(--text-gray);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+.service-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 1rem;
+}
+
+.service-price {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--gold-light);
+}
+
+/* SEZIONE FAQ ACCORDION */
+.faq-accordion {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    background-color: var(--bg-card);
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+}
+
+.faq-question {
+    width: 100%;
+    background: transparent;
+    border: none;
+    padding: 1.2rem 1.5rem;
+    text-align: left;
+    color: var(--gold-light);
+    font-family: var(--font-title);
+    font-size: 1.05rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.faq-answer {
+    padding: 0 1.5rem 1.2rem 1.5rem;
+    color: var(--text-gray);
+    font-size: 0.9rem;
+    display: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 1rem;
+}
+
+.faq-item.active .faq-answer {
+    display: block;
+}
+
+/* SEZIONE DOVE SIAMO / CONTATTI */
+.location-box {
+    background-color: var(--bg-card);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 6px;
+    padding: 3rem 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.location-info h3 {
+    font-family: var(--font-title);
+    color: var(--gold-primary);
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+}
+
+.location-info p {
+    color: var(--text-gray);
+    font-size: 0.95rem;
+    margin-bottom: 0.8rem;
+}
+
+/* Footer */
+footer {
+    background-color: #0A0A0A;
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
+    padding: 4rem 2rem 2rem 2rem;
+    text-align: center;
+    color: var(--text-gray);
+    font-size: 0.85rem;
+    margin-top: 6rem;
+}
+
+footer p { margin-bottom: 0.5rem; }
+
+/* Stile Pop-up Promozionale Luxury */
+#luxury-popup-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+#luxury-popup-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.popup-box {
+    background-color: var(--bg-card);
+    border: 1px solid var(--gold-primary);
+    width: 90%;
+    max-width: 500px;
+    border-radius: 6px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.7);
+    text-align: center;
+    padding: 2.5rem 2rem 2rem 2rem;
+}
+
+.popup-close {
+    position: absolute;
+    top: 15px; right: 15px;
+    background: transparent;
+    border: none;
+    color: var(--gold-primary);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.popup-img {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 1.2rem;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.popup-title {
+    font-family: var(--font-title);
+    color: var(--gold-light);
+    font-size: 1.5rem;
+    margin-bottom: 0.8rem;
+}
+
+.popup-text {
+    color: var(--text-gray);
+    font-size: 0.95rem;
+    margin-bottom: 1.8rem;
+}
+
+/* REGOLE RESPONSIVE MOBILE */
+@media (max-width: 850px) {
+    .mobile-menu-toggle { display: block; }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: rgba(18, 18, 18, 0.98);
+        border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+        flex-direction: column;
+        padding: 1.5rem 0;
+        gap: 1.2rem;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.8);
+    }
+
+    .nav-links.mobile-open { display: flex; }
+
+    .head-spa-feature, .location-box { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 1.9rem; }
+}
+
+@media (max-width: 768px) {
+    .reviews-grid-page {
+        grid-template-columns: 1fr;
+    }
+}
