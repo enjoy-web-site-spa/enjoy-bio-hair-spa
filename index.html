@@ -423,5 +423,41 @@
         }
     });
 </script>
+<!-- Supabase JS SDK -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+    const SUPABASE_URL = 'https://rpbbbqekqkwzyhpjeusp.supabase.co';
+    const SUPABASE_ANON_KEY = 'sb_publishable_mO9NkHSLtTZ-1sFWi__s-w_A5sj_TvX';
+    const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    async function caricaHeaderDinamico() {
+        try {
+            // Leggiamo l'immagine dalla tabella promozioni o impostazioni salvate su Supabase
+            const { data, error } = await supabaseClient
+                .from('promozioni')
+                .select('immagine_url, link_bottone')
+                .limit(1);
+
+            if (error) throw error;
+
+            if (data && data.length > 0) {
+                // Se abbiamo salvato l'immagine dell'header nel campo link_bottone o in un campo dedicato
+                // (Oppure usiamo direttamente l'immagine della promozione attiva se preferisci)
+                const headerImgUrl = data[0].link_bottone; 
+
+                if (headerImgUrl && headerImgUrl.startsWith('http')) {
+                    const heroSection = document.querySelector('.hero');
+                    if (heroSection) {
+                        heroSection.style.background = `linear-gradient(rgba(18, 18, 18, 0.75), rgba(18, 18, 18, 0.95)), url('${headerImgUrl}') center/cover no-repeat`;
+                    }
+                }
+            }
+        } catch (err) {
+            console.error('Errore nel caricamento dell\'header dinamico:', err);
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', caricaHeaderDinamico);
+</script>
 </body>
 </html>
