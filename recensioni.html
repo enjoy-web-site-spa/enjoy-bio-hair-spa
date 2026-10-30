@@ -68,22 +68,23 @@
         <button class="filter-btn" onclick="cambiaFiltro('Ecocosmesi Oway', this)">Ecocosmesi Oway</button>
     </div>
 
-    <!-- LIBRO SFOGLIABILE CON SUPPORTO SWIPE TOUCH -->
-    <div class="book-container">
-        <!-- Indicatore visivo mobile per suggerire lo swipe -->
-        <div class="swipe-hint">‹ &nbsp; Scorri con il dito per sfogliare &nbsp; ›</div>
-
-        <div id="libro-recensione-slot" class="reviews-grid-page">
-            <!-- La recensione (o le recensioni) vengono iniettate qui via JS -->
-        </div>
-
-        <div class="book-navigation">
-            <button class="btn-gold-small" id="btn-prec" onclick="paginaPrecedente()">&larr; Indietro</button>
-            <span class="page-counter" id="indicatore-pagina">Pagina 1 di 1</span>
-            <button class="btn-gold-small" id="btn-succ" onclick="paginaSuccessiva()">Avanti &rarr;</button>
-        </div>
+<!-- LIBRO SFOGLIABILE CON SUPPORTO SWIPE TOUCH -->
+<div class="book-container">
+    <!-- Indicatore visivo mobile con micro-movimento laterale -->
+    <div class="swipe-hint">
+        <span>‹ &nbsp; Scorri con il dito per sfogliare &nbsp; ›</span>
     </div>
 
+    <div id="libro-recensione-slot" class="reviews-grid-page">
+        <!-- Le recensioni vengono iniettate qui via JS -->
+    </div>
+
+    <div class="book-navigation">
+        <button class="btn-gold-small" id="btn-prec" onclick="paginaPrecedente()">&larr; Indietro</button>
+        <span class="page-counter" id="indicatore-pagina">Pag. 1 di 1</span>
+        <button class="btn-gold-small" id="btn-succ" onclick="paginaSuccessiva()">Avanti &rarr;</button>
+    </div>
+</div>
     <!-- CTA LINK GOOGLE MAPS -->
     <section class="google-cta-box">
         <div class="cta-inner">

@@ -817,8 +817,25 @@ footer p { margin-bottom: 0.5rem; }
         font-size: 1.8rem;
     }
 
-    /* Attiviamo il suggerimento visivo dello swipe su smartphone */
-    .swipe-hint {
-        display: block;
-    }
+/* Indicatore visivo dello Swipe per Mobile con micro-movimento laterale */
+.swipe-hint {
+    display: none;
+    text-align: center;
+    font-size: 0.75rem;
+    color: var(--gold-primary);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    font-family: var(--font-body);
+    font-weight: 500;
 }
+
+.swipe-hint span {
+    display: inline-block;
+    animation: swipeHandMotion 1.8s infinite ease-in-out;
+}
+
+@keyframes swipeHandMotion {
+    0%, 100% { transform: translateX(0); opacity: 0.6; }
+    50% { transform: translateX(8px); opacity: 1; }
+}}
