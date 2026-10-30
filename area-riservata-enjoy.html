@@ -856,6 +856,64 @@
             }
         }
 
+        // --- CONTROLLO PROPORZIONI IMMAGINE TRATTAMENTO ---
+        document.getElementById('immagine').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            const img = new Image();
+            img.src = URL.createObjectURL(file);
+            
+            img.onload = function() {
+                const width = this.width;
+                const height = this.height;
+                const ratio = width / height;
+                
+                const previewSlot = document.getElementById('preview-servizio-img');
+                
+                let avvisoProporzioni = '';
+                if (ratio < 0.8) {
+                    avvisoProporzioni = '<p style="color: #f39c12; font-size: 0.75rem; margin-top: 0.4rem;">⚠️ Attenzione: Questa immagine è molto verticale. Verrà ritagliata centralmente per adattarsi al box.</p>';
+                } else {
+                    avvisoProporzioni = '<p style="color: #27ae60; font-size: 0.75rem; margin-top: 0.4rem;">✔ Proporzioni ottimali per il layout.</p>';
+                }
+
+                previewSlot.innerHTML = `
+                    <img src="${img.src}" style="max-width: 150px; max-height: 150px; border:1px solid var(--gold-primary); border-radius:4px; display:block;">
+                    ${avvisoProporzioni}
+                `;
+            }
+        });
+
+        // --- CONTROLLO PROPORZIONI IMMAGINE HEADER ---
+        document.getElementById('header-immagine-file').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            const img = new Image();
+            img.src = URL.createObjectURL(file);
+            
+            img.onload = function() {
+                const width = this.width;
+                const height = this.height;
+                const ratio = width / height;
+                
+                const previewSlot = document.getElementById('preview-header-img');
+                
+                let avvisoProporzioni = '';
+                if (ratio < 1.2) {
+                    avvisoProporzioni = '<p style="color: #f39c12; font-size: 0.75rem; margin-top: 0.4rem;">⚠️ Consigliata foto con orientamento orizzontale (landscape) per l\'header.</p>';
+                } else {
+                    avvisoProporzioni = '<p style="color: #27ae60; font-size: 0.75rem; margin-top: 0.4rem;">✔ Formato orizzontale ideale per la copertina.</p>';
+                }
+
+                previewSlot.innerHTML = `
+                    <img src="${img.src}" style="max-width: 200px; max-height: 120px; border:1px solid var(--gold-primary); border-radius:4px; display:block; margin-bottom:0.5rem;">
+                    ${avvisoProporzioni}
+                `;
+            }
+        });
+
         document.addEventListener('DOMContentLoaded', controllaSessione);
     </script>
 </body>
