@@ -68,9 +68,8 @@
         <button class="filter-btn" onclick="cambiaFiltro('Ecocosmesi Oway', this)">Ecocosmesi Oway</button>
     </div>
 
-    <!-- LIBRO SFOGLIABILE MULTI-CARD CON SUPPORTO SWIPE -->
+    <!-- LIBRO SFOGLIABILE MULTI-CARD CON SUPPORTO SWIPE TOUCH -->
     <div class="book-container">
-        <!-- Contenitore sensibile al tocco per lo swipe -->
         <div id="libro-recensione-slot" class="reviews-grid-page">
             <!-- Le card della pagina corrente vengono iniettate qui via JS -->
         </div>
@@ -105,9 +104,9 @@
         let recensioniCorrenti = [];
         let indicePaginaCorrente = 0;
         
-        // 4 recensioni su PC, 2 su smartphone
+        // 4 recensioni su PC/Desktop, 1 recensione per volta su Smartphone Mobile
         function getElementiPerPagina() {
-            return window.innerWidth < 768 ? 2 : 4;
+            return window.innerWidth < 768 ? 1 : 4;
         }
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -206,12 +205,12 @@
             mostraPaginaLibro(indicePaginaCorrente);
         }
 
-        // --- GESTIONE SWIPE CON IL DITO (MOBILE TOUCH) ---
+        // --- GESTIONE SWIPE TOUCH PER MOBILE ---
         function inizializzaSwipeMobile() {
             const slot = document.getElementById('libro-recensione-slot');
             let touchStartX = 0;
             let touchEndX = 0;
-            const sogliaMinimaSwipe = 50; // pixel minimi di movimento per considerare lo swipe valido
+            const sogliaMinimaSwipe = 40; // sensibilità ottimizzata per lo swipe
 
             slot.addEventListener('touchstart', (e) => {
                 touchStartX = e.changedTouches[0].screenX;
@@ -227,11 +226,9 @@
                 if (Math.abs(distanza) < sogliaMinimaSwipe) return;
 
                 if (distanza < 0) {
-                    // Swipe a sinistra -> Pagina successiva
-                    paginaSuccessiva();
+                    paginaSuccessiva(); // Swipe a sinistra -> Pagina successiva
                 } else {
-                    // Swipe a destra -> Pagina precedente
-                    paginaPrecedente();
+                    paginaPrecedente(); // Swipe a destra -> Pagina precedente
                 }
             }
         }
