@@ -120,6 +120,19 @@
             color: var(--text-white);
             font-family: var(--font-body);
             line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Effetto Animazione Scroll (Fade-In / Slide-Up) */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* Header Navigation */
@@ -174,9 +187,13 @@
             padding: 0.5rem 1rem;
             border-radius: 2px;
             color: var(--gold-primary) !important;
+            transition: background 0.3s, color 0.3s !important;
         }
 
-        /* Tasto Menu Hamburger Mobile */
+            background-color: var(--gold-primary);
+            color: #000 !important;
+        }
+
         .mobile-menu-toggle {
             display: none;
             background: transparent;
@@ -242,7 +259,7 @@
         /* Sezioni Generiche */
         .section-container {
             max-width: 1200px;
-            margin: 5rem auto;
+            margin: 6rem auto;
             padding: 0 2rem;
         }
 
@@ -265,7 +282,101 @@
             margin-right: auto;
         }
 
-        /* Grid Servizi Dinamica */
+        /* 1. SEZIONE RITUALE HEAD SPA IN EVIDENZA (PANNELLO 2) */
+        .head-spa-feature {
+            background-color: var(--bg-card);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            border-radius: 6px;
+            padding: 3.5rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+
+        .head-spa-text h2 {
+            font-family: var(--font-title);
+            color: var(--gold-light);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .head-spa-text p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            margin-bottom: 1.2rem;
+            line-height: 1.8;
+        }
+
+        .head-spa-bullets {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .head-spa-bullets li {
+            position: relative;
+            padding-left: 1.8rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-white);
+            font-size: 0.9rem;
+        }
+
+        .head-spa-bullets li::before {
+            content: "✦";
+            position: absolute;
+            left: 0;
+            color: var(--gold-primary);
+        }
+
+        .head-spa-img-wrapper img {
+            width: 100%;
+            border-radius: 4px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        /* 2. SEZIONE FILOSOFIA AGRICOSMETICA (PANNELLO 3) */
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .philosophy-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            padding: 2.5rem 2rem;
+            border-radius: 4px;
+            text-align: center;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+
+        .philosophy-card:hover {
+            border-color: var(--gold-primary);
+            transform: translateY(-5px);
+        }
+
+        .philosophy-icon {
+            font-size: 2.2rem;
+            color: var(--gold-primary);
+            margin-bottom: 1rem;
+        }
+
+        .philosophy-card h3 {
+            font-family: var(--font-title);
+            color: var(--gold-light);
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .philosophy-card p {
+            color: var(--text-gray);
+            font-size: 0.88rem;
+            line-height: 1.6;
+        }
+
+        /* 3. GRID SERVIZI DINAMICA (PANNELLO 4 - DA SUPABASE) */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -336,95 +447,7 @@
             color: var(--gold-light);
         }
 
-        /* SEZIONE RITUALE HEAD SPA IN EVIDENZA */
-        .head-spa-feature {
-            background-color: var(--bg-card);
-            border: 1px solid rgba(212, 175, 55, 0.25);
-            border-radius: 6px;
-            padding: 3.5rem 2rem;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .head-spa-text h2 {
-            font-family: var(--font-title);
-            color: var(--gold-light);
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .head-spa-text p {
-            color: var(--text-gray);
-            font-size: 0.95rem;
-            margin-bottom: 1.2rem;
-            line-height: 1.8;
-        }
-
-        .head-spa-bullets {
-            list-style: none;
-            margin-bottom: 2rem;
-        }
-
-        .head-spa-bullets li {
-            position: relative;
-            padding-left: 1.8rem;
-            margin-bottom: 0.8rem;
-            color: var(--text-white);
-            font-size: 0.9rem;
-        }
-
-        .head-spa-bullets li::before {
-            content: "✦";
-            position: absolute;
-            left: 0;
-            color: var(--gold-primary);
-        }
-
-        .head-spa-img-wrapper img {
-            width: 100%;
-            border-radius: 4px;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-
-        /* SEZIONE FILOSOFIA AGRICOSMETICA */
-        .philosophy-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .philosophy-card {
-            background: #161616;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 2rem;
-            border-radius: 4px;
-            text-align: center;
-        }
-
-        .philosophy-icon {
-            font-size: 2.2rem;
-            color: var(--gold-primary);
-            margin-bottom: 1rem;
-        }
-
-        .philosophy-card h3 {
-            font-family: var(--font-title);
-            color: var(--gold-light);
-            font-size: 1.2rem;
-            margin-bottom: 0.8rem;
-        }
-
-        .philosophy-card p {
-            color: var(--text-gray);
-            font-size: 0.88rem;
-            line-height: 1.6;
-        }
-
-        /* SEZIONE FAQ ACCORDION */
+        /* 4. SEZIONE FAQ ACCORDION (PANNELLO 5) */
         .faq-accordion {
             max-width: 800px;
             margin: 0 auto;
@@ -466,7 +489,7 @@
             display: block;
         }
 
-        /* SEZIONE DOVE SIAMO */
+        /* 5. SEZIONE DOVE SIAMO / CONTATTI (PANNELLO 6) */
         .location-box {
             background-color: var(--bg-card);
             border: 1px solid rgba(212, 175, 55, 0.2);
@@ -499,7 +522,7 @@
             text-align: center;
             color: var(--text-gray);
             font-size: 0.85rem;
-            margin-top: 5rem;
+            margin-top: 6rem;
         }
 
         footer p { margin-bottom: 0.5rem; }
@@ -571,9 +594,7 @@
 
         /* REGOLE RESPONSIVE MOBILE */
         @media (max-width: 850px) {
-            .mobile-menu-toggle {
-                display: block;
-            }
+            .mobile-menu-toggle { display: block; }
 
             .nav-links {
                 display: none;
@@ -589,9 +610,7 @@
                 box-shadow: 0 10px 20px rgba(0,0,0,0.8);
             }
 
-            .nav-links.mobile-open {
-                display: flex;
-            }
+            .nav-links.mobile-open { display: flex; }
 
             .head-spa-feature, .location-box { grid-template-columns: 1fr; }
             .hero h1 { font-size: 1.9rem; }
@@ -604,9 +623,7 @@
     <div id="luxury-popup-overlay">
         <div class="popup-box">
             <button class="popup-close" onclick="chiudiPopup()">&times;</button>
-            <div id="popup-content-dynamic">
-                <!-- Contenuto iniettato via JS da Supabase -->
-            </div>
+            <div id="popup-content-dynamic"></div>
         </div>
     </div>
 
@@ -620,8 +637,8 @@
             </button>
 
             <ul class="nav-links" id="main-nav-links">
-                <li><a href="#filosofia" onclick="chiudiMenuMobile()">Filosofia</a></li>
                 <li><a href="#head-spa" onclick="chiudiMenuMobile()">Cascata Giapponese</a></li>
+                <li><a href="#filosofia" onclick="chiudiMenuMobile()">Filosofia</a></li>
                 <li><a href="#servizi" onclick="chiudiMenuMobile()">Trattamenti</a></li>
                 <li><a href="#faq" onclick="chiudiMenuMobile()">FAQ</a></li>
                 <li><a href="#contatti" onclick="chiudiMenuMobile()">Dove Siamo</a></li>
@@ -630,17 +647,37 @@
         </div>
     </header>
 
-    <!-- HERO SECTION -->
+    <!-- HERO SECTION (PANNELLO 1) -->
     <section class="hero">
-        <div class="hero-content">
+        <div class="hero-content reveal">
             <h1>L'Oasi Botanica dei Tuoi Capelli nel Cuore di Catania</h1>
             <p>Rigenerazione profonda di cute e capelli tramite idroterapia giapponese, centro cheratina specializzato e la purezza dell'agricosmetica Oway in Via Padova 50.</p>
             <a href="#servizi" class="btn-gold">Scopri i Rituali</a>
         </div>
     </section>
 
-    <!-- 1. SEZIONE FILOSOFIA OWAY -->
-    <section class="section-container" id="filosofia">
+    <!-- 1. SEZIONE RITUALE CASCATA GIAPPONESE (PANNELLO 2) -->
+    <section class="section-container reveal" id="head-spa">
+        <div class="head-spa-feature">
+            <div class="head-spa-text">
+                <h2>L'Esclusiva Cascata Giapponese Head Spa</h2>
+                <p>Un'esperienza di benessere sensoriale unica a Catania. Il flusso costante d'acqua calda a cascata avvolge il cuoio capelluto, stimolando la circolazione sanguigna e permettendo ai trattamenti botanici di penetrare in profondità.</p>
+                <ul class="head-spa-bullets">
+                    <li>Ossigenazione e detossinazione profonda della cute</li>
+                    <li>Rilassamento muscolare e riduzione dello stress quotidiano</li>
+                    <li>Stimolazione della crescita naturale di capelli forti e lucenti</li>
+                    <li>Massaggio stimolante personalizzato con oli essenziali Oway</li>
+                </ul>
+                <a href="https://wa.me/390950000000?text=Buongiorno,%20vorrei%20informazioni%20sul%20rituale%20Cascata%20Giapponese" target="_blank" class="btn-gold">Prenota il Rituale</a>
+            </div>
+            <div class="head-spa-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80" alt="Cascata Giapponese Head Spa Enjoy Catania" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. SEZIONE FILOSOFIA OWAY (PANNELLO 3) -->
+    <section class="section-container reveal" id="filosofia">
         <h2 class="section-title">Ecocosmesi Agricosmetica Avanzata</h2>
         <p class="section-subtitle">Amiamo la natura e la salute dei tuoi capelli. Utilizziamo formulazioni prive di sostanze sintetiche aggressive, confezionate unicamente in vetro ambrato e alluminio riciclabile all'infinito.</p>
         
@@ -663,28 +700,8 @@
         </div>
     </section>
 
-    <!-- 2. SEZIONE RITUALE CASCATA GIAPPONESE -->
-    <section class="section-container" id="head-spa">
-        <div class="head-spa-feature">
-            <div class="head-spa-text">
-                <h2>L'Esclusiva Cascata Giapponese Head Spa</h2>
-                <p>Un'esperienza di benessere sensoriale unica a Catania. Il flusso costante d'acqua calda a cascata avvolge il cuoio capelluto, stimolando la circolazione sanguigna e permettendo ai trattamenti botanici di penetrare in profondità.</p>
-                <ul class="head-spa-bullets">
-                    <li>Ossigenazione e detossinazione profonda della cute</li>
-                    <li>Rilassamento muscolare e riduzione dello stress quotidiano</li>
-                    <li>Stimolazione della crescita naturale di capelli forti e lucenti</li>
-                    <li>Massaggio stimolante personalizzato con oli essenziali Oway</li>
-                </ul>
-                <a href="https://wa.me/390950000000?text=Buongiorno,%20vorrei%20informazioni%20sul%20rituale%20Cascata%20Giapponese" target="_blank" class="btn-gold">Prenota il Rituale</a>
-            </div>
-            <div class="head-spa-img-wrapper">
-                <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80" alt="Cascata Giapponese Head Spa Enjoy Catania" loading="lazy">
-            </div>
-        </div>
-    </section>
-
-    <!-- 3. GRID SERVIZI DINAMICA (DA SUPABASE) -->
-    <main class="section-container" id="servizi">
+    <!-- 3. GRID SERVIZI DINAMICA (PANNELLO 4 - DA SUPABASE) -->
+    <main class="section-container reveal" id="servizi">
         <h2 class="section-title">Menu Trattamenti & Menu Bio</h2>
         <p class="section-subtitle">Tutti i prezzi e i servizi sono sincronizzati in tempo reale con il nostro listino ufficiale.</p>
         
@@ -693,8 +710,8 @@
         </div>
     </main>
 
-    <!-- 4. SEZIONE DOMANDE FREQUENTI (FAQ) PER CLIENTI E IA -->
-    <section class="section-container" id="faq">
+    <!-- 4. SEZIONE DOMANDE FREQUENTI (PANNELLO 5) -->
+    <section class="section-container reveal" id="faq">
         <h2 class="section-title">Domande Frequenti</h2>
         <p class="section-subtitle">Tutto quello che c'è da sapere sui nostri trattamenti e sulla nostra filosofia botanica.</p>
 
@@ -731,8 +748,8 @@
         </div>
     </section>
 
-    <!-- 5. SEZIONE DOVE SIAMO / CONTATTI -->
-    <section class="section-container" id="contatti">
+    <!-- 5. SEZIONE DOVE SIAMO / CONTATTI (PANNELLO 6) -->
+    <section class="section-container reveal" id="contatti">
         <div class="location-box">
             <div class="location-info">
                 <h3>Vieni a Trovarci in Salone</h3>
@@ -776,6 +793,29 @@
             const navLinks = document.getElementById('main-nav-links');
             navLinks.classList.remove('mobile-open');
         }
+
+        // ANIMAZIONI SCROLL (REVEAL ON SCROLL)
+        document.addEventListener("DOMContentLoaded", () => {
+            caricaServiziDinamici();
+            verificaEmostraPopup();
+
+            const observerOptions = {
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal').forEach(el => {
+                observer.observe(el);
+            });
+        });
 
         // 1. CARICAMENTO TRATTAMENTI DINAMICI
         async function caricaServiziDinamici() {
@@ -859,11 +899,6 @@
             const item = btn.parentElement;
             item.classList.toggle('active');
         }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            caricaServiziDinamici();
-            verificaEmostraPopup();
-        });
     </script>
 </body>
 </html>
