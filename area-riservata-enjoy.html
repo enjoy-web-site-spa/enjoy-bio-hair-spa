@@ -287,6 +287,20 @@
         <!-- 2. PANNELLO DI CONTROLLO -->
         <main id="sec-dashboard">
             
+            <!-- GESTIONE IMMAGINE HEADER / COPERTINA -->
+            <section class="card">
+                <h2 class="card-title"><span>Immagine Copertina Header (Home Page)</span></h2>
+                <form id="form-header-img">
+                    <div class="form-group">
+                        <label for="header-immagine-file">Carica Foto Reale del Salone (Supabase Storage)</label>
+                        <input type="file" id="header-immagine-file" accept="image/*" required>
+                        <div id="preview-header-img" style="margin-top:0.8rem;"></div>
+                    </div>
+                    <button type="submit" class="btn-gold" id="btn-salva-header">Aggiorna Immagine Header</button>
+                    <div id="header-status-msg" class="status-msg"></div>
+                </form>
+            </section>
+
             <!-- GESTIONE POP-UP PROMOZIONALE -->
             <section class="card">
                 <h2 class="card-title">
@@ -403,11 +417,13 @@
         const formLogin = document.getElementById('form-login');
         const formServizio = document.getElementById('form-servizio');
         const formPopup = document.getElementById('form-popup');
+        const formHeaderImg = document.getElementById('form-header-img');
         const secLogin = document.getElementById('sec-login');
         const secDashboard = document.getElementById('sec-dashboard');
         const btnLogout = document.getElementById('btn-logout');
         const statusMsg = document.getElementById('status-msg');
         const popupStatusMsg = document.getElementById('popup-status-msg');
+        const headerStatusMsg = document.getElementById('header-status-msg');
         const loginStatusMsg = document.getElementById('login-status-msg');
         const listaServizi = document.getElementById('lista-servizi');
         
@@ -439,6 +455,15 @@
             btnLogout.style.display = 'block';
             caricaServiziAdmin();
             caricaImpostazioniPopup();
+            
+            // Mostra anteprima dell'immagine header salvata se presente
+            const savedHeaderBg = localStorage.getItem('enjoy_header_bg');
+            if (savedHeaderBg) {
+                document.getElementById('preview-header-img').innerHTML = `
+                    <img src="${savedHeaderBg}" style="max-width: 200px; border:1px solid var(--gold-primary); border-radius:4px; display:block; margin-bottom:0.5rem;">
+                    <span style="font-size:0.75rem; color:var(--text-gray);">Immagine attualmente attiva sul sito.</span>
+                `;
+            }
         }
 
         function mostraLogin() {
@@ -476,6 +501,56 @@
             await supabaseClient.auth.signOut();
             mostraLogin();
         }
+
+        // SALVA IMMAGINE HEADER SU SUPABASE STORAGE (SENZA TABELLE AGGIUNTIVE NEL DB)
+        formHeaderImg.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btnSalvaHeader = document.getElementById('btn-salva-header');
+            btnSalvaHeader.disabled = true;
+            btnSalvaHeader.textContent = 'Caricamento in corso...';
+
+            const fileInput = document.getElementById('header-immagine-file');
+
+            try {
+                if (fileInput.files.length === 0) {
+                    throw new Error("Seleziona un'immagine da caricare.");
+                }
+
+                const file = fileInput.files[0];
+                const fileExt = file.name.split('.').pop();
+                const fileName = `header_hero_${Date.now()}.${fileExt}`;
+
+                const { error: uploadError } = await supabaseClient
+                    .storage
+                    .from('immagini-salone')
+                    .upload(fileName, file);
+
+                if (uploadError) throw uploadError;
+
+                const { data: urlData } = supabaseClient
+                    .storage
+                    .from('immagini-salone')
+                    .getPublicUrl(fileName);
+
+                const immagine_url = urlData.publicUrl;
+
+                // Salviamo l'URL dell'header in localStorage per leggerlo subito nella Home
+                localStorage.setItem('enjoy_header_bg', immagine_url);
+
+                document.getElementById('preview-header-img').innerHTML = `
+                    <img src="${immagine_url}" style="max-width: 200px; border:1px solid var(--gold-primary); border-radius:4px; display:block; margin-bottom:0.5rem;">
+                    <span style="font-size:0.75rem; color:var(--text-gray);">Immagine caricata e salvata con successo!</span>
+                `;
+
+                mostraMessaggio(headerStatusMsg, 'Immagine header aggiornata con successo!', 'success');
+            } catch (err) {
+                console.error(err);
+                mostraMessaggio(headerStatusMsg, 'Errore caricamento: ' + err.message, 'error');
+            } finally {
+                btnSalvaHeader.disabled = false;
+                btnSalvaHeader.textContent = 'Aggiorna Immagine Header';
+            }
+        });
 
         // CARICA POPUP
         async function caricaImpostazioniPopup() {
@@ -737,13 +812,11 @@
 
                 let response;
                 if (servizioId) {
-                    // MODIFICA
                     response = await supabaseClient
                         .from('servizi')
                         .update(payload)
                         .eq('id', servizioId);
                 } else {
-                    // INSERIMENTO
                     response = await supabaseClient
                         .from('servizi')
                         .insert([payload]);
