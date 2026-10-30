@@ -502,7 +502,7 @@
             mostraLogin();
         }
 
-        // SALVA IMMAGINE HEADER SU SUPABASE STORAGE (SENZA TABELLE AGGIUNTIVE NEL DB)
+// SALVA IMMAGINE HEADER CON NOME FISSO E SOVRASCRITTURA (UPSERT)
         formHeaderImg.addEventListener('submit', async (e) => {
             e.preventDefault();
             const btnSalvaHeader = document.getElementById('btn-salva-header');
@@ -517,13 +517,16 @@
                 }
 
                 const file = fileInput.files[0];
-                const fileExt = file.name.split('.').pop();
-                const fileName = `header_hero_${Date.now()}.${fileExt}`;
+                const fileExt = file.name.split('.').pop().toLowerCase();
+                
+                // NOME FISSO: usa sempre lo stesso nome per sovrascrivere il file sul bucket
+                const fileName = `header-copertina-salone.${fileExt}`;
 
+                // upsert: true forza la sovrascrittura immediata sul bucket Supabase Storage
                 const { error: uploadError } = await supabaseClient
                     .storage
                     .from('immagini-salone')
-                    .upload(fileName, file);
+                    .upload(fileName, file, { upsert: true });
 
                 if (uploadError) throw uploadError;
 
@@ -532,14 +535,12 @@
                     .from('immagini-salone')
                     .getPublicUrl(fileName);
 
-                const immagine_url = urlData.publicUrl;
-
-                // Salviamo l'URL dell'header in localStorage per leggerlo subito nella Home
-                localStorage.setItem('enjoy_header_bg', immagine_url);
+                // Aggiungiamo un parametro temporale per l'anteprima admin
+                const immagine_url = `${urlData.publicUrl}?t=${new Date().getTime()}`;
 
                 document.getElementById('preview-header-img').innerHTML = `
                     <img src="${immagine_url}" style="max-width: 200px; border:1px solid var(--gold-primary); border-radius:4px; display:block; margin-bottom:0.5rem;">
-                    <span style="font-size:0.75rem; color:var(--text-gray);">Immagine caricata e salvata con successo!</span>
+                    <span style="font-size:0.75rem; color:var(--text-gray);">Immagine header caricata e fissata con successo!</span>
                 `;
 
                 mostraMessaggio(headerStatusMsg, 'Immagine header aggiornata con successo!', 'success');
@@ -915,6 +916,21 @@
         });
 
         document.addEventListener('DOMContentLoaded', controllaSessione);
+    </script>
+    <!-- SCRIPT DEFINITIVO PER CARICARE L'HEADER FISSO DA SUPABASE STORAGE -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const heroSection = document.querySelector('.hero');
+            if (heroSection) {
+                // URL pubblico fisso del file sul tuo bucket Supabase Storage
+                const supabaseStorageUrl = "https://rpbbbqekqkwzyhpjeusp.supabase.co/storage/v1/object/public/immagini-salone/header-copertina-salone.jpg";
+                
+                // Parametro anti-cache per azzerare qualsiasi blocco di GitHub Pages o dei browser
+                const cacheBuster = `?v=${new Date().getTime()}`;
+                
+                heroSection.style.background = `linear-gradient(rgba(18, 18, 18, 0.75), rgba(18, 18, 18, 0.95)), url('${supabaseStorageUrl}${cacheBuster}') center/cover no-repeat`;
+            }
+        });
     </script>
 </body>
 </html>
