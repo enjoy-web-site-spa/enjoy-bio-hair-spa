@@ -68,8 +68,9 @@
         <button class="filter-btn" onclick="cambiaFiltro('Ecocosmesi Oway', this)">Ecocosmesi Oway</button>
     </div>
 
-    <!-- LIBRO SFOGLIABILE MULTI-CARD -->
+    <!-- LIBRO SFOGLIABILE MULTI-CARD CON SUPPORTO SWIPE -->
     <div class="book-container">
+        <!-- Contenitore sensibile al tocco per lo swipe -->
         <div id="libro-recensione-slot" class="reviews-grid-page">
             <!-- Le card della pagina corrente vengono iniettate qui via JS -->
         </div>
@@ -98,7 +99,7 @@
         <p style="margin-top: 0.8rem; font-size: 0.75rem; color: #555;">&copy; 2026 Tutti i diritti riservati. Design & Tech by Enjoy Studio.</p>
     </footer>
 
-    <!-- INCLUSIONE FILE DATI E LOGICA SFOGLIAMENTO -->
+    <!-- INCLUSIONE FILE DATI E LOGICA SFOGLIAMENTO & SWIPE -->
     <script src="recensioni-data.js"></script>
     <script>
         let recensioniCorrenti = [];
@@ -113,6 +114,7 @@
             if (typeof recensioniGoogle !== 'undefined') {
                 recensioniCorrenti = recensioniGoogle;
                 mostraPaginaLibro(indicePaginaCorrente);
+                inizializzaSwipeMobile();
             } else {
                 document.getElementById('libro-recensione-slot').innerHTML = '<p style="text-align: center; color: #ff6b6b; grid-column: 1/-1;">Errore nel caricamento del file recensioni-data.js</p>';
             }
@@ -202,6 +204,36 @@
 
             indicePaginaCorrente = 0;
             mostraPaginaLibro(indicePaginaCorrente);
+        }
+
+        // --- GESTIONE SWIPE CON IL DITO (MOBILE TOUCH) ---
+        function inizializzaSwipeMobile() {
+            const slot = document.getElementById('libro-recensione-slot');
+            let touchStartX = 0;
+            let touchEndX = 0;
+            const sogliaMinimaSwipe = 50; // pixel minimi di movimento per considerare lo swipe valido
+
+            slot.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+
+            slot.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                gestisciSwipe();
+            }, { passive: true });
+
+            function gestisciSwipe() {
+                const distanza = touchEndX - touchStartX;
+                if (Math.abs(distanza) < sogliaMinimaSwipe) return;
+
+                if (distanza < 0) {
+                    // Swipe a sinistra -> Pagina successiva
+                    paginaSuccessiva();
+                } else {
+                    // Swipe a destra -> Pagina precedente
+                    paginaPrecedente();
+                }
+            }
         }
     </script>
 </body>
