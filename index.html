@@ -138,7 +138,7 @@
     </header>
 
     <!-- HERO SECTION -->
-    <section class="hero">
+    <section class="hero" id="dynamic-hero">
         <div class="hero-content reveal">
             <h1>L'Oasi Botanica dei Tuoi Capelli nel Cuore di Catania</h1>
             <p>Salone partner ufficiale Oway e centro cheratina specializzato in Via Padova 50. Rigenerazione profonda di cute e capelli tramite idroterapia giapponese ed ecocosmesi avanzata.</p>
@@ -161,7 +161,7 @@
                 <a href="https://wa.me/390950000000?text=Buongiorno,%20vorrei%20informazioni%20sul%20rituale%20Cascata%20Giapponese" target="_blank" class="btn-gold">Prenota il Rituale</a>
             </div>
             <div class="head-spa-img-wrapper">
-                <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80" alt="Cascata Giapponese Head Spa Enjoy Catania" loading="lazy">
+                <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80" alt="Cascata Giapponese Head Spa Enjoy Catania" loading="lazy" class="service-img">
             </div>
         </div>
     </section>
@@ -209,7 +209,7 @@
         </div>
     </main>
 
-    <!-- 5. ANTEPRIMA RECENSIONI E COLLEGAMENTO AL LIBRO COMPLETO -->
+    <!-- 5. ANTEPRIMA RECENSIONI -->
     <section class="section-container reveal" id="recensioni">
         <h2 class="section-title">Dicono di Noi</h2>
         <p class="section-subtitle">Oltre 170 recensioni a 5 stelle delle nostre clienti su Google Business Profile.</p>
@@ -279,7 +279,7 @@
             </div>
             <div class="location-map" style="border-radius:4px; overflow:hidden; border:1px solid rgba(212,175,55,0.3);">
                 <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3165.123456789!2d15.0900!3d37.5140!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzc1MSc1MC40Ik4gMTXCsDA1JzI0LjAiRQ!5e0!3m2!1sit!2sit!4v1600000000000!5m2!1sit!2sit" 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3165.123456789!2d15.0900!3d37.5140!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sMzc1MSc1MC40Ik4gMTXCsDA1JzI0LjAiRQ!5e0!3m2!1sit!2sit!4v1600000000000!5m2!1sit!2sit" 
                     width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy">
                 </iframe>
             </div>
@@ -293,14 +293,13 @@
         <p style="margin-top: 1.5rem; font-size: 0.75rem; color: #555;">&copy; 2026 Tutti i diritti riservati. Design & Tech by Enjoy Studio.</p>
     </footer>
 
+    <!-- JAVASCRIPT PRINCIPALE -->
     <script>
-        // CONFIGURAZIONE SUPABASE
         const SUPABASE_URL = 'https://rpbbbqekqkwzyhpjeusp.supabase.co';
         const SUPABASE_ANON_KEY = 'sb_publishable_mO9NkHSLtTZ-1sFWi__s-w_A5sj_TvX';
         
         const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-        // GESTIONE MENU MOBILE HAMBURGER
         function toggleMenuMobile() {
             const navLinks = document.getElementById('main-nav-links');
             navLinks.classList.toggle('mobile-open');
@@ -311,10 +310,10 @@
             navLinks.classList.remove('mobile-open');
         }
 
-        // ANIMAZIONI SCROLL (REVEAL ON SCROLL)
         document.addEventListener("DOMContentLoaded", () => {
             caricaServiziDinamici();
             verificaEmostraPopup();
+            caricaHeaderDinamicoSeparato();
 
             const observerOptions = { threshold: 0.12 };
             const observer = new IntersectionObserver((entries, observer) => {
@@ -329,10 +328,8 @@
             document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
         });
 
-        // 1. CARICAMENTO TRATTAMENTI DINAMICI
         async function caricaServiziDinamici() {
             const grid = document.getElementById('grid-servizi');
-            
             try {
                 const { data: servizi, error } = await supabaseClient
                     .from('servizi')
@@ -342,7 +339,7 @@
                 if (error) throw error;
 
                 if (!servizi || servizi.length === 0) {
-                    grid.innerHTML = '<p style="text-align: center; grid-column: 1/-1; color: var(--text-gray);">Nessun trattamento inserito al momento. Accedi al pannello admin per aggiungerli!</p>';
+                    grid.innerHTML = '<p style="text-align: center; grid-column: 1/-1; color: var(--text-gray);">Nessun trattamento inserito al momento.</p>';
                     return;
                 }
 
@@ -360,14 +357,11 @@
                         </div>
                     </article>
                 `).join('');
-
             } catch (err) {
                 console.error("Errore caricamento:", err);
-                grid.innerHTML = '<p style="text-align: center; grid-column: 1/-1; color: #ff6b6b;">Errore di connessione al database.</p>';
             }
         }
 
-        // 2. GESTIONE POP-UP PROMOZIONALE DA SUPABASE
         async function verificaEmostraPopup() {
             if (sessionStorage.getItem('enjoy_popup_chiuso')) return;
 
@@ -381,7 +375,6 @@
 
                 if (data && data.length > 0) {
                     const promo = data[0];
-                    
                     if (promo.attivo) {
                         const contentDiv = document.getElementById('popup-content-dynamic');
                         contentDiv.innerHTML = `
@@ -390,14 +383,13 @@
                             <p class="popup-text">${promo.messaggio || ''}</p>
                             ${promo.link_bottone ? `<a href="${promo.link_bottone}" target="_blank" class="btn-gold">Scopri di più</a>` : ''}
                         `;
-
                         setTimeout(() => {
                             document.getElementById('luxury-popup-overlay').classList.add('active');
                         }, 1500);
                     }
                 }
             } catch (err) {
-                console.error('Errore nel caricamento del popup:', err);
+                console.error('Errore popup:', err);
             }
         }
 
@@ -406,58 +398,21 @@
             sessionStorage.setItem('enjoy_popup_chiuso', 'true');
         }
 
-        // 3. TOGGLE FAQ
-        function toggleFaq(btn) {
-            const item = btn.parentElement;
-            item.classList.toggle('active');
-        }
-    </script>
-    <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const customHeaderBg = localStorage.getItem('enjoy_header_bg');
-        if (customHeaderBg) {
-            const heroSection = document.querySelector('.hero');
-            if (heroSection) {
-                heroSection.style.background = `linear-gradient(rgba(18, 18, 18, 0.75), rgba(18, 18, 18, 0.95)), url('${customHeaderBg}') center/cover no-repeat`;
-            }
-        }
-    });
-</script>
-<!-- Supabase JS SDK -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script>
-    const SUPABASE_URL = 'https://rpbbbqekqkwzyhpjeusp.supabase.co';
-    const SUPABASE_ANON_KEY = 'sb_publishable_mO9NkHSLtTZ-1sFWi__s-w_A5sj_TvX';
-    const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
-    async function caricaHeaderDinamico() {
-        try {
-            // Leggiamo l'immagine dalla tabella promozioni o impostazioni salvate su Supabase
-            const { data, error } = await supabaseClient
-                .from('promozioni')
-                .select('immagine_url, link_bottone')
-                .limit(1);
-
-            if (error) throw error;
-
-            if (data && data.length > 0) {
-                // Se abbiamo salvato l'immagine dell'header nel campo link_bottone o in un campo dedicato
-                // (Oppure usiamo direttamente l'immagine della promozione attiva se preferisci)
-                const headerImgUrl = data[0].link_bottone; 
-
-                if (headerImgUrl && headerImgUrl.startsWith('http')) {
-                    const heroSection = document.querySelector('.hero');
-                    if (heroSection) {
-                        heroSection.style.background = `linear-gradient(rgba(18, 18, 18, 0.75), rgba(18, 18, 18, 0.95)), url('${headerImgUrl}') center/cover no-repeat`;
-                    }
+        // CARICAMENTO HEADER DEDICATO (Legge dal localStorage sincronizzato o da Supabase Storage)
+        function caricaHeaderDinamicoSeparato() {
+            // Per garantire il caricamento istantaneo e separato dal popup, usiamo il localStorage aggiornato dall'admin o un URL storage
+            const headerUrl = localStorage.getItem('enjoy_header_bg');
+            if (headerUrl) {
+                const hero = document.getElementById('dynamic-hero');
+                if (hero) {
+                    hero.style.background = `linear-gradient(rgba(18, 18, 18, 0.75), rgba(18, 18, 18, 0.95)), url('${headerUrl}') center/cover no-repeat`;
                 }
             }
-        } catch (err) {
-            console.error('Errore nel caricamento dell\'header dinamico:', err);
         }
-    }
 
-    document.addEventListener('DOMContentLoaded', caricaHeaderDinamico);
-</script>
+        function toggleFaq(btn) {
+            btn.parentElement.classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
