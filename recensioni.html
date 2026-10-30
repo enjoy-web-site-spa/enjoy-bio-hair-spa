@@ -68,16 +68,19 @@
         <button class="filter-btn" onclick="cambiaFiltro('Ecocosmesi Oway', this)">Ecocosmesi Oway</button>
     </div>
 
-    <!-- LIBRO SFOGLIABILE MULTI-CARD CON SUPPORTO SWIPE TOUCH -->
+    <!-- LIBRO SFOGLIABILE CON SUPPORTO SWIPE TOUCH -->
     <div class="book-container">
+        <!-- Indicatore visivo mobile per suggerire lo swipe -->
+        <div class="swipe-hint">‹ &nbsp; Scorri con il dito per sfogliare &nbsp; ›</div>
+
         <div id="libro-recensione-slot" class="reviews-grid-page">
-            <!-- Le card della pagina corrente vengono iniettate qui via JS -->
+            <!-- La recensione (o le recensioni) vengono iniettate qui via JS -->
         </div>
 
         <div class="book-navigation">
-            <button class="btn-gold-small" id="btn-prec" onclick="paginaPrecedente()">&larr; Precedente</button>
+            <button class="btn-gold-small" id="btn-prec" onclick="paginaPrecedente()">&larr; Indietro</button>
             <span class="page-counter" id="indicatore-pagina">Pagina 1 di 1</span>
-            <button class="btn-gold-small" id="btn-succ" onclick="paginaSuccessiva()">Successiva &rarr;</button>
+            <button class="btn-gold-small" id="btn-succ" onclick="paginaSuccessiva()">Avanti &rarr;</button>
         </div>
     </div>
 
@@ -104,7 +107,7 @@
         let recensioniCorrenti = [];
         let indicePaginaCorrente = 0;
         
-        // 4 recensioni su PC/Desktop, 1 recensione per volta su Smartphone Mobile
+        // 4 recensioni su PC/Desktop, esattamente 1 recensione per volta su Smartphone Mobile
         function getElementiPerPagina() {
             return window.innerWidth < 768 ? 1 : 4;
         }
@@ -167,10 +170,10 @@
                 slot.style.opacity = '1';
                 slot.style.transform = 'translateY(0px)';
 
-                document.getElementById('indicatore-pagina').innerText = `Pagina ${indicePagina + 1} di ${totalePagine}`;
+                document.getElementById('indicatore-pagina').innerText = `Pag. ${indicePagina + 1} di ${totalePagine}`;
                 document.getElementById('btn-prec').disabled = (indicePagina === 0);
                 document.getElementById('btn-succ').disabled = (indicePagina >= totalePagine - 1);
-            }, 180);
+            }, 150);
         }
 
         function paginaSuccessiva() {
@@ -210,7 +213,7 @@
             const slot = document.getElementById('libro-recensione-slot');
             let touchStartX = 0;
             let touchEndX = 0;
-            const sogliaMinimaSwipe = 40; // sensibilità ottimizzata per lo swipe
+            const sogliaMinimaSwipe = 35; // sensibilità reattiva per il dito
 
             slot.addEventListener('touchstart', (e) => {
                 touchStartX = e.changedTouches[0].screenX;
@@ -226,9 +229,9 @@
                 if (Math.abs(distanza) < sogliaMinimaSwipe) return;
 
                 if (distanza < 0) {
-                    paginaSuccessiva(); // Swipe a sinistra -> Pagina successiva
+                    paginaSuccessiva(); // Swipe a sinistra -> Prossima recensione
                 } else {
-                    paginaPrecedente(); // Swipe a destra -> Pagina precedente
+                    paginaPrecedente(); // Swipe a destra -> Recensione precedente
                 }
             }
         }

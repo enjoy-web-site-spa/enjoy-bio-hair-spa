@@ -1,6 +1,5 @@
 /* ==========================================================================
    ENJOY PARRUCCHIERI BIO HAIR SPA - STILE PRINCIPALE LUXURY
-   Palette: Charcoal Scuro (#121212) & Oro Caldo / Bronzo (#D4AF37)
    ========================================================================== */
 
 :root {
@@ -113,7 +112,7 @@ header {
     line-height: 1;
 }
 
-/* BOTTONI LUXURY 3D RAFFINATI (DESKTOP DEFAULT) */
+/* BOTTONI LUXURY 3D RAFFINATI */
 .btn-gold, .btn-gold-small {
     display: inline-flex;
     align-items: center;
@@ -369,7 +368,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 2.5rem;
+    margin-top: 2rem;
     padding: 0 0.5rem;
 }
 
@@ -378,6 +377,23 @@ header {
     color: var(--gold-light);
     font-size: 0.95rem;
     letter-spacing: 2px;
+}
+
+/* Indicatore visivo dello Swipe per Mobile */
+.swipe-hint {
+    display: none;
+    text-align: center;
+    font-size: 0.75rem;
+    color: var(--gold-primary);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    animation: pulseHint 2s infinite ease-in-out;
+}
+
+@keyframes pulseHint {
+    0%, 100% { opacity: 0.4; transform: translateX(0); }
+    50% { opacity: 1; transform: translateX(5px); }
 }
 
 /* --- GOOGLE CTA BOX --- */
@@ -772,7 +788,6 @@ footer p { margin-bottom: 0.5rem; }
 }
 
 @media (max-width: 768px) {
-    /* OTTIMIZZAZIONE BOTTONI SU MOBILE: COMPATTI, ELEGANTI E NON INGOMBRANTI */
     .btn-gold {
         padding: 0.65rem 1.4rem;
         font-size: 0.75rem;
@@ -795,10 +810,15 @@ footer p { margin-bottom: 0.5rem; }
     }
 
     .book-page {
-        padding: 1.5rem 1.6rem;
+        padding: 1.8rem 1.6rem;
     }
 
     .page-header h1 {
         font-size: 1.8rem;
+    }
+
+    /* Attiviamo il suggerimento visivo dello swipe su smartphone */
+    .swipe-hint {
+        display: block;
     }
 }
