@@ -17,6 +17,9 @@
     <!-- FOGLIO DI STILE ESTERNO CENTRALIZZATO -->
     <link rel="stylesheet" href="style.css">
 
+    <!-- Supabase JS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
     <!-- Schema.org JSON-LD -->
     <script type="application/ld+json">
     {
@@ -41,16 +44,10 @@
 </head>
 <body>
 
-    <!-- HEADER NAVIGATION -->
-    <header>
-        <div class="nav-container">
-            <a href="index.html" class="logo">Enjoy Bio Hair Spa</a>
-            <a href="index.html" class="btn-gold-small">&larr; Home</a>
-        </div>
-    </header>
+    <!-- L'HEADER CON IL LOGO COMPLETO VIENE INIETTATO AUTOMATICAMENTE DA components.js -->
 
     <!-- PAGE HEADER -->
-    <section class="page-header">
+    <section class="page-header" style="margin-top: 4rem;">
         <h1>Il Libro delle Recensioni</h1>
         <p>Sfoglia le pagine del nostro libro d'onore. Le storie autentiche di bellezza e benessere raccontate dalle nostre clienti a Catania.</p>
         
@@ -68,23 +65,24 @@
         <button class="filter-btn" onclick="cambiaFiltro('Ecocosmesi Oway', this)">Ecocosmesi Oway</button>
     </div>
 
-<!-- LIBRO SFOGLIABILE CON SUPPORTO SWIPE TOUCH -->
-<div class="book-container">
-    <!-- Indicatore visivo mobile con micro-movimento laterale -->
-    <div class="swipe-hint">
-        <span>‹ &nbsp; Scorri con il dito per sfogliare &nbsp; ›</span>
+    <!-- LIBRO SFOGLIABILE CON SUPPORTO SWIPE TOUCH -->
+    <div class="book-container">
+        <!-- Indicatore visivo mobile con micro-movimento laterale -->
+        <div class="swipe-hint">
+            <span>‹ &nbsp; Scorri con il dito per sfogliare &nbsp; ›</span>
+        </div>
+
+        <div id="libro-recensione-slot" class="reviews-grid-page">
+            <!-- Le recensioni vengono iniettate qui via JS -->
+        </div>
+
+        <div class="book-navigation">
+            <button class="btn-gold-small" id="btn-prec" onclick="paginaPrecedente()">&larr; Indietro</button>
+            <span class="page-counter" id="indicatore-pagina">Pag. 1 di 1</span>
+            <button class="btn-gold-small" id="btn-succ" onclick="paginaSuccessiva()">Avanti &rarr;</button>
+        </div>
     </div>
 
-    <div id="libro-recensione-slot" class="reviews-grid-page">
-        <!-- Le recensioni vengono iniettate qui via JS -->
-    </div>
-
-    <div class="book-navigation">
-        <button class="btn-gold-small" id="btn-prec" onclick="paginaPrecedente()">&larr; Indietro</button>
-        <span class="page-counter" id="indicatore-pagina">Pag. 1 di 1</span>
-        <button class="btn-gold-small" id="btn-succ" onclick="paginaSuccessiva()">Avanti &rarr;</button>
-    </div>
-</div>
     <!-- CTA LINK GOOGLE MAPS -->
     <section class="google-cta-box">
         <div class="cta-inner">
@@ -96,11 +94,7 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer>
-        <p><strong>Enjoy Parrucchieri Bio Hair Spa</strong> &bull; Via Padova, 50, 95127 Catania CT</p>
-        <p style="margin-top: 0.8rem; font-size: 0.75rem; color: #555;">&copy; 2026 Tutti i diritti riservati. Design & Tech by Enjoy Studio.</p>
-    </footer>
+    <!-- L'FOOTER VIENE INIETTATO AUTOMATICAMENTE DA components.js -->
 
     <!-- INCLUSIONE FILE DATI E LOGICA SFOGLIAMENTO & SWIPE -->
     <script src="recensioni-data.js"></script>
@@ -214,7 +208,7 @@
             const slot = document.getElementById('libro-recensione-slot');
             let touchStartX = 0;
             let touchEndX = 0;
-            const sogliaMinimaSwipe = 35; // sensibilità reattiva per il dito
+            const sogliaMinimaSwipe = 35;
 
             slot.addEventListener('touchstart', (e) => {
                 touchStartX = e.changedTouches[0].screenX;
@@ -230,12 +224,16 @@
                 if (Math.abs(distanza) < sogliaMinimaSwipe) return;
 
                 if (distanza < 0) {
-                    paginaSuccessiva(); // Swipe a sinistra -> Prossima recensione
+                    paginaSuccessiva();
                 } else {
-                    paginaPrecedente(); // Swipe a destra -> Recensione precedente
+                    paginaPrecedente();
                 }
             }
         }
     </script>
+
+    <!-- SCRIPT CENTRALIZZATO DEI COMPONENTI (HEADER CON LOGO COMPLETO + FOOTER) -->
+    <script src="components.js"></script>
+
 </body>
 </html>
