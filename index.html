@@ -398,14 +398,26 @@
             sessionStorage.setItem('enjoy_popup_chiuso', 'true');
         }
 
-        // CARICAMENTO HEADER DEDICATO (Legge dal localStorage sincronizzato o da Supabase Storage)
-        function caricaHeaderDinamicoSeparato() {
-            // Per garantire il caricamento istantaneo e separato dal popup, usiamo il localStorage aggiornato dall'admin o un URL storage
-            const headerUrl = localStorage.getItem('enjoy_header_bg');
-            if (headerUrl) {
-                const hero = document.getElementById('dynamic-hero');
-                if (hero) {
-                    hero.style.background = `linear-gradient(rgba(18, 18, 18, 0.75), rgba(18, 18, 18, 0.95)), url('${headerUrl}') center/cover no-repeat`;
+        // CARICAMENTO HEADER FISSO DA SUPABASE STORAGE (FUNZIONANTE ANCHE ONLINE)
+        async function caricaHeaderDinamicoSeparato() {
+            const hero = document.getElementById('dynamic-hero');
+            if (hero) {
+                try {
+                    const fileName = "header-copertina-salone.jpg";
+                    const { data } = supabaseClient
+                        .storage
+                        .from('immagini-salone')
+                        .getPublicUrl(fileName);
+
+                    if (data && data.publicUrl) {
+                        // Parametro anti-cache per forzare l'aggiornamento immediato online
+                        const cacheBuster = `?t=${new Date().getTime()}`;
+                        const finalImageUrl = data.publicUrl + cacheBuster;
+
+                        hero.style.background = `linear-gradient(rgba(18, 18, 18, 0.75), rgba(18, 18, 18, 0.95)), url('${finalImageUrl}') center/cover no-repeat`;
+                    }
+                } catch (err) {
+                    console.error("Errore caricamento header da Supabase Storage:", err);
                 }
             }
         }
