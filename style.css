@@ -824,6 +824,8 @@ footer p { margin-bottom: 0.5rem; }
         font-size: 1.8rem;
     }
 
+    
+
 /* Indicatore visivo dello Swipe per Mobile con micro-movimento laterale */
 .swipe-hint {
     display: none;
