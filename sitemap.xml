@@ -1,28 +1,31 @@
-# Permetti a tutti i motori di ricerca e Bot IA di scansionare il sito
-User-agent: *
-Allow: /
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+                            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
-# Crawler IA Specifici (Generative Engine Optimization)
-User-agent: GPTBot
-Allow: /
+    <!-- HOMEPAGE UFFICIALE -->
+    <url>
+        <loc>https://enjoy-web-site-spa.github.io/enjoy-bio-hair-spa/index.html</loc>
+        <lastmod>2026-11-06</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.00</priority>
+    </url>
 
-User-agent: ChatGPT-User
-Allow: /
+    <!-- PAGINA DEDICATA: TRATTAMENTI BOTANICI OWAY -->
+    <url>
+        <loc>https://enjoy-web-site-spa.github.io/enjoy-bio-hair-spa/trattamenti-botanici.html</loc>
+        <lastmod>2026-11-06</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.90</priority>
+    </url>
 
-User-agent: PerplexityBot
-Allow: /
+    <!-- PAGINA SERVIZI GENERALI & LISTINO CONSULENZA -->
+    <url>
+        <loc>https://enjoy-web-site-spa.github.io/enjoy-bio-hair-spa/servizi.html</loc>
+        <lastmod>2026-11-06</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.85</priority>
+    </url>
 
-User-agent: ClaudeBot
-Allow: /
-
-User-agent: Meta-ExternalAgent
-Allow: /
-
-User-agent: Google-Extended
-Allow: /
-
-# Blocca l'indicizzazione dell'Area Riservata Segreta sui motori di ricerca
-Disallow: /area-riservata-enjoy.html
-
-# Percorso della Sitemap Ufficiale
-Sitemap: https://enjoy-web-site-spa.github.io/enjoy-bio-hair-spa/sitemap.xml
+</urlset>

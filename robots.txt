@@ -2,7 +2,7 @@
 User-agent: *
 Allow: /
 
-# Crawler IA Specifici (Generative Engine Optimization)
+# Crawler IA Specifici (Generative Engine Optimization - GEO)
 User-agent: GPTBot
 Allow: /
 
@@ -18,8 +18,11 @@ Allow: /
 User-agent: Meta-ExternalAgent
 Allow: /
 
-# Blocca l'indicizzazione dell'Area Riservata Segreta sui motori di ricerca
+User-agent: Google-Extended
+Allow: /
+
+# Protezione Sicurezza: Blocca l'indicizzazione dell'Area Riservata Admin
 Disallow: /area-riservata-enjoy.html
 
-# Percorso della Sitemap Ufficiale
+# Indicazione della Sitemap Ufficiale per GoogleBot e Crawler IA
 Sitemap: https://enjoy-web-site-spa.github.io/enjoy-bio-hair-spa/sitemap.xml
