@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Standard & GEO (Generative Engine Optimization) -->
+    <title>Trattamenti Botanici Oway Catania | Enjoy Parrucchieri Bio Hair Spa</title>
+    <meta name="description" content="Trattamenti botanici e agricosmetici Oway a Catania in Via Padova 52. Percorsi dermo-purificanti, anticaduta, seboregolatori, lenitivi e detox per cute e capelli.">
+    <meta name="keywords" content="Trattamenti Botanici Oway Catania, Agricosmetica Catania, Hair Spa Catania, Anticaduta Oway, Seboregolatore Oway, Scrub Detox Cute Catania, Bio Hair Spa Via Padova">
+    <link rel="canonical" href="https://enjoy-web-site-spa.github.io/enjoy-bio-hair-spa/trattamenti-botanici.html">
+
+    <!-- Open Graph per Social e WhatsApp -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Trattamenti Botanici Oway | Enjoy Bio Hair Spa Catania">
+    <meta property="og:description" content="Rituali agricosmetici biodinamici per la cura di cute e capelli. Purezza vegetale, zero sostanze aggressive e diagnosi trichologica su misura a Catania.">
+    <meta property="og:image" content="https://rpbbbqekqkwzyhpjeusp.supabase.co/storage/v1/object/public/immagini-salone/header-copertina-salone.jpg">
+    <meta property="og:url" content="https://enjoy-web-site-spa.github.io/enjoy-bio-hair-spa/trattamenti-botanici.html">
+
+    <!-- Tipografia Luxury Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- FOGLIO DI STILE ESTERNO CENTRALIZZATO -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- STILI DEDICATI PER ACCORDION & LAYOUT PAGINA BOTANICA -->
+    <style>
+        .treatment-accordion-item {
+            background: var(--bg-card, #1A1A1A);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .treatment-accordion-item[open] {
+            border-color: var(--gold-primary, #D4AF37);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+        }
+
+        .treatment-summary {
+            padding: 1.5rem 2rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            list-style: none;
+            user-select: none;
+        }
+
+        .treatment-summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .treatment-badge {
+            display: inline-block;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--gold-primary, #D4AF37);
+            margin-bottom: 0.3rem;
+            font-weight: 600;
+        }
+
+        .summary-content h3 {
+            font-family: var(--font-title, 'Cinzel', serif);
+            color: #F5F5F5;
+            font-size: 1.25rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .summary-preview {
+            color: #A0A0A0;
+            font-size: 0.88rem;
+            line-height: 1.5;
+        }
+
+        .accordion-icon {
+            font-size: 1.8rem;
+            color: var(--gold-primary, #D4AF37);
+            font-weight: 300;
+            transition: transform 0.3s ease;
+            margin-left: 1rem;
+        }
+
+        .treatment-accordion-item[open] .accordion-icon {
+            transform: rotate(45deg);
+        }
+
+        .treatment-details-body {
+            padding: 0 2rem 2rem 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .detail-block {
+            margin-top: 1.5rem;
+        }
+
+        .detail-block h4 {
+            font-family: var(--font-title, 'Cinzel', serif);
+            color: var(--gold-primary, #D4AF37);
+            font-size: 1.05rem;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .botanical-list, .benefits-grid {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .botanical-list li, .benefits-grid li {
+            color: #E0E0E0;
+            font-size: 0.92rem;
+            margin-bottom: 0.6rem;
+            line-height: 1.6;
+        }
+
+        .purity-note {
+            font-size: 0.82rem;
+            color: #A0A0A0;
+            margin-top: 0.8rem;
+            border-left: 2px solid var(--gold-primary, #D4AF37);
+            padding-left: 0.8rem;
+        }
+
+        .protocol-box {
+            background: rgba(212, 175, 55, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 1.2rem;
+            border-radius: 4px;
+        }
+
+        .did-you-know-box {
+            background: linear-gradient(135deg, rgba(28,24,14,0.9), rgba(18,18,18,0.95));
+            border-left: 4px solid var(--gold-primary, #D4AF37);
+            padding: 1.2rem 1.5rem;
+            margin-top: 1.8rem;
+        }
+
+        .did-you-know-header {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .did-you-know-header h5 {
+            font-family: var(--font-title, 'Cinzel', serif);
+            color: var(--gold-primary, #D4AF37);
+            font-size: 1rem;
+        }
+
+        .treatment-cta {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .treatment-summary {
+                padding: 1.2rem 1rem;
+            }
+            .treatment-details-body {
+                padding: 0 1rem 1.5rem 1rem;
+            }
+        }
+    </style>
+
+    <!-- Schema.org JSON-LD (Dati Strutturati Service + OfferCatalog per IA) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Trattamenti Botanici Oway e Agricosmetica",
+      "serviceType": "Hair Spa & Trattamenti Tricologici Botanici",
+      "provider": {
+        "@type": ["HairSalon", "BeautySalon"],
+        "name": "Enjoy Parrucchieri Bio Hair Spa",
+        "telephone": "+390952165888",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Via Padova, 52",
+          "addressLocality": "Catania",
+          "postalCode": "95127",
+          "addressCountry": "IT"
+        }
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Catania"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Percorsi Agricosmetici Oway",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Rituale Rinforzante & Densificante Anticaduta",
+              "description": "Trattamento con staminali vegetali di Buddleja Davidii e menta piperita per stimolare la crescita e densificare la chioma."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Rituale Seboregolatore & Dermo-Purificante",
+              "description": "Purificazione cutanea con Argilla Bianca dell'Amazzonia e Salvia Biodinamica per bilanciare la produzione sebacea."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Rituale Soothing & Dermo-Calmante",
+              "description": "Trattamento decongestionante e anti-prurito con idrolato di camomilla e Zanthalene per cuti sensibili e reattive."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Rituale Antiforfora & Purificante (Purifying)",
+              "description": "Micro-esfoliazione enzimatica con Timo Biodinamico per eliminare forfora secca o grassa e alleviare irritazioni."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Scrub Detox Herbs & Clay Peeling",
+              "description": "Peeling 100% vegetale e minerale miscelato al momento per liberare i pori da tossine, smog e accumuli seborroici."
+            }
+          }
+        ]
+      }
+    }
+    </script>
+</head>
+<body>
+
+    <!-- L'HEADER CON IL LOGO COMPLETO E MENU VIENE INIETTATO AUTOMATICAMENTE DA components.js -->
+
+    <!-- SEZIONE 1: HERO SECTION -->
+    <section class="hero" style="padding: 100px 0 60px 0; text-align: center; background: linear-gradient(rgba(18, 18, 18, 0.85), rgba(18, 18, 18, 0.95)), url('https://rpbbbqekqkwzyhpjeusp.supabase.co/storage/v1/object/public/immagini-salone/header-copertina-salone.jpg') center/cover no-repeat;">
+        <div class="hero-content reveal" style="max-width: 900px; margin: 0 auto; padding: 0 1.5rem;">
+            <span style="color: var(--gold-primary, #D4AF37); font-size: 0.8rem; letter-spacing: 3px; text-transform: uppercase; font-weight: 600;">AGRICOSMETICA BIODINAMICA • VIA PADOVA 52, CATANIA</span>
+            <h1 style="font-family: var(--font-title, 'Cinzel', serif); font-size: 2.8rem; color: var(--gold-light, #F3E5AB); margin: 15px 0;">Rituali e Trattamenti Botanici Oway</h1>
+            <p style="color: #E0E0E0; font-size: 1.05rem; line-height: 1.8; margin-bottom: 2rem;">
+                L'incontro perfetto tra la scienza tricologica avanzata e la purezza delle coltivazioni biodinamiche a chilometro zero. Formule prive di solfati, parabeni e profumi di sintesi, racchiuse in vetro ambrato per rigenerare in profondità cute e capelli nel cuore di Catania.
+            </p>
+            <a href="#rituali-botanici" class="btn-gold">Esplora i Percorsi Botanici &darr;</a>
+        </div>
+    </section>
+
+    <!-- SEZIONE 2: LA FILOSOFIA OWAY & 5 PILASTRI DI PUREZZA -->
+    <section class="section-container reveal" style="background: var(--bg-card, #1A1A1A); border-top: 1px solid rgba(212,175,55,0.2); border-bottom: 1px solid rgba(212,175,55,0.2); padding: 5rem 1.5rem;">
+        <div style="max-width: 1000px; margin: 0 auto;">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <span style="color: var(--gold-primary, #D4AF37); font-size: 0.8rem; letter-spacing: 3px; text-transform: uppercase;">IL VALORE DELLA PURITÀ E DELLA SICUREZZA CLINICA</span>
+                <h2 class="section-title" style="margin-top: 10px;">Agricosmetica Biodinamica: La Natura al Servizio della Cute</h2>
+                <p class="section-subtitle" style="max-width: 800px; margin: 0 auto;">
+                    Nel nostro salone a Catania rifiutiamo categoricamente la chimica aggressiva e i compromessi commerciali. Ogni trattamento botanico Oway nasce da coltivazioni biodinamiche a chilometro zero, formulate per rispettare la fisiologia della cute, la struttura del capello e la salute dell'organismo.
+                </p>
+            </div>
+
+            <div class="philosophy-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.8rem;">
+                <article class="philosophy-card" style="background: rgba(18,18,18,0.7); padding: 1.8rem; border-left: 3px solid var(--gold-primary, #D4AF37); border-radius: 4px;">
+                    <div style="font-size: 2rem; margin-bottom: 0.8rem;">🌿</div>
+                    <h3 style="font-family: var(--font-title); color: var(--gold-light); font-size: 1.15rem; margin-bottom: 0.6rem;">1. Principi Attivi Puri e Bio</h3>
+                    <p style="color: #A0A0A0; font-size: 0.9rem; line-height: 1.6;">Estratti vegetali concentrati, erbe micronizzate e oli essenziali che rispettano e riequilibrano il microbiota del cuoio capelluto, formulati <strong>senza OGM</strong>.</p>
+                </article>
+
+                <article class="philosophy-card" style="background: rgba(18,18,18,0.7); padding: 1.8rem; border-left: 3px solid var(--gold-primary, #D4AF37); border-radius: 4px;">
+                    <div style="font-size: 2rem; margin-bottom: 0.8rem;">🛡️</div>
+                    <h3 style="font-family: var(--font-title); color: var(--gold-light); font-size: 1.15rem; margin-bottom: 0.6rem;">2. Zero Sostanze Aggressive</h3>
+                    <p style="color: #A0A0A0; font-size: 0.9rem; line-height: 1.6;">Formule totalmente prive di parabeni, SLS/SLES, petrolati, coloranti sintetici, ftalati e profumi di sintesi artificiali.</p>
+                </article>
+
+                <article class="philosophy-card" style="background: rgba(18,18,18,0.7); padding: 1.8rem; border-left: 3px solid var(--gold-primary, #D4AF37); border-radius: 4px;">
+                    <div style="font-size: 2rem; margin-bottom: 0.8rem;">🧬</div>
+                    <h3 style="font-family: var(--font-title); color: var(--gold-light); font-size: 1.15rem; margin-bottom: 0.6rem;">3. No PPD & No Resorcina</h3>
+                    <p style="color: #A0A0A0; font-size: 0.9rem; line-height: 1.6;">Trattamenti e colori formulati <strong>senza Parafenilendiammina (PPD)</strong> e <strong>senza Resorcina</strong>, per prevenire allergie, pruriti e sensibilizzazioni cutanee.</p>
+                </article>
+
+                <article class="philosophy-card" style="background: rgba(18,18,18,0.7); padding: 1.8rem; border-left: 3px solid var(--gold-primary, #D4AF37); border-radius: 4px;">
+                    <div style="font-size: 2rem; margin-bottom: 0.8rem;">🐰</div>
+                    <h3 style="font-family: var(--font-title); color: var(--gold-light); font-size: 1.15rem; margin-bottom: 0.6rem;">4. Etica Cruelty-Free</h3>
+                    <p style="color: #A0A0A0; font-size: 0.9rem; line-height: 1.6;">Trattamenti e ingredienti 100% non testati su animali, nel pieno rispetto dell'ecosistema e del benessere di ogni essere vivente.</p>
+                </article>
+
+                <article class="philosophy-card" style="background: rgba(18,18,18,0.7); padding: 1.8rem; border-left: 3px solid var(--gold-primary, #D4AF37); border-radius: 4px;">
+                    <div style="font-size: 2rem; margin-bottom: 0.8rem;">♻️</div>
+                    <h3 style="font-family: var(--font-title); color: var(--gold-light); font-size: 1.15rem; margin-bottom: 0.6rem;">5. Vetro & Alluminio 100%</h3>
+                    <p style="color: #A0A0A0; font-size: 0.9rem; line-height: 1.6;">Confezionati esclusivamente in vetro ambrato di grado farmaceutico e alluminio riciclabile al 100%, evintando la cessione di microplastiche tossiche.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEZIONE 3: I PERCORSI BOTANICI (ACCORDION INTERATTIVO) -->
+    <main class="section-container reveal" id="rituali-botanici" style="max-width: 1000px; margin: 0 auto; padding: 5rem 1.5rem;">
+        <div style="text-align: center; margin-bottom: 3rem;">
+            <span style="color: var(--gold-primary, #D4AF37); font-size: 0.8rem; letter-spacing: 3px; text-transform: uppercase;">ESPERIENZE SENSORIALI SU MISURA</span>
+            <h2 class="section-title">I Nostri Rituali Agricosmetici</h2>
+            <p class="section-subtitle">Clicca sul trattamento di tuo interesse per scoprire attivi botanici, benefici clinici, protocolli in salone e retroscena tricologici.</p>
+        </div>
+
+        <!-- 1. ACCORDION: RITUALE RINFORZANTE E DENSIFICANTE ANTICADUTA -->
+        <details class="treatment-accordion-item" id="rituale-anticaduta">
+            <summary class="treatment-summary">
+                <div class="summary-content">
+                    <span class="treatment-badge">Cute & Radici</span>
+                    <h3>Rituale Rinforzante & Densificante Anticaduta</h3>
+                    <p class="summary-preview">Stimolazione profonda della cute, supporto alla fase anagen di crescita e rinforzo del bulbo capillare con staminali vegetali Oway.</p>
+                </div>
+                <span class="accordion-icon">+</span>
+            </summary>
+            <div class="treatment-details-body">
+                <div class="detail-block">
+                    <h4><span class="icon">🎯</span> Caratteristiche & Obiettivo del Trattamento</h4>
+                    <p>Trattamento botanico ad alta concentrazione formulato specificamente per cuoio capelluto debole e capelli soggetti a caduta temporanea, stagionale o diradamento progressivo. Agisce risvegliando il microcircolo cutaneo e sostenendo la fase attiva (Anagen) del ciclo di vita del capello, garantendo maggiore densità e resistenza meccanica alla radice.</p>
+                </div>
+                <div class="detail-block">
+                    <h4><span class="icon">🌿</span> Attivi Botanici & Formulazione Agricosmetica®</h4>
+                    <ul class="botanical-list">
+                        <li><strong>Staminali Vegetali di Buddleja Davidii:</strong> Proteggono le cellule cutanee dal danno ossidativo, stimolando la rigenerazione naturale del follicolo.</li>
+                        <li><strong>Estratti di Menta Piperita e Limone (BD/EO):</strong> Miscela aromaterapica altamente stimolante per il microcircolo cutaneo.</li>
+                        <li><strong>Estratto di Ippocastano (Aesculus Hippocastanum):</strong> Favorisce il tono vascolare cutaneo e l'ossigenazione dei bulbi.</li>
+                        <li><strong>Proteine Idrolizzate di Pisello (Pea Sprout) e Lupino:</strong> Bio-nutrienti che apportano materia essenziale alla fibra in accrescimento.</li>
+                        <li><strong>Estratto di Ficodindia (Opuntia Ficus-Indica):</strong> Azione idratante, lenitiva e protettiva del microbiota cutaneo.</li>
+                    </ul>
+                    <p class="purity-note"><em>Formulazione Agricosmetica® Oway pura, priva di parabeni, SLS/SLES, petrolati, coloranti sintetici, profumi artificiali, PPD, resorcina e OGM. Packaging 100% in vetro ambrato e alluminio riciclabile.</em></p>
+                </div>
+                <div class="detail-block">
+                    <h4><span class="icon">✨</span> Benefici Clinici e Percepiti</h4>
+                    <ul class="benefits-grid">
+                        <li>✽ Rinforzo visibile del capello fin dalla radice</li>
+                        <li>✽ Aumento della densità capillare percepita alla vista e al tatto</li>
+                        <li>✽ Supporto alla fase attiva di crescita capillare</li>
+                        <li>✽ Rilancio del microcircolo cutaneo e tonificazione del cuoio capelluto</li>
+                        <li>✽ Formula a assorbimento rapido, non unge e non appesantisce le radici</li>
+                    </ul>
+                </div>
+                <div class="detail-block protocol-box">
+                    <h4><span class="icon">🔬</span> Il Protocollo Esclusivo in Salone (Catania)</h4>
+                    <p>Il percorso si sviluppa su un ciclo di <strong>10 sedute a frequenza settimanale o bisettimanale</strong>, calibrate a seguito del check-up trichologico in salone. Ogni seduta comprende il <strong>Massaggio Scalp Attivante</strong>, una tecnica manuale specifica studiata per decongestionare la galea capitis, riattivare la microcircolazione e ottimizzare l'assorbimento dermico dei principi attivi botanici.</p>
+                </div>
+                <div class="detail-block did-you-know-box">
+                    <div class="did-you-know-header">
+                        <span class="lightbulb">💡</span>
+                        <h5>Lo Sapevi Che?</h5>
+                    </div>
+                    <p>Le <strong>staminali vegetali</strong> utilizzate nei trattamenti agricosmetici Oway sono molecole ad elevatissima efficacia biologica che la pianta sintetizza per difendersi dalle aggressioni ambientali esterne. Applicate sul cuoio capelluto, svolgono un'intensa azione antiossidante ed antinfiammatoria, creando l'habitat perfetto per la nascita di steli sani e robusti.</p>
+                </div>
+                <div class="treatment-cta">
+                    <a href="https://wa.me/390952165888?text=Buongiorno,%20vorrei%20informazioni%20sul%20Rituale%20Anticaduta%20Oway" target="_blank" rel="noopener noreferrer" class="btn-gold-small">Richiedi Consulenza per il Percorso Anticaduta</a>
+                </div>
+            </div>
+        </details>
+
+        <!-- 2. ACCORDION: RITUALE SEBOREGOLATORE E DERMO-PURIFICANTE -->
+        <details class="treatment-accordion-item" id="rituale-seboregolatore">
+            <summary class="treatment-summary">
+                <div class="summary-content">
+                    <span class="treatment-badge">Cute & Sebo-Equilibrio</span>
+                    <h3>Rituale Seboregolatore & Dermo-Purificante</h3>
+                    <p class="summary-preview">Azione dermo-purificante profonda, assorbimento del sebo in eccesso e riequilibrio antinfiammatorio della cute con argilla bianca e attivi Oway.</p>
+                </div>
+                <span class="accordion-icon">+</span>
+            </summary>
+            <div class="treatment-details-body">
+                <div class="detail-block">
+                    <h4><span class="icon">🎯</span> Caratteristiche & Obiettivo del Trattamento</h4>
+                    <p>Trattamento mirato e detossinante studiato specificamente per cute e capelli che manifestano squilibri seborroici (cute grassa o tendente a ungere rapidamente). Svolge un'azione profonda di riequilibrio, disintossicazione e controllo della produzione sebacea, eliminando tossine e odori sgradevoli dal cuoio capelluto nel pieno rispetto del film idrolipidico.</p>
+                </div>
+                <div class="detail-block">
+                    <h4><span class="icon">🌿</span> Attivi Botanici & Formulazione Agricosmetica®</h4>
+                    <ul class="botanical-list">
+                        <li><strong>Salvia Biodinamica:</strong> Azione antisettica, antimicotica e normalizzante delle funzioni cutanee.</li>
+                        <li><strong>Argilla Bianca dell'Amazzonia (Etica):</strong> Assorbe efficacemente il sebo in eccesso e le impurità, offrendo una delicata azione esfoliante e disintossicante.</li>
+                        <li><strong>Estratto di Eufrasia Biologica & Teak Etico:</strong> Azione lenitiva, protettiva e di supporto strutturale.</li>
+                        <li><strong>Asparlyne & Tiolisina Complex:</strong> Complesso biotecnologico avanzato che regola l'attività delle ghiandole sebacee.</li>
+                        <li><strong>Tensioattivi da Cocco potenziati con Sali di Zinco:</strong> Detergenza mirata, purificante e non aggressiva.</li>
+                        <li><strong>Mentolo Naturale & Cimicifuga:</strong> Proprietà rinfrescanti, antinfiammatorie e calmanti.</li>
+                    </ul>
+                    <p class="purity-note"><em>Bouquet olfattivo aromaterapico: Salvia e Anice. Note balsamiche, purificanti e calmanti per un'esperienza sensoriale distensiva in salone.</em></p>
+                </div>
+                <div class="detail-block">
+                    <h4><span class="icon">✨</span> Benefici Clinici e Percepiti</h4>
+                    <ul class="benefits-grid">
+                        <li>✽ Assorbimento selettivo del sebo in eccesso e delle tossine cutanee</li>
+                        <li>✽ Azione antisettica, antimicotica e profondo sollievo antinfiammatorio</li>
+                        <li>✽ Eliminazione duratura degli odori sgradevoli dal cuoio capelluto</li>
+                        <li>✽ Normalizzazione progressiva della secrezione sebacea senza effetto rebound</li>
+                        <li>✽ Sensazione di freschezza balsamica e leggerezza prolungata alle radici</li>
+                    </ul>
+                </div>
+                <div class="detail-block protocol-box">
+                    <h4><span class="icon">🔬</span> Il Protocollo Esclusivo in Salone (Catania)</h4>
+                    <p>I quantitativi di applicazione e la durata del percorso vengono definiti con precisione esclusivamente dopo la <strong>consulenza valutativa e il check-up trichologico</strong> in salone. Il protocollo prevede in genere l'abbinamento a rituali di apertura e chiusura eseguiti con l'esclusivo <strong>Scrub Herbs & Clay Oway</strong>, per garantire una detossinazione totale della cute.</p>
+                </div>
+                <div class="detail-block did-you-know-box">
+                    <div class="did-you-know-header">
+                        <span class="lightbulb">💡</span>
+                        <h5>Lo Sapevi Che?</h5>
+                    </div>
+                    <p>Massaggiare eccessivamente o in modo troppo aggressivo la cute grassa non fa che stimolare una <strong>maggiore produzione di sebo</strong> per autodifesa. Inoltre, l'eccesso di sebo non trattato correttamente tende a ossidarsi, portando a lungo termine a sensibilizzazione cutanea, prurito persistente e soffocamento del follicolo. Il nostro trattamento agisce con delicatezza minerale e botanica, spegnendo l'infiammazione alla radice.</p>
+                </div>
+                <div class="treatment-cta">
+                    <a href="https://wa.me/390952165888?text=Buongiorno,%20vorrei%20informazioni%20sul%20Rituale%20Seboregolatore%20Oway" target="_blank" rel="noopener noreferrer" class="btn-gold-small">Richiedi Consulenza per il Percorso Seboregolatore</a>
+                </div>
+            </div>
+        </details>
+
+        <!-- 3. ACCORDION: RITUALE SOOTHING E DERMO-CALMANTE -->
+        <details class="treatment-accordion-item" id="rituale-soothing">
+            <summary class="treatment-summary">
+                <div class="summary-content">
+                    <span class="treatment-badge">Cute Sensibile & Reattiva</span>
+                    <h3>Rituale Soothing & Dermo-Calmante</h3>
+                    <p class="summary-preview">Azione lenitiva, disarrossante e rilipidizzante per cuti reattive, arrossate o irritate con idrolato di camomilla e zanthalene Oway.</p>
+                </div>
+                <span class="accordion-icon">+</span>
+            </summary>
+            <div class="treatment-details-body">
+                <div class="detail-block">
+                    <h4><span class="icon">🎯</span> Caratteristiche & Obiettivo del Trattamento</h4>
+                    <p>Percorso agricosmetico ultra-delicato formulato per rispondere con immediato sollievo alle esigenze delle cuti più sensibili, fragili, arrossate o soggette a prurito ed epiteliati. Deterge con assoluta dolcezza, ripristina la barriera idrolipidica cutanea e decongestiona le irritazioni, offrendo un comfort totale anche per la pelle delicata dei bambini sopra i 3 anni.</p>
+                </div>
+                <div class="detail-block">
+                    <h4><span class="icon">🌿</span> Attivi Botanici & Formulazione Agricosmetica®</h4>
+                    <ul class="botanical-list">
+                        <li><strong>Idrolato di Camomilla Biodinamica & Elicriso:</strong> Azione decongestionante, disarrossante e fortemente calmante sul cuoio capelluto.</li>
+                        <li><strong>Estratto di Zanthoxylum (Zanthalene®):</strong> Principio attivo vegetale brevettato ad elevata efficacia lenitiva e anti-prurito.</li>
+                        <li><strong>Olio Essenziale di Finocchio Biodinamico:</strong> Favorisce la microcircolazione cutanea in modo dolce e purificante.</li>
+                        <li><strong>Amaranto Biologico & Teak Etico:</strong> Apportano protezione, sostentamento e resistenza meccanica alla barriera epidermica.</li>
+                        <li><strong>Aloe Vera Biologica & Allantoina:</strong> Idratazione profonda, azione rigenerante e riparatrice dei tessuti.</li>
+                        <li><strong>Tensioattivi Non Etossilati & Olio di Crusca di Riso:</strong> Detergenza a impatto zero sul film lipidico, per una nutrizione leggera e protettiva.</li>
+                    </ul>
+                    <p class="purity-note"><em>Bouquet olfattivo aromaterapico: Bergamotto e Finocchio. Svolge un'intensa azione antistress e rilassante, ideale contro l'affaticamento mentale. Packaging 100% in vetro ambrato e alluminio riciclabile.</em></p>
+                </div>
+                <div class="detail-block">
+                    <h4><span class="icon">✨</span> Benefici Clinici e Percepiti</h4>
+                    <ul class="benefits-grid">
+                        <li>✽ Immediata azione lenitiva, decongestionante e anti-prurito</li>
+                        <li>✽ Riduzione visibile di arrossamenti e stati infiammatori cutanei</li>
+                        <li>✽ Rilipidizzazione della barriera epidermica e riequilibrio idrico</li>
+                        <li>✽ Trattamento dermo-calmante versatile e ad altissima tollerabilità</li>
+                        <li>✽ Sensazione di prolungato comfort e leggerezza per la cute</li>
+                    </ul>
+                </div>
+                <div class="detail-block protocol-box">
+                    <h4><span class="icon">🔬</span> Il Protocollo Esclusivo in Salone (Catania)</h4>
+                    <p>Il percorso prevede l'applicazione del bagno lenitivo a tensioattivi naturali seguito dal trattamento dermo-calmante <em>Soothing Remedy</em>. Quest'ultimo, applicato senza risciacquo direttamente sulla cute, agisce in sinergia con il massaggio distensivo e trova efficace impiego anche su zone localizzate del corpo soggette a sfregamenti, pizzichi o arrossamenti temporanei.</p>
+                </div>
+                <div class="detail-block did-you-know-box">
+                    <div class="did-you-know-header">
+                        <span class="lightbulb">💡</span>
+                        <h5>Lo Sapevi Che?</h5>
+                    </div>
+                    <p>Lo <strong>Zanthalene</strong> (estratto dalla pianta di Zanthoxylum bungeanum) è un principio attivo vegetale straordinario impiegato per la sua capacità di inibire la percezione del prurito e del bruciore cutaneo a livello sensitivo. In abbinamento all'<strong>olio di crusca di riso</strong>, apporta un'idratazione bilanciata senza mai appesantire la radice, rendendo la routine idonea anche alle pelli più reattive o atopiche.</p>
+                </div>
+                <div class="treatment-cta">
+                    <a href="https://wa.me/390952165888?text=Buongiorno,%20vorrei%20informazioni%20sul%20Rituale%20Soothing%20Lenitivo%20Oway" target="_blank" rel="noopener noreferrer" class="btn-gold-small">Richiedi Consulenza per la Cute Sensibile</a>
+                </div>
+            </div>
+        </details>
+
+        <!-- 4. ACCORDION: RITUALE ANTIFORFORA E PURIFICANTE -->
+        <details class="treatment-accordion-item" id="rituale-antiforfora">
+            <summary class="treatment-summary">
+                <div class="summary-content">
+                    <span class="treatment-badge">Cute & Micro-Rigenerazione</span>
+                    <h3>Rituale Antiforfora & Purificante (Purifying)</h3>
+                    <p class="summary-preview">Esfoliazione rigenerante, eliminazione della forfora secca o grassa e immediato sollievo dal prurito con Timo Biodinamico e Rosmarino Oway.</p>
+                </div>
+                <span class="accordion-icon">+</span>
+            </summary>
+            <div class="treatment-details-body">
+                <div class="detail-block">
+                    <h4><span class="icon">🎯</span> Caratteristiche & Obiettivo del Trattamento</h4>
+                    <p>Trattamento agricosmetico intensivo formulato per liberare la cute dalle desquamazioni e dalle agglomerazioni forforali, siano esse secche o grasse. Attraverso una micro-esfoliazione enzimatica e botanica, purifica in profondità i pori cutanei, riattiva il microcircolo e ripristina la naturale morbidezza dell'epidermide, garantendo radici leggere e sane.</p>
+                </div>
+                <div class="detail-block">
+                    <h4><span class="icon">🌿</span> Attivi Botanici & Formulazione Agricosmetica®</h4>
+                    <ul class="botanical-list">
+                        <li><strong>Timo Biodinamico Puro:</strong> Potente antimicrobico e antibatterico naturale. Allevia istantaneamente prurito, bruciore ed irritazioni cutanee.</li>
+                        <li><strong>Olio Essenziale di Rosmarino & Bergamotto:</strong> Cuore balsamico e purificante che normalizza le funzioni del cuoio capelluto e dona una profonda sensazione di freschezza.</li>
+                        <li><strong>Estratto di Teak Etico & Mahogany Biologico:</strong> Supporto antisettico, tonificante e di difesa per la fibra capillare.</li>
+                        <li><strong>Fito-Complessi Antimicotici Naturali:</strong> Inibiscono la proliferazione del fungo Malassezia senza l'uso di sostanze chimiche di sintesi o catrami aggressivi.</li>
+                    </ul>
+                    <p class="purity-note"><em>Bouquet olfattivo aromaterapico: Rosmarino e Bergamotto. Azione balsamica stimolante, antidepressiva, ideale per combattere la stanchezza mentale e favorire la concentrazione. Packaging 100% in vetro ambrato e alluminio riciclabile.</em></p>
+                </div>
+                <div class="detail-block">
+                    <h4><span class="icon">✨</span> Benefici Clinici e Percepiti</h4>
+                    <ul class="benefits-grid">
+                        <li>✽ Purificazione profonda della cute con sblocco e pulizia dei pori follicolari</li>
+                        <li>✽ Eliminazione completa ed efficace della forfora sia grassa sia secca</li>
+                        <li>✽ Immediata riduzione della sensazione di prurito, tensione e bruciore cutaneo</li>
+                        <li>✽ Radici visibilmente più leggere, voluminose e distanziamento della frequenza dei lavaggi</li>
+                        <li>✽ Rigenerazione e miglioramento progressivo dello stato di salute dell'epidermide</li>
+                    </ul>
+                </div>
+                <div class="detail-block protocol-box">
+                    <h4><span class="icon">🔬</span> Il Protocollo Esclusivo in Salone (Catania)</h4>
+                    <p>In seguito alla consulenza diagnostica e all'analisi del cuoio capelluto, il protocollo si articola nell'applicazione estemporanea del trattamento fito-purificante, potenziato dal massaggio ossigenante e dal vapore botanico per favorire il distacco delle squame e l'assorbimento dermico degli attivi di Timo e Rosmarino.</p>
+                </div>
+                <div class="detail-block did-you-know-box">
+                    <div class="did-you-know-header">
+                        <span class="lightbulb">💡</span>
+                        <h5>Lo Sapevi Che?</h5>
+                    </div>
+                    <p>Il termine <strong>Timo</strong> deriva dal greco antico <em>Thymos</em>, che significa letteralmente "forza, coraggio e vitalità"—qualità d'animo che si risvegliano in chiunque ne inali l'aroma puro. Utilizzato in agricosmetica come antibatterico naturale, questo straordinario ingrediente stimola sia l'energia cutanea sia la memoria attraverso l'olfatto!</p>
+                </div>
+                <div class="treatment-cta">
+                    <a href="https://wa.me/390952165888?text=Buongiorno,%20vorrei%20informazioni%20sul%20Rituale%20Antiforfora%20Purifying%20Oway" target="_blank" rel="noopener noreferrer" class="btn-gold-small">Richiedi Consulenza per il Percorso Antiforfora</a>
+                </div>
+            </div>
+        </details>
+
+<!-- 5. ACCORDION: SCRUB DETOX HERBS & CLAY PEELING (CON FASI LUNARI & MOON BLEND) -->
+        <details class="treatment-accordion-item" id="scrub-detox-herbs-clay">
+            <summary class="treatment-summary">
+                <div class="summary-content">
+                    <span class="treatment-badge">Peeling Biodinamico & Rituale Lunare</span>
+                    <h3>Scrub Detox Herbs & Clay Peeling</h3>
+                    <p class="summary-preview">Micro-peeling 100% naturale a freddo con Argilla dell'Amazzonia, erbe micronizzate e Moon Blend biodinamici sintonizzati con le fasi lunari.</p>
+                </div>
+                <span class="accordion-icon">+</span>
+            </summary>
+            <div class="treatment-details-body">
+                <div class="detail-block">
+                    <h4><span class="icon">🎯</span> Caratteristiche & Obiettivo del Trattamento</h4>
+                    <p>Un trattamento di rigenerazione cutanea pura e micro-esfoliazione agricosmetica a freddo. Creato per liberare la cute da tossine accumulate, residui di prodotti di styling chimici, particelle di inquinamento atmosferico e accumuli di sebo ossidato. Prepara idealmente il cuoio capelluto a ricevere i principi attivi dei percorsi specifici (Anticaduta, Seboregolatore, Antiforfora o Lenitivo), ripristinando la respirazione follicolare in armonia con i ritmi della natura.</p>
+                </div>
+                <div class="detail-block">
+                    <h4><span class="icon">🌿</span> Attivi Botanici & Formulazione Agricosmetica®</h4>
+                    <ul class="botanical-list">
+                        <li><strong>Argilla Bianca dell'Amazzonia (Etica):</strong> Assorbe impurità e tossine per attrazione ionica, esfoliando delicatamente senza aggredire l'epidermide.</li>
+                        <li><strong>Erbe Micronizzate Biodinamiche (Herbs Blend):</strong> Miscela pura di piante officinali sminuzzate che rilasciano clorofilla e minerali durante la miscelazione estemporanea.</li>
+                        <li><strong>Moon Blends Biodinamici & Fasi Lunari:</strong> Miscele fito-aromatiche personalizzate sintonizzate sui cicli della Luna (Crescente, Calante, Nuova, Piena) per ottimizzare l'azione purificante, lenitiva o rigenerante.</li>
+                        <li><strong>Miscela Aromaterapica di Oli Essenziali Puri:</strong> Attivati al momento per un'azione antisettica, stimolante del microcircolo e rigenerante cutanea.</li>
+                        <li><strong>Sapindus Mukorossi (Noce del Sapone):</strong> Detergenza vegetale naturale priva di tensioattivi di sintesi.</li>
+                    </ul>
+                    <p class="purity-note"><em>Formulazione 100% vegetale e minerale. Miscelata al momento in ciotola di terracotta con pennello e utensili in legno agricosmetico, per preservare intatta la carica energetica e chimica degli ingredienti.</em></p>
+                </div>
+                <div class="detail-block">
+                    <h4><span class="icon">✨</span> Benefici Clinici e Percepiti</h4>
+                    <ul class="benefits-grid">
+                        <li>✽ Rimozione profonda di impurità, smog, metalli pesanti e stratificazioni cosmetiche</li>
+                        <li>✽ Sblocco dei pori follicolari e immediato sollievo da appesantimento cutaneo</li>
+                        <li>✽ Sintonia con i cicli lunari per amplificare la risposta biologica della cute</li>
+                        <li>✽ Aumento della permeabilità cutanea per un assorbimento raddoppiato dei trattamenti successivi</li>
+                        <li>✽ Capelli visibilmente più soffici, leggeri e vitali fin dalla prima seduta</li>
+                    </ul>
+                </div>
+                <div class="detail-block protocol-box">
+                    <h4><span class="icon">🔬</span> Il Protocollo Esclusivo in Salone (Catania)</h4>
+                    <p>Il rituale prevede la miscelazione estemporanea di <em>Herbs & Clay Peeling Cleanser</em> con acqua ozonizzata e il <strong>Moon Blend specifico prescelto in base alla fase lunare in corso</strong> e alle esigenze diagnosticate del cuoio capelluto. Viene applicato riga per riga sul cuoio capelluto e accompagnato dal <strong>Massaggio Dermodrenante Scalp</strong> prima del risciacquo idroterapico.</p>
+                </div>
+                <div class="detail-block did-you-know-box">
+                    <div class="did-you-know-header">
+                        <span class="lightbulb">💡</span>
+                        <h5>Lo Sapevi Che?</h5>
+                    </div>
+                    <p>In agricosmetica biodinamica la terra e le piante seguono i ritmi cosmici e le <strong>fasi lunari</strong>. L'applicazione dello Scrub Herbs & Clay unito ai Moon Blend dedicati sfrutta i momenti di massima ricettività cutanea (come la <em>Luna Calante</em> per una detossinazione profonda e purificante o la <em>Luna Crescente</em> per stimolare la forza e la rigenerazione), potenziando in modo del tutto naturale l'efficacia del trattamento!</p>
+                </div>
+                <div class="treatment-cta">
+                    <a href="https://wa.me/390952165888?text=Buongiorno,%20vorrei%20informazioni%20sullo%20Scrub%20Detox%20Herbs%20%26%20Clay%20e%20sui%20Moon%20Blend" target="_blank" rel="noopener noreferrer" class="btn-gold-small">Richiedi Consulenza per il Rituale Herbs & Clay</a>
+                </div>
+            </div>
+        </details>    </main>
+
+    <!-- SEZIONE 4: BANNER CONSULENZA TRICHOLOGICA -->
+    <section class="section-container reveal" style="background: linear-gradient(145deg, rgba(18,18,18,0.95), rgba(28,24,14,0.85)); border-top: 1px solid rgba(212,175,55,0.25); border-bottom: 1px solid rgba(212,175,55,0.25); text-align: center; padding: 4rem 1.5rem;">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <h2 class="section-title" style="margin-bottom: 1rem;">Ogni Percorso Inizia da una Consulenza</h2>
+            <p style="color: #E0E0E0; font-size: 1.05rem; line-height: 1.8; margin-bottom: 2rem;">
+                In Enjoy Parrucchieri Bio Hair Spa non applichiamo trattamenti preconfezionati. Il tuo percorso agricosmetico viene definito esclusivamente in salone in Via Padova 52 a Catania dopo una diagnosi visiva e microscopica di cute e capelli.
+            </p>
+            <a href="https://enjoyhairspa.github.io/hair-spa-Enjoy/index.html" target="_blank" rel="noopener noreferrer" class="btn-gold">
+                📅 Prenota la Tua Consulenza in Web App
+            </a>
+        </div>
+    </section>
+
+    <!-- IL FOOTER UNIVERSALE VIENE INIETTATO AUTOMATICAMENTE DA components.js -->
+
+    <!-- JAVASCRIPT PRINCIPALE PER REVEAL ANIMAZIONI -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const observerOptions = { threshold: 0.12 };
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        });
+    </script>
+    
+    <!-- SCRIPT CENTRALIZZATO DEI COMPONENTI (HEADER CON LOGO COMPLETO + FOOTER) -->
+    <script src="components.js"></script>
+
+</body>
+</html>
