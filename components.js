@@ -31,8 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <footer>
             <div style="max-width: 1100px; margin: 0 auto; padding: 1rem 0; text-align: center;">
                 <p style="margin-bottom: 0.5rem; font-size: 1rem; color: #FFFFFF;">
-                    <strong>Enjoy Parrucchieri Bio Hair Spa</strong> &bull; Via Padova, 52, 95127 Catania CT (Fermata Metro Giuffrida)
-                </p>
+<strong>Enjoy Parrucchieri Bio Hair Spa</strong> &bull; Via Padova, 50, 95127 Catania CT (Fermata Metro Giuffrida)                </p>
                 <p style="margin-bottom: 1.2rem; font-size: 0.9rem; color: #A0A0A0;">
                     Partner Ufficiale Oway &bull; Cascata Giapponese Head Spa &bull; Centro Cheratina Specializzato
                 </p>
@@ -75,3 +74,24 @@ function chiudiMenuMobile() {
     const navLinks = document.getElementById('main-nav-links');
     if (navLinks) navLinks.classList.remove('mobile-open');
 }
+// ==========================================
+// PROTEZIONE LUXURY: ANTI-CLICK DESTRO & ANTI-DOWNLOAD IMMAGINI (GLOBALE)
+// ==========================================
+document.addEventListener("DOMContentLoaded", () => {
+    // Seleziona tutte le immagini presenti nel DOM corrente
+    const allImages = document.querySelectorAll("img");
+    
+    allImages.forEach((img) => {
+        // 1. Blocca il menu contestuale (Click destro)
+        img.addEventListener("contextmenu", (e) => {
+            e.preventDefault();
+            return false;
+        });
+
+        // 2. Blocca il trascinamento (Drag & Drop)
+        img.addEventListener("dragstart", (e) => {
+            e.preventDefault();
+            return false;
+        });
+    });
+});

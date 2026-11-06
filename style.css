@@ -1,6 +1,6 @@
 /* ==========================================================================
    ENJOY PARRUCCHIERI BIO HAIR SPA - STILE PRINCIPALE LUXURY
-   ========================================================================== */
+   ========================================== */
 
 :root {
     --bg-primary: #121212;
@@ -25,6 +25,23 @@ body {
     font-family: var(--font-body);
     line-height: 1.6;
     overflow-x: hidden;
+}
+
+/* --- PROTEZIONE IMMAGINI ANTI-COPIA & ANTI-DRAG --- */
+img {
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+    
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    
+    -webkit-touch-callout: none;
+    pointer-events: none; /* Impedisce il contatto diretto di trascinamento/interazione mouse */
 }
 
 /* --- EFFETTO REVEAL ON SCROLL (ANIMAZIONE FLUIDA) --- */
@@ -553,6 +570,7 @@ header {
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 2.5rem;
 }
+
 /* Centratura e proporzioni perfette per tutte le immagini del salone */
 .service-img, .hero, .book-page img, .popup-img {
     object-fit: cover;
@@ -824,27 +842,26 @@ footer p { margin-bottom: 0.5rem; }
         font-size: 1.8rem;
     }
 
-    
+    /* Indicatore visivo dello Swipe per Mobile con micro-movimento laterale */
+    .swipe-hint {
+        display: none;
+        text-align: center;
+        font-size: 0.75rem;
+        color: var(--gold-primary);
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+        font-family: var(--font-body);
+        font-weight: 500;
+    }
 
-/* Indicatore visivo dello Swipe per Mobile con micro-movimento laterale */
-.swipe-hint {
-    display: none;
-    text-align: center;
-    font-size: 0.75rem;
-    color: var(--gold-primary);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-    font-family: var(--font-body);
-    font-weight: 500;
+    .swipe-hint span {
+        display: inline-block;
+        animation: swipeHandMotion 1.8s infinite ease-in-out;
+    }
+
+    @keyframes swipeHandMotion {
+        0%, 100% { transform: translateX(0); opacity: 0.6; }
+        50% { transform: translateX(8px); opacity: 1; }
+    }
 }
-
-.swipe-hint span {
-    display: inline-block;
-    animation: swipeHandMotion 1.8s infinite ease-in-out;
-}
-
-@keyframes swipeHandMotion {
-    0%, 100% { transform: translateX(0); opacity: 0.6; }
-    50% { transform: translateX(8px); opacity: 1; }
-}}

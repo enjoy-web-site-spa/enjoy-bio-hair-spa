@@ -22,7 +22,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-    <!-- FOGLIO DI STILE ESTERNO CENTRALIZZATO -->
+    <!-- FOGLIO DI STILE ESTERNO CENTRALIZZATO (INCLUDE LA PROTEZIONE IMMAGINI) -->
     <link rel="stylesheet" href="style.css">
 
     <!-- Supabase JS SDK -->
@@ -74,7 +74,7 @@
 </head>
 <body>
 
-    <!-- L'HEADER CON IL LOGO COMPLETO VIENE INIETTATO AUTOMATICAMENTE DA components.js -->
+    <!-- L'HEADER UNIVERSALE VIENE INIETTATO AUTOMATICAMENTE DA components.js -->
 
     <!-- HERO SECTION SERVIZI -->
     <section class="hero" id="dynamic-hero" style="min-height: 50vh;">
@@ -111,7 +111,7 @@
 
         <div class="services-grid" style="margin-top: 3rem;">
             
-            <!-- CARD 1: CASCATA GIAPPONESE (CON ARCO & SHIRODARA WATER WALL) -->
+            <!-- CARD 1: CASCATA GIAPPONESE -->
             <div class="service-card reveal">
                 <img src="https://rpbbbqekqkwzyhpjeusp.supabase.co/storage/v1/object/public/immagini-salone/cascata-giapponese-salone.jpg" 
                      alt="Cascata Giapponese con Arco e Shirodara Water Wall Bio Hair Spa Catania" 
@@ -130,7 +130,7 @@
                 </div>
             </div>
 
-            <!-- CARD 2: VAPOMIST IGLOO DETOX & BIO-INFUSION -->
+            <!-- CARD 2: VAPOMIST IGLOO DETOX -->
             <div class="service-card reveal">
                 <img src="https://rpbbbqekqkwzyhpjeusp.supabase.co/storage/v1/object/public/immagini-salone/vapomist-igloo-salone.jpg" 
                      alt="Vapomist Igloo Detox Bio Hair Spa Catania" 
@@ -149,7 +149,7 @@
                 </div>
             </div>
 
-            <!-- CARD 3: AGRICOLOR OWAY (COLORAZIONE AGRICOSMETICA) -->
+            <!-- CARD 3: AGRICOLOR OWAY -->
             <div class="service-card reveal">
                 <img src="https://rpbbbqekqkwzyhpjeusp.supabase.co/storage/v1/object/public/immagini-salone/agricolor-oway-salone.jpg" 
                      alt="Agricolor Oway Colorazione Agricosmetica Bio Hair Spa Catania" 
@@ -209,7 +209,7 @@
         </div>
     </main>
 
-    <!-- SEZIONE CTA FINALE UNIFICATA -->
+    <!-- SEZIONE CTA FINALE -->
     <section class="section-container reveal" style="max-width: 900px; margin-top: 5rem; text-align: center;">
         <div style="background: linear-gradient(135deg, #181818, #111111); border: 1px solid rgba(212,175,55,0.3); border-radius: 6px; padding: 3.5rem 2rem; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);">
             <h2 style="font-family: var(--font-title); color: var(--gold-light); font-size: 1.8rem; margin-bottom: 0.8rem;">Inizia il Tuo Percorso di Benessere</h2>
@@ -230,8 +230,6 @@
             </div>
         </div>
     </section>
-
-    <!-- L'FOOTER VIENE INIETTATO AUTOMATICAMENTE DA components.js -->
 
     <!-- JAVASCRIPT PRINCIPALE -->
     <script>
@@ -276,7 +274,7 @@
         }
     </script>
 
-    <!-- SCRIPT CENTRALIZZATO COMPONENTI (HEADER CON LOGO COMPLETO + FOOTER) -->
+    <!-- SCRIPT CENTRALIZZATO COMPONENTI (HEADER UNIVERSALE + FOOTER + PROTEZIONE IMMAGINI) -->
     <script src="components.js"></script>
 
 </body>
