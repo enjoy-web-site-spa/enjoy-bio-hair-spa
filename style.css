@@ -41,7 +41,6 @@ img {
     user-select: none;
     
     -webkit-touch-callout: none;
-    pointer-events: none; /* Impedisce il contatto diretto di trascinamento/interazione mouse */
 }
 
 /* --- EFFETTO REVEAL ON SCROLL (ANIMAZIONE FLUIDA) --- */
