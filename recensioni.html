@@ -20,18 +20,13 @@
     <!-- Supabase JS SDK -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-    <!-- Schema.org JSON-LD -->
+<!-- Schema.org JSON-LD (Dati Strutturati BeautySalon con AggregateRating e Review Complete) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "BeautySalon",
       "name": "Enjoy Parrucchieri Bio Hair Spa",
-      "legalName": "Enjoy Parrucchieri HAIR SPA OWAY & CENTRO CHERATINA",
-      "alternateName": [
-        "Enjoy Parrucchieri HAIR SPA OWAY & CENTRO CHERATINA",
-        "Centro Cheratina Catania"
-      ],
-      "image": "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1200&q=80",
+      "image": "https://rpbbbqekqkwzyhpjeusp.supabase.co/storage/v1/object/public/immagini-salone/header-copertina-salone.jpg",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Via Padova, 50",
@@ -39,14 +34,91 @@
         "postalCode": "95127",
         "addressCountry": "IT"
       },
+      "telephone": "+390952165888",
+      "email": "parrucchierienjoy@gmail.com",
+      "url": "https://enjoy-web-site-spa.github.io/enjoy-bio-hair-spa/recensioni.html",
+      "priceRange": "€€",
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "5.0",
-        "reviewCount": "170"
-      }
+        "reviewCount": "170",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "review": [
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Martina S." },
+          "datePublished": "2026-09-01",
+          "reviewBody": "La gentilezza, la competenza e l'atmosfera rilassante rendono Enjoy molto più di un semplice salone. Il rituale della Cascata Giapponese è un'esperienza sensoriale indimenticabile!",
+          "reviewRating": { "@type": "Rating", "ratingValue": "5" }
+        },
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Federica R." },
+          "datePublished": "2026-08-15",
+          "reviewBody": "Finalmente ho trovato un salone bio a Catania che utilizza prodotti eccezionali come Oway. Capelli rigenerati, setosi e lucenti grazie al centro cheratina. Consigliatissimo!",
+          "reviewRating": { "@type": "Rating", "ratingValue": "5" }
+        },
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Chiara V." },
+          "datePublished": "2026-08-10",
+          "reviewBody": "Professionalità ai massimi livelli nel cuore di Catania. Cura dei dettagli, prodotti biologici profumatissimi e un'accoglienza impeccabile. Non potrei più farne a meno.",
+          "reviewRating": { "@type": "Rating", "ratingValue": "5" }
+        },
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Rossella M." },
+          "datePublished": "2026-07-20",
+          "reviewBody": "Ambiente elegante, pulito e curato in ogni minimo dettaglio con i toni del nero e dell'oro. Trattamenti cutanei eccezionali e personale super qualificato. 5 stelle meritatissime!",
+          "reviewRating": { "@type": "Rating", "ratingValue": "5" }
+        },
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Valentina B." },
+          "datePublished": "2026-07-05",
+          "reviewBody": "Il miglior centro cheratina ed ecocosmesi di Catania! Trattamenti su misura che rispettano la cute e lasciano la chioma meravigliosa. Bravi bravi bravi!",
+          "reviewRating": { "@type": "Rating", "ratingValue": "5" }
+        },
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Alessia G." },
+          "datePublished": "2026-06-18",
+          "reviewBody": "Un vero e proprio angolo di paradiso per i capelli a Catania. L'idroterapia giapponese unita agli oli essenziali Oway ti rigenera completamente dallo stress quotidiano.",
+          "reviewRating": { "@type": "Rating", "ratingValue": "5" }
+        },
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Simona D." },
+          "datePublished": "2026-06-02",
+          "reviewBody": "Competenza e prodotti top. Ho fatto il trattamento alla cheratina e i miei capelli sono lisci, luminosi e senza l'ombra di crespo. Staff eccezionale!",
+          "reviewRating": { "@type": "Rating", "ratingValue": "5" }
+        },
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Roberta T." },
+          "datePublished": "2026-05-14",
+          "reviewBody": "Un salone che cura ogni cliente come se fosse unico. La consulenza preliminare e l'uso di prodotti organici di alta gamma fanno davvero la differenza sulla salute della cute.",
+          "reviewRating": { "@type": "Rating", "ratingValue": "5" }
+        },
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Claudia P." },
+          "datePublished": "2026-04-30",
+          "reviewBody": "Esperienza magnifica con la Cascata Giapponese Head Spa. Massaggio rilassante e cute perfettamente detossinata. Tornerò sicuramente prestissimo!",
+          "reviewRating": { "@type": "Rating", "ratingValue": "5" }
+        },
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Miriam L." },
+          "datePublished": "2026-04-12",
+          "reviewBody": "Trattamento alla cheratina eseguito alla perfezione. Capelli morbidissimi e disciplinati anche con l'umidità di Catania. Salone top!",
+          "reviewRating": { "@type": "Rating", "ratingValue": "5" }
+        }
+      ]
     }
     </script>
-</head>
 <body>
 
     <!-- L'HEADER CON IL LOGO COMPLETO VIENE INIETTATO AUTOMATICAMENTE DA components.js -->
