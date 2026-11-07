@@ -6,8 +6,8 @@
 
     <!-- HOMEPAGE UFFICIALE -->
     <url>
-        <loc>https://enjoy-web-site-spa.github.io/enjoy-bio-hair-spa/index.html</loc>
-        <lastmod>2026-11-06</lastmod>
+        <loc>https://enjoy-web-site-spa.github.io/enjoy-bio-hair-spa/</loc>
+        <lastmod>2026-11-07</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.00</priority>
     </url>
@@ -15,7 +15,7 @@
     <!-- PAGINA DEDICATA: TRATTAMENTI BOTANICI OWAY -->
     <url>
         <loc>https://enjoy-web-site-spa.github.io/enjoy-bio-hair-spa/trattamenti-botanici.html</loc>
-        <lastmod>2026-11-06</lastmod>
+        <lastmod>2026-11-07</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.90</priority>
     </url>
@@ -23,9 +23,33 @@
     <!-- PAGINA SERVIZI GENERALI & LISTINO CONSULENZA -->
     <url>
         <loc>https://enjoy-web-site-spa.github.io/enjoy-bio-hair-spa/servizi.html</loc>
-        <lastmod>2026-11-06</lastmod>
+        <lastmod>2026-11-07</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.85</priority>
+    </url>
+
+    <!-- PAGINA CONTATTI, DOVE SIAMO & CONCIERGE -->
+    <url>
+        <loc>https://enjoy-web-site-spa.github.io/enjoy-bio-hair-spa/contatti.html</loc>
+        <lastmod>2026-11-07</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.85</priority>
+    </url>
+
+    <!-- LIBRO DELLE RECENSIONI VERIFICATE GOOGLE -->
+    <url>
+        <loc>https://enjoy-web-site-spa.github.io/enjoy-bio-hair-spa/recensioni.html</loc>
+        <lastmod>2026-11-07</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.80</priority>
+    </url>
+
+    <!-- CODICE ETICO E VALORI DI SALONE -->
+    <url>
+        <loc>https://enjoy-web-site-spa.github.io/enjoy-bio-hair-spa/etica.html</loc>
+        <lastmod>2026-11-07</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.75</priority>
     </url>
 
 </urlset>
