@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <strong>Enjoy Parrucchieri Bio Hair Spa</strong> &bull; Via Padova, 50, 95127 Catania CT (Fermata Metro Giuffrida)
                 </p>
                 <p style="margin-bottom: 1.2rem; font-size: 0.9rem; color: #A0A0A0;">
-                    Partner Ufficiale Oway &bull; Cascata Giapponese Bio Hair Spa &bull; Centro Trattamenti Specializzato
+                    Partner Ufficiale Oway &bull; Cascata Giapponese Bio Hair Spa &bull; Centro Cheratina Specializzato Catania
                 </p>
                 
                 <!-- LINK SOCIAL UFFICIALI -->
