@@ -862,4 +862,45 @@ footer p { margin-bottom: 0.5rem; }
         0%, 100% { transform: translateX(0); opacity: 0.6; }
         50% { transform: translateX(8px); opacity: 1; }
     }
+    
+/* ===================================
+   INTRO VIDEO ENJOY PARRUCCHIERI
+=================================== */
+
+#enjoy-intro {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999999;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.6s ease,
+                visibility 0.6s ease;
+}
+
+#enjoy-intro video {
+    position: absolute !important;
+    width: 32vw !important;
+    height: auto !important;
+    max-width: 420px !important;
+    max-height: 48vh !important;
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    object-fit: contain;
+    object-position: center;
+    margin: 0 !important;
+}
+
+#enjoy-intro.enjoy-intro-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
 }

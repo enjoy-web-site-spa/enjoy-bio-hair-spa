@@ -127,6 +127,27 @@
         </div>
     </div>
 
+
+<!-- INTRO VIDEO ENJOY -->
+<div id="enjoy-intro">
+
+    <video
+        id="enjoy-intro-video"
+        autoplay
+        muted
+        playsinline
+        preload="auto">
+
+        <source
+            src="enjoy_parrucchieri_intro.mp4"
+            type="video/mp4">
+
+    </video>
+
+</div>
+<!-- FINE INTRO VIDEO -->
+
+
     <!-- L'HEADER CON IL LOGO COMPLETO E MENU VIENE INIETTATO AUTOMATICAMENTE DA components.js -->
 
     <!-- HERO SECTION -->
@@ -463,6 +484,41 @@
     
     <!-- SCRIPT CENTRALIZZATO DEI COMPONENTI (HEADER CON LOGO COMPLETO + FOOTER CON SOCIAL REALI) -->
     <script src="components.js"></script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const intro = document.getElementById("enjoy-intro");
+    const video = document.getElementById("enjoy-intro-video");
+
+    if (!intro || !video) return;
+
+    let chiuso = false;
+
+    function chiudiIntro() {
+
+        if (chiuso) return;
+        chiuso = true;
+
+        intro.classList.add("enjoy-intro-hidden");
+
+        setTimeout(function () {
+            intro.remove();
+        }, 700);
+    }
+
+    video.addEventListener("ended", chiudiIntro);
+
+    video.addEventListener("error", chiudiIntro);
+
+    video.play().catch(function () {
+        chiudiIntro();
+    });
+
+});
+</script>
+
 
 </body>
 </html>
