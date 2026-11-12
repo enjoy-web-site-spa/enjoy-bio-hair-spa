@@ -27,7 +27,7 @@ body {
     overflow-x: hidden;
 }
 
-/* --- PROTEZIONE IMMAGINI ANTI-COPIA & ANTI-DRAG (Corretto senza errori CSS) --- */
+/* --- PROTEZIONE IMMAGINI ANTI-COPIA & ANTI-DRAG --- */
 img {
     -webkit-user-drag: none;
     -khtml-user-drag: none;
