@@ -27,13 +27,12 @@ body {
     overflow-x: hidden;
 }
 
-/* --- PROTEZIONE IMMAGINI ANTI-COPIA & ANTI-DRAG --- */
+/* --- PROTEZIONE IMMAGINI ANTI-COPIA & ANTI-DRAG (Corretto senza errori CSS) --- */
 img {
     -webkit-user-drag: none;
     -khtml-user-drag: none;
     -moz-user-drag: none;
     -o-user-drag: none;
-    user-drag: none;
     
     -webkit-user-select: none;
     -moz-user-select: none;
